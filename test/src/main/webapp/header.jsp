@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="./index.jsp">
                             <img src="img/logo.png" alt="">
                         </a>
                     </div>
@@ -41,10 +41,10 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="#">공지사항</a></li>
+                                <li><a href="#">공지사항</a></li>
                                 <li><a href="#">친목게시판</a></li>
-                                <li><a href="#">애니추천</a></li>
-                                <li><a href="#">방영예정</a></li>
+                                <li><a href="./anirecom.jsp">애니추천</a></li>
+                                <li><a href="#">샵</a></li>
                             </ul>
                         </nav>
                     </div>

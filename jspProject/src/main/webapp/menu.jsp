@@ -9,7 +9,7 @@
 					<a href="./notice"><img src="./assets/img/news.png">공지</a>
 				</li>
 				<li>
-					<a href="./board"><img src="./assets/img/print.png">보드</a>
+					<a href="./board?pageNo=1"><img src="./assets/img/print.png">보드</a>
 				</li>
 			<% if(session.getAttribute("m_name") != null){ %>
 				<li>

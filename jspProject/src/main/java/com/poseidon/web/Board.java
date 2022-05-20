@@ -20,18 +20,22 @@ public class Board extends HttpServlet {
     public Board() {
         super();
     }
-//2022-05-12
-//서버 프로그램 구현
-//서버 프로그램 구현하기
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//DAO에게 일 시키기
-		//List에 담아주세요. DTO여러개를......
 		BoardDAO dao = new BoardDAO();
-		List<BoardDTO> boardList = dao.boardList();
+		//전체 글수 totalcount
+		//시작페이지 번호 pageNo
+		int pageNo = 1;
+		if(request.getParameter("pageNo") != null) { 
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		}
+		List<BoardDTO> boardList = dao.boardList((pageNo-1) * 10);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./board.jsp");
-		request.setAttribute("list", boardList);//${list } 실제 데이터 
+		request.setAttribute("list", boardList);//
+		request.setAttribute("totalcount", boardList.get(0).getTotalcount()); 
+		request.setAttribute("pageNo", pageNo);
+	//	request.setAttribute("pageNo", pageNo); // limit 0, 10; 일떄 0이 pageNo
 		rd.forward(request, response);
 
 	}

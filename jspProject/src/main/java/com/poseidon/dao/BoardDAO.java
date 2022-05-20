@@ -58,16 +58,17 @@ public class BoardDAO {
 }
 	
 	//리스트 가져오기
-	public List<BoardDTO> boardList() {
+	public List<BoardDTO> boardList(int pageNo) {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM may_boardview";//view만들거라서 잠시 후 수정합니다.
+		String sql = "SELECT * FROM may_boardview limit ?,10";//view만들거라서 잠시 후 수정합니다.
 		
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pageNo);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO();

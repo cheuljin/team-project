@@ -43,7 +43,7 @@
                             <ul>
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="#">친목게시판</a></li>
-                                <li><a href="./anirecom.jsp">애니추천</a></li>
+                                <li><a href="./anirecom">review</a></li>
                                 <li><a href="#">샵</a></li>
                             </ul>
                         </nav>

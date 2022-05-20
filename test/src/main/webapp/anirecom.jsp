@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,67 +26,96 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
-    <style type="text/css">
-    #main{
-    	margin: 0 auto;
-    	height: 100%;
-    	width: 900px;
-    }
-    th, td{
-    	color: white;
-    }
-    #recom-main{
+   
+   
+   <style type="text/css">
+       #recom-main{
     	margin: 0 auto;
     	height: 450px;
     	width: 1200px;
-    }
-    
-    </style>
+   	 }
+   	 #row{
+   	 	width: 1200px;
+   	 }
+   	 
+   
+   </style>
+   
+   
 </head>
 <body>
 	<jsp:include page="./header.jsp"/>
-	    <div id="preloder">
-        	<div class="loader"></div>
-    	</div>
-    
-        <!-- 애니 추천 게시판 테이블-->
-		<div id="anirecom-container">
-			<div id="recom-main">
-				<img alt="" src="./img/recom-main.png">
-			
-			</div>
-		
-			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
-				<table class="table table-striped" border="1">
-				
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>날짜</th>
-						<th>조회수</th>
-					</tr>
-				
-					<tr>
-						<td>번호~</td>
-						<td>제목~</td>
-						<td>글쓴이~</td>
-						<td>날짜~~</td>
-						<td>조회수~~~</td>
-					</tr>
-				
-			</table>
-		</div>
-	</div>
+	
+		   <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
+                       	 <span>애니리뷰</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+     
+       <!-- Product Section Begin -->
+    <section class="product-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                
+                                    <div class="section-title">
+                                        <h4>Review</h4>
+                                    </div>
+                     <!--       <c:if test="${sessionScope.u_id ne null }">
+								<button onclick="location.href='./write'">글쓰기</button>
+							 </c:if> --> 
+							 		 <div class="product__page__filter">
+							 			<h4> 글쓰기 </h4>
+									 </div>
+                            </div>
+                        </div>
+                        
+                         <div class="row">
+                         <c:forEach items="${list }" var="i">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/review/1.jpg">
+                             
+                                        <div class="ep">${i.a_epi }</div>
+                                        <div class="comment"><i class="fa fa-comments"></i><!-- 댓글 카운트 --></div>
+                                        <div class="view"><i class="fa fa-eye"></i>${i.a_count }</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>${i.a_category }</li>
+                                        </ul>
+                                        <h5><a href="./anidetail?a_no=${i.a_no }">${i.a_title }</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            </c:forEach>
+                          </div>
+                     </div>
+                  </div>
+              </div>
+           </div>
+        </section>     
+      
+
+	
 			  
-			  
+			 
 			  
 			  
   			
 	<jsp:include page="footer.jsp"/>
-
-
 	    <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

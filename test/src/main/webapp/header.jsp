@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <link rel="stylesheet" href="css/signup.css" type="text/css">
 </head>
 <body>
    <!-- Header Section Begin -->
@@ -43,7 +45,7 @@
                             <ul>
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="#">친목게시판</a></li>
-                                <li><a href="./anirecom">review</a></li>
+                                <li><a href="./anireview">review</a></li>
                                 <li><a href="#">샵</a></li>
                             </ul>
                         </nav>
@@ -51,7 +53,7 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="#"><span class="icon_profile"></span></a>
+                        <a href="./login.jsp"><span class="icon_profile"></span></a>
                     </div>
                 </div>
             </div>

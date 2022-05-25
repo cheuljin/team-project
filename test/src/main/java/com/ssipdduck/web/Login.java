@@ -32,8 +32,10 @@ public class Login extends HttpServlet {
 			
 			LoginDAO dao = new LoginDAO();
 			LoginDTO dto = new LoginDTO();
+			
 			dto.setU_email(Util.HTML2str(email));
 			dto.setU_password(pw);
+			
 			dto = dao.login(dto);
 			
 			if(dto.getC()==1) {

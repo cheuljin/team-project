@@ -202,7 +202,7 @@ public class AnirecomDAO {
 	}
 
 	public void anicommentwrite(AniCommentDTO dto) {
-		sql = "insert into ani_comment (a_no,ac_comment, u_no) values(?,?,(select u_no from user where u_email = ?))";
+		sql = "insert into ani_comment (a_no, ac_comment, u_no) values(?,?,(select u_no from user where u_email = ?))";
 		try {
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);

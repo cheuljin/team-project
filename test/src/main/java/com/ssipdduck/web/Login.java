@@ -43,7 +43,6 @@ public class Login extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("u_email", dto.getU_email());
 				session.setAttribute("u_nickname", dto.getU_nickname());
-				System.out.println(dto.getU_nickname());
 			}
 			
 		}

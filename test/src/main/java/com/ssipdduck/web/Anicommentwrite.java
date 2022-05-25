@@ -2,6 +2,7 @@ package com.ssipdduck.web;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,10 @@ public class Anicommentwrite extends HttpServlet {
 			dto.setU_id((String)session.getAttribute("u_email"));
 			
 			dao.anicommentwrite(dto);
+			
+			response.sendRedirect("./anidetail?a_no=" + dto.getA_no());
+	    	//↑ 주소표시줄을 유지하고 화면만 변경.
+	    	//↓ 값 이동.
 	
 		}
 	}

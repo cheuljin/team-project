@@ -30,8 +30,6 @@ public class Signup extends HttpServlet {
 		String password = request.getParameter("password");
 		String password2 = request.getParameter("password2");
 		
-		System.out.println(name);
-		
 		SignupDAO dao = new SignupDAO();
 		
 		SignupDTO dto = new SignupDTO();

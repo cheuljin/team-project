@@ -76,10 +76,10 @@
                                     <div class="section-title">
                                         <h4>Review</h4>
                                     </div>
+                            <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
                                      <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 658px;	font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+						  	 </c:if>  
 							 		 <div class="product__page__filter">
-                     <!--       <c:if test="${sessionScope.u_id ne null }">--> 
-						<!--  	 </c:if> --> 
 							 			<h4> 글쓰기 </h4>
 									 </div>
                             </div>

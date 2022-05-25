@@ -22,7 +22,7 @@ public class LoginDAO {
 	public LoginDTO login(LoginDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "SELECT count(*) as c FROM user WHERE u_email=? AND u_pw=";
+		String sql = "SELECT count(*) as c, u_email, u_name, u_nickname FROM user WHERE u_email=? AND u_pw=";
 		ResultSet rs = null;
 		
 		try {
@@ -36,6 +36,7 @@ public class LoginDAO {
 				dto.setU_email(rs.getString("u_email"));
 				dto.setU_name(rs.getString("u_name"));
 				dto.setU_nickname(rs.getString("u_nickname"));
+				System.out.println(dto.getU_nickname());
 				dto.setC(rs.getInt("c"));
 			}
 			

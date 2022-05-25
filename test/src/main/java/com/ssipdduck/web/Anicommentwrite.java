@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssipdduck.DAO.AnirecomDAO;
 import com.ssipdduck.DTO.AniCommentDTO;
@@ -23,13 +24,16 @@ public class Anicommentwrite extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		if(request.getParameter("a_no") !=null && Util.str2Int(request.getParameter("a_no"))) {
 			AnirecomDAO dao = new AnirecomDAO();
 			AniCommentDTO dto = new AniCommentDTO();
 			
+			dto.setA_no(Integer.parseInt(request.getParameter("a_no")));
 			dto.setAc_comment(Util.HTML2str(request.getParameter("comment")));
+			dto.setU_id((String)session.getAttribute("u_email"));
 			
-			dao.anicommentwrite(Integer.parseInt(request.getParameter("a_no")));
+			dao.anicommentwrite(dto);
 	
 		}
 	}

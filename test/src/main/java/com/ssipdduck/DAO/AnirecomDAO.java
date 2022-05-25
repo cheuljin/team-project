@@ -116,7 +116,7 @@ public class AnirecomDAO {
 	public List<AniCommentDTO> commentList(int a_no) {
 		List<AniCommentDTO> list = new ArrayList<AniCommentDTO>();
 		
-		String sql =  "select * from ani_comment_view WHERE a_no=? order by ac_date desc";
+		String sql =  "select * from ani_commentview WHERE a_no=? order by ac_date desc";
 	
 		try {
 			conn = DBConnection.dbConn();
@@ -127,13 +127,13 @@ public class AnirecomDAO {
 			
 			while(rs.next()) {
 				AniCommentDTO dto = new AniCommentDTO();
-			//	dto.setA_no(rs.getInt("a_no"));
+				dto.setA_no(rs.getInt("a_no"));
 				dto.setAc_comment(rs.getString("ac_comment"));
 				dto.setAc_date(rs.getString("ac_date"));
 				dto.setAc_like(rs.getInt("ac_like"));
 				dto.setAc_no(rs.getInt("ac_no"));
-				dto.setU_id(rs.getString("u_id"));
 				dto.setU_nickname(rs.getString("u_nickname"));
+				System.out.println(dto.getU_nickname());
 				list.add(dto);
 			}
 			
@@ -201,14 +201,14 @@ public class AnirecomDAO {
 		return top;
 	}
 
-	public void anicommentwrite(int a_no) {
-		sql = "insert into ani_comment (ac_comment, a_no) values(?,?)";
-		AniCommentDTO dto = new AniCommentDTO();
+	public void anicommentwrite(AniCommentDTO dto) {
+		sql = "insert into ani_comment (a_no,ac_comment, u_no) values(?,?,(select u_no from user where u_email = ?))";
 		try {
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,dto.getAc_comment());
-			pstmt.setInt(2, a_no);
+			pstmt.setInt(1, dto.getA_no());
+			pstmt.setString(2,dto.getAc_comment());
+			pstmt.setString(3, dto.getU_id());
 			pstmt.execute();
 			
 		}catch(Exception e) {

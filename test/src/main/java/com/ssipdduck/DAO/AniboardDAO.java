@@ -47,7 +47,6 @@ public class AniboardDAO {
 				dto.setB_like(rs.getInt("b_like"));
 				dto.setB_count(rs.getInt("b_count"));
 				dto.setU_nickname(rs.getString("u_nickname"));
-				System.out.println(dto.getB_title());
 				list.add(dto);
 			}
 		} catch (Exception e) {

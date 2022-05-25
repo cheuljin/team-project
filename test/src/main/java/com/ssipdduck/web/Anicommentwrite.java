@@ -36,9 +36,7 @@ public class Anicommentwrite extends HttpServlet {
 			
 			dao.anicommentwrite(dto);
 			
-			response.sendRedirect("./anidetail?a_no=" + dto.getA_no());
-	    	//↑ 주소표시줄을 유지하고 화면만 변경.
-	    	//↓ 값 이동.
+			response.sendRedirect("./anidetail?a_no=" + Integer.parseInt(request.getParameter("a_no")));
 	
 		}
 	}

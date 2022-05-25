@@ -82,7 +82,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
-                        <a href="./anirecom">목록</a>
+                        <a href="./anireview">목록</a>
                        	 <span>애니리뷰</span>
                     </div>
                 </div>

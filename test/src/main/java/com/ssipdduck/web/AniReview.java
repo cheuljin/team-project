@@ -22,17 +22,21 @@ public class AniReview extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AnirecomDAO dao = new AnirecomDAO();
-		List<AniRecomDTO> list = dao.Anilist();
 		List<AniRecomDTO> top = dao.topList();
+		int pageNo = 1;
+		if(request.getParameter("pageNo") != null) { 
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		}
+		List<AniRecomDTO> list = dao.Anilist((pageNo-1)*10);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./anirecom.jsp");
-    	//↑ 주소표시줄을 유지하고 화면만 변경.
-    	//↓ 값 이동.
     	request.setAttribute("list", list);
     	request.setAttribute("top", top);
+//		request.setAttribute("pageNo", pageNo);
     	rd.forward(request, response); //변경시작
+	
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

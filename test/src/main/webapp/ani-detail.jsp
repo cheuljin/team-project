@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
    
-   
    <style type="text/css">
        #main{
     	margin: 0 auto;
@@ -36,8 +35,6 @@
    	 }
    
    </style>
-   
-   
 </head>
 <body>
 	<jsp:include page="./header.jsp"/>
@@ -82,7 +79,6 @@
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star-half-o"></i></a>
                                 </div>
-                                <span>1.029 Votes</span>
                             </div>
                             <p>${dto.a_content }</p>
                             <div class="anime__details__widget">
@@ -97,17 +93,16 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                             
+                             				<li><span>Writer:</span> 작가이름.</li>
                                             <li><span>Like:</span> ${dto.a_rate }</li>
                                             <li><span>Duration:</span> ${dto.a_epi }&nbsp;부작</li>
-                      
                                             <li><span>Views:</span> ${dto.a_count }</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Like</a>
+                                <a href="#" class="follow-btn" id="like" onclick="like()"><i class="fa fa-heart-o"></i> Like</a>
                                 <a href="#" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
@@ -126,12 +121,12 @@
                                 <h5>Reviews</h5>
                             </div>
                             <div class="anime__review__item">
+                 			<c:forEach items="${list }" var="i">
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-1.jpg" alt="">
                                 </div>
-                 			<c:forEach items="${list }" var="i">
                                 <div class="anime__review__item__text">
-                                    <h6>${i.u_nickname }<span style="text-align: right;">${i.ac_date }</span></h6>
+                                    <h6>${i.u_nickname }</h6><small><span>${i.ac_date }</span></small>
                                     <p>${i.ac_comment }</p>
                                 </div>
                  			</c:forEach>         

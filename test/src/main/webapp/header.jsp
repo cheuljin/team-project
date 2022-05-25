@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,7 @@
                             <ul>
                                 <li><a href="#">공지사항</a></li>
                                 <li><a href="./aniboard">Board</a></li>
-                                <li><a href="./anireview">review</a></li>
+                                <li><a href="./anireview?pageNo=1">review</a></li>
                                 <li><a href="#">샵</a></li>
                             </ul>
                         </nav>

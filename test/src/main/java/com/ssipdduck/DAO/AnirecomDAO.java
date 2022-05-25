@@ -27,14 +27,14 @@ public class AnirecomDAO {
 	   }
 	
 	//게시판불러오기
-	public List<AniRecomDTO> Anilist() {
+	public List<AniRecomDTO> Anilist(int pageNo) {
 		ArrayList<AniRecomDTO> list = new ArrayList<AniRecomDTO>();
-		sql = "select * from ani ";
+		sql = "select * from ani limit ?,9 ";
 		
 		try {
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
-			
+			pstmt.setInt(1, pageNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -49,6 +49,7 @@ public class AnirecomDAO {
 				dto.setA_category(rs.getString("a_category"));
 				dto.setA_epi(rs.getInt("a_epi"));
 				dto.setA_type(rs.getString("a_type"));
+				
 				list.add(dto);
 			}
 			
@@ -119,6 +120,7 @@ public class AnirecomDAO {
 		String sql =  "select * from ani_commentview WHERE a_no=? order by ac_date desc";
 	
 		try {
+			System.out.println(a_no);
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, a_no);
@@ -131,9 +133,9 @@ public class AnirecomDAO {
 				dto.setAc_comment(rs.getString("ac_comment"));
 				dto.setAc_date(rs.getString("ac_date"));
 				dto.setAc_like(rs.getInt("ac_like"));
+				System.out.println(dto.getAc_comment());
 				dto.setAc_no(rs.getInt("ac_no"));
 				dto.setU_nickname(rs.getString("u_nickname"));
-				System.out.println(dto.getU_nickname());
 				list.add(dto);
 			}
 			
@@ -143,10 +145,10 @@ public class AnirecomDAO {
 		return list;
 	}
 
-
+	//글쓰기.
 	public void aniwrite(AniRecomDTO dto) {
-		String sql = "INSERT INTO ani (a_title, a_content, a_file, a_orifile, a_category, a_epi, a_type, a_studio, a_aired) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?,? ,?)";
+		String sql = "INSERT INTO ani (a_title, a_content, a_file, a_orifile, a_category, a_epi, a_type, a_studio, a_aired,u_no) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?,? ,?,(select u_no from user where u_email=?))";
 		try {
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
@@ -159,6 +161,7 @@ public class AnirecomDAO {
 			pstmt.setString(7, dto.getA_type());
 			pstmt.setString(8, dto.getA_studio());
 			pstmt.setString(9, dto.getA_aired());
+			pstmt.setString(10, dto.getU_id());
 			
 			pstmt.execute();
 			
@@ -190,8 +193,6 @@ public class AnirecomDAO {
 				dto.setA_category(rs.getString("a_category"));
 				dto.setA_epi(rs.getInt("a_epi"));
 				dto.setA_type(rs.getString("a_type"));
-					
-
 				top.add(dto);
 			}
 			

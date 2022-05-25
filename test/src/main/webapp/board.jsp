@@ -110,14 +110,14 @@
 				<c:forEach items="${list }" var="i">
 					<tr>
 						<td id="td1" style="color: white;">${i.b_no }</td>
-						<td id="td2" style="color: white;"><a href="./aniDetail?a_no=${i.b_no }">${i.b_title }</a></td>
+						<td id="td2" style="color: white;"><a href="./boardDetail?b_no=${i.b_no }">${i.b_title }</a></td>
 						<td id="td3" style="color: white;">${i.u_nickname }</td>
 						<td id="td4" style="color: white;">${i.b_date }</td>
 						<td id="td5" style="color: white;">${i.b_count }</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<<button type="button" onclick="location.href='./boardwrite'" style="position: absolute;left: 658px;   font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; left: 1200px;   font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
 </body>
 </html>

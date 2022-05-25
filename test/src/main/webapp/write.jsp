@@ -21,9 +21,12 @@
 	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet">
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -46,6 +49,7 @@
 	margin: 0 auto;
 	height: 450px;
 	width: 1200px;
+	padding-bottom: 0;
 }
 
 #row {
@@ -56,9 +60,21 @@
 	//$(선택자).명령();
 	$(document).ready(function() {
 	  $('#summernote').summernote({
-		  height : 400
+		  height : 500
 	  });
 	});
+	
+/* function check(){
+	alert("글을 작성하시겠습니까?")
+	var title = document.getElementById("title");
+	if (title.value.length < 5) {
+		alert("제목은 5글자 이상 적어주세요");
+		title.focus();
+		return false;
+	}
+	
+}	 */
+
 </script>
 
 </head>
@@ -66,7 +82,7 @@
 	<jsp:include page="./header.jsp" />
 
 	<!-- Breadcrumb Begin -->
-	<div class="breadcrumb-option">
+	<div class="breadcrumb-option" style="padding-top: 0;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -80,34 +96,36 @@
 	</div>
 	<!-- Breadcrumb End  -->
 
-
-	<!-- 애니 추천 게시판 테이블-->
 	<div id="anirecom-container">
 		<div id="recom-main">
 			<img alt="" src="./img/recom-main.png">
 		</div>
 	</div>
 
-	<!-- Product Section Begin -->
+	<div class="product__page__title"
+		style="width: 1200px; margin: 0 auto;">
+		<div class="row1" style="width: 100%;">
 
-						<div class="product__page__title" style="width: 1200px; margin: 0 auto;">
-							<div class="row1" style="width: 100%;">
+			<div class="section-title">
+				<h4>WRITE</h4>
+			</div>
+		</div>
+	</div>
+	<form action="./write" method="post" onsubmit="return check()" style="margin: 0 auto; width: 1000px; height: 150px;">
 
-								<div class="section-title">
-									<h4>Board</h4>
-								</div>
-							</div>
-						</div>
-					<form action="./write" method="post" onsubmit="return check()" style="margin: 0 auto; width: 800px;">
-					
-						<input type="text" id="title" name="title" placeholder="제목을 입력하세요" 
-						style="margin: 0 auto; width: 800px; height: 50px; margin-top: 20px;" required="required">
-						
-						<textarea id="summernote" name="content" style="margin: 0 auto; width: 800px; margin-top: 20px;"
-						required="required"></textarea>
-						
-						<button id="btn" type="submit">글쓰기</button>
-					</form>
+		<input type="text" id="title" name="title" placeholder="제목을 입력하세요"
+			style="margin: 0 auto; width: 1000px; height: 50px; margin-top: 20px; font-size: 13px;"
+			required="required">
+
+		<textarea id="summernote" name="content"
+			style="margin: 0 auto; width: 1200px; margin-top: 20px;"
+			required="required"></textarea>
+
+		<button type="submit" 
+			style="position: absolute; margin-left : 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">작성</i>
+		</button>
+	</form>
 
 
 </body>

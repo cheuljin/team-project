@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ssipdduck.DAO.AnirecomDAO;
-import com.ssipdduck.DTO.AnirecomDTO;
+import com.ssipdduck.DTO.AniRecomDTO;
+
 
 @WebServlet("/anirecom")
 public class Anirecom extends HttpServlet {
@@ -22,7 +23,7 @@ public class Anirecom extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AnirecomDAO dao = new AnirecomDAO();
-		List<AnirecomDTO> list = dao.Anilist();
+		List<AniRecomDTO> list = dao.Anilist();
 		
 		
 		

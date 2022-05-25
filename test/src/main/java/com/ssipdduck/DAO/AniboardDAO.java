@@ -57,5 +57,53 @@ public class AniboardDAO {
 		}
 		
 		return list;
-		}			
+		}
+
+	public AniboardDTO detail(int b_no) {
+		AniboardDTO dto = new AniboardDTO();
+		sql = "SELECT * FROM boardview where b_no=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setB_no(rs.getInt(1));
+				dto.setU_no(rs.getInt(2));
+				dto.setB_title(rs.getString(3));
+				dto.setB_content(rs.getString(4));
+				dto.setB_orifile(rs.getString(5));
+				dto.setB_file(rs.getString(6));
+				dto.setB_date(rs.getString(7));
+				dto.setB_count(rs.getInt(8));
+				dto.setB_like(rs.getInt(9));
+				dto.setU_nickname(rs.getString(10));
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	public void write(AniboardDTO dto) {
+		sql = "INSERT INTO board (b_title, b_content, u_no) VALUES(?, ?, (SELECT u_no FROM user WHERE u_email=?))";
+		 try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_title());
+			pstmt.setString(2, dto.getB_content());
+			pstmt.setString(3, dto.getU_id());
+			pstmt.execute();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+	}			
 }

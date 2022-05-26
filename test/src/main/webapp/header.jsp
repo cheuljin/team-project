@@ -41,7 +41,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li><a href="#">공지사항</a></li>
+                                <li><a href="./notice">공지사항</a></li>
                                 <li><a href="./aniboard">Board</a></li>
                                 <li><a href="./anireview?pageNo=1">review</a></li>
                                 <li><a href="#">샵</a></li>

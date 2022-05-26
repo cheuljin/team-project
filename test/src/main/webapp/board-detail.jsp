@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <title>게시글</title>
 <style type="text/css">
@@ -64,6 +64,32 @@ tr{
 	border-bottom: 1px white solid;
 }
 </style>
+
+<c:if test="${detail.u_id eq sessionScope.u_email}">
+<script type="text/javascript">
+$(document).ready(function(){
+	var b_no = ${detail.b_no };
+	$("#up").click(function(){
+		//alert(ckeck);
+		if(confirm("수정하시겠습니까?")){
+			location.replace("./update?b_no="+b_no);
+		}
+	});
+	
+	$("#del").click(function(){
+		if(confirm("해당 글을 삭제하시겠습니까?")){
+			var b_no2 = $("#b_no").text();
+			//alert(b_no2 + "번글을 삭제합니다.");
+			location.replace("./delete?b_no="+b_no2);
+		}
+	});
+	
+	
+});
+</script>
+</c:if>
+
+
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -76,7 +102,7 @@ tr{
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
 						<a href="./index.jsp"><i class="fa fa-home"></i> Home</a> <a
-							href="./board.jsp">게시판</a> <span>게시글</span>
+							href="./aniboard">게시판</a> <span>게시글</span>
 					</div>
 				</div>
 			</div>
@@ -101,7 +127,7 @@ tr{
 							<div class="row">
 
 								<div class="section-title">
-									<h4>게시글 <small style="font-size:small;">허위사실ㆍ비방을 게시하는 경우에는 무통보로 댓글이 삭제될 수 있습니다.</small></h4>
+									<h4>게시글</h4>
 								</div>
 							</div>
 						</div>
@@ -115,7 +141,12 @@ tr{
 	<div id="main">
 		<table border="1"> 
 			<tr>
-				<th colspan="2" style="text-align: center; ">글 제목 : ${detail.b_title }</th>
+				<th colspan="2" style="text-align: center; ">글 제목 : ${detail.b_title }
+				<c:if test="${detail.u_id eq sessionScope.u_email }">
+					<img id="up" src="./img/fix.png" title="수정" style="width: 15px; height: 15;" >
+					<img id="del" src="./img/delete.png" title="삭제" style="width: 15px; height: 15;">
+				</c:if>
+				</th>
 			</tr>
 			<tr>
 				<th style="text-align: center; height: 20px;">작성자 : ${detail.u_nickname }</th>
@@ -125,7 +156,7 @@ tr{
 				<td colspan="2" style="text-align: left">첨부파일 : </td>
 			</tr>
 			
-			<tr style="height: 800px;">
+			<tr style="height: 500px;">
 				<td colspan="3" style="text-align: center">${detail.b_content }<br>
 				</td>
 			</tr>
@@ -133,8 +164,7 @@ tr{
 				<td colspan="3" style="text-align: right"><small>좋아요 ${detail.b_like }</small></td>
 			</tr>
 		</table>
-	</div>
-	
+		<br>
 	<!-- 댓글 -->
                    <div class="anime__details__form" style="margin: 0 auto;">
                             <div class="section-title">
@@ -146,6 +176,8 @@ tr{
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                    </div>
+	</div>
+	
            
 
 	

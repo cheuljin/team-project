@@ -26,9 +26,11 @@ public class Write extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		if (session.getAttribute("u_email") != null) {
 			RequestDispatcher rd = request.getRequestDispatcher("./write.jsp");
+
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect("./index.jsp");
@@ -37,8 +39,8 @@ public class Write extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		
 		String re = null;
 		if (session.getAttribute("u_email") != null) {
 
@@ -50,7 +52,6 @@ public class Write extends HttpServlet {
 				dto.setB_title(request.getParameter("title"));
 				dto.setU_id((String) session.getAttribute("u_email"));
 				dao.write(dto);
-				
 				
 				re = "./aniboard";
 			}else {

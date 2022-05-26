@@ -79,6 +79,7 @@ public class AniboardDAO {
 				dto.setB_count(rs.getInt(8));
 				dto.setB_like(rs.getInt(9));
 				dto.setU_nickname(rs.getString(10));
+				dto.setU_id(rs.getString(11));
 			}
 			
 		} catch (Exception e) {
@@ -104,5 +105,41 @@ public class AniboardDAO {
 			e.printStackTrace();
 		}
 		 
+	}
+
+	public void update(AniboardDTO dto) {
+		sql = "UPDATE board SET b_title=?, b_content=? WHERE b_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+		
+		try {
+			con=DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_title());
+			pstmt.setString(2, dto.getB_content());
+			pstmt.setInt(3, dto.getB_no());
+			pstmt.setString(4, dto.getU_id());
+			
+			pstmt.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void delete(AniboardDTO dto) {
+		sql = "UPDATE board SET b_del=1 WHERE b_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getB_no());
+			pstmt.setString(2 , dto.getU_id());
+			pstmt.execute();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
 	}			
 }

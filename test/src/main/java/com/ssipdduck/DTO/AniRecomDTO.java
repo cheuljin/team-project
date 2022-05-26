@@ -1,8 +1,17 @@
 package com.ssipdduck.DTO;
 
 public class AniRecomDTO {
-	private int a_no, u_no, a_rate, a_count, a_epi,commentcount, totalcount;
+	private int a_no, u_no, a_rate, a_count, a_epi,a_like,commentcount, totalcount;
 	private String a_title, a_content, a_file, a_orifile, a_date, a_category,a_type,a_studio,a_aired, u_nickname, u_id;
+
+	
+	
+	public int getA_like() {
+		return a_like;
+	}
+	public void setA_like(int a_like) {
+		this.a_like = a_like;
+	}
 
 	
 	public int getTotalcount() {

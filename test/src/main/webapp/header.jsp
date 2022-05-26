@@ -50,9 +50,15 @@
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="./login.jsp"><span class="icon_profile"></span></a>
+                <% if(session.getAttribute("u_email") == null){ %>
+                    <div class="header__right">	
+                        <a href="./login.jsp"><img alt="" src="./img/login.png" style="width: 50px;height: 30px;"></a>
                     </div>
+                <% } else { %>
+                    <div class="header__right">	
+                        <a href="./logout"><img alt="" src="./img/logout.png" style="width: 50px;height: 30px;"></a>
+                    </div>
+                <%} %>
                 </div>
             </div>
             <div id="mobile-menu-wrap"></div>

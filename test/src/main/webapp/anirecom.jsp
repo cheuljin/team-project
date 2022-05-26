@@ -59,6 +59,9 @@
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
                        	 <span>애니리뷰</span>
+                       	  <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
+                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+						  	 </c:if>
                     </div>
                 </div>
             </div>
@@ -78,9 +81,7 @@
                                     <div class="section-title">
                                         <h4>Review</h4>
                                     </div>
-                            <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
-                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
-						  	 </c:if>  
+                          
 							 		 <div class="product__page__filter">
 
 									 </div>
@@ -133,7 +134,9 @@
                     <div class="product__pagination">
                     	<a href="#"><i class="fa fa-angle-double-left"></i></a>
                      <c:forEach begin="${startpage }" end="${endpage }" var="n">
-                        <a href="./anireview?pageNo=${n }" class="current-page">${n }</a>
+                     
+                       	<a href="./anireview?pageNo=${n }" class="current-page">${n }</a>
+                     
                      </c:forEach>   
                         <a href="#"><i class="fa fa-angle-double-right"></i></a>
                     </div>

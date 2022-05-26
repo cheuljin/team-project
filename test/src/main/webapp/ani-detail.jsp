@@ -35,6 +35,28 @@
    	 }
    
    </style>
+   <script type="text/javascript">
+   function like(){
+	   let a_no = ${dto.a_no};
+		$.ajax({
+			url : "./anilike",
+			type : "GET",
+			dataType : "html",
+			data : {"a_no" : a_no}, 
+			success : function(data){
+				if(data == 1){
+					$("#like").attr('src','./img/like2.png');
+					 $('#likecount').load(location.href+' #likecount');
+				}else{
+					
+				}
+			} ,
+			error : function(data){
+				alert(data);
+			}
+		});
+	}
+   </script>
 </head>
 <body>
 	<jsp:include page="./header.jsp"/>
@@ -88,25 +110,26 @@
                                             <li><span>Type:</span> ${dto.a_type }</li>
                                             <li><span>Studios:</span> ${dto.a_studio }</li>
                                             <li><span>Date aired:</span> ${dto.a_aired }</li>
-                                            <li><span>Genre:</span> ${dto.a_category }</li>
+                                            <li><span>Views:</span> ${dto.a_count }</li>
+                             
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                              				<li><span>Writer:</span> 작가이름.</li>
-                                            <li><span>Like:</span> ${dto.a_rate }</li>
-                                            <li><span>Duration:</span> ${dto.a_epi }&nbsp;부작</li>
-                                            <li><span>Views:</span> ${dto.a_count }</li>
+                        					<li><span>Like:</span><a href="#" id="likecount" style="text-decoration: none;">${dto.a_like }</a></li>
+                                          	<li><span>Duration:</span> ${dto.a_epi }&nbsp;부작</li>
+                                            <li><span>Genre:</span> ${dto.a_category }</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn" id="like" onclick="like()"><i class="fa fa-heart-o"></i> Like</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
-                                    class="fa fa-angle-right"></i></a>
-                                </div>
+                            <c:if test="${sessionScope.u_email ne null }">
+                                <img alt="" src="./img/like.png" id="like" onclick="like()">
+                            </c:if>
                             </div>
+                          </div>
                         </div>
                     </div>
                 </div> 

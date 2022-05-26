@@ -87,6 +87,7 @@ public class AnirecomDAO {
 				dto.setA_type(rs.getString("a_type"));
 				dto.setA_aired(rs.getString("a_aired"));
 				dto.setA_studio(rs.getString("a_studio"));
+				dto.setA_like(rs.getInt("a_like"));
 				dto.setA_rate(rs.getInt("a_rate"));
 				dto.setA_category(rs.getString("a_category"));
 				dto.setCommentcount(rs.getInt("commentcount"));
@@ -215,5 +216,24 @@ public class AnirecomDAO {
 			e.printStackTrace();
 			close(pstmt, null);
 		}
+	}
+
+	public int likeUp(int a_no) {
+		sql="update ani set a_like = a_like+1 where a_no=?";
+		
+		int result = 0;
+		
+		try {
+			conn=DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, a_no);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		return result;
 	}
 }

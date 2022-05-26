@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +82,7 @@
                                      <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 						  	 </c:if>  
 							 		 <div class="product__page__filter">
-							 			<h4> 글쓰기 </h4>
+
 									 </div>
                             </div>
                         </div>
@@ -92,7 +94,7 @@
                                     <div class="product__item__pic set-bg" data-setbg="./img/upload/${i.a_file }">
                              
                                         <div class="ep">${i.a_epi }부작</div>
-                                        <div class="comment"><i class="fa fa-comments"></i><!-- 댓글 카운트 --></div>
+                                        <div class="comment"><i class="fa fa-comments"></i>${i.commentcount }</div>
                                         <div class="view"><i class="fa fa-eye"></i>${i.a_count }</div>
                                     </div>
                                     <div class="product__item__text">
@@ -108,13 +110,31 @@
                      </div>
                      
                      <!-- 페이징 아이콘 -->
+                     <fmt:parseNumber integerOnly="true" var="totalpage" value="${totalcount / 9 }"/>
+                     <c:if test="${(totalcount % 9) > 0 }">
+         				<c:set var="totalpage" value="${totalpage + 1}"/>
+      				</c:if>
+      				<c:if test="${pageNo % 9 ne 0 }">
+            			<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 9 }"/>
+            			<c:set var="startpage" value="${startpage * 9+ 1 }"/>         
+      				</c:if> 
+      				
+      				
+      				<c:if test="${pageNo % 9 eq 0 }">
+         				<c:set var="startpage" value="${pageNo - 8 }"/>
+      				</c:if>
+      				
+      				<c:set var="endpage" value="${startpage + 4 }"/>
+     				<c:if test="${startpage + 4 gt totalpage }">
+      					<c:set var="endpage" value="${totalpage }"/>
+     		 		</c:if>
+     		 		
+     		 		
                     <div class="product__pagination">
                     	<a href="#"><i class="fa fa-angle-double-left"></i></a>
-                        <a href="#" class="current-page">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
+                     <c:forEach begin="${startpage }" end="${endpage }" var="n">
+                        <a href="./anireview?pageNo=${n }" class="current-page">${n }</a>
+                     </c:forEach>   
                         <a href="#"><i class="fa fa-angle-double-right"></i></a>
                     </div>
                   </div>
@@ -132,7 +152,7 @@
                             </div>
                             </c:forEach>
                         </div>
-                        <input type="search" name="search" class="form-control" placeholder="만화제목" style="width: 50px; float: left;"> &nbsp; <button class="btn btn-danger" onclick="location.href='./aniSearch'">search</button>
+                        <input type="search" name="search" class="form-control" placeholder="만화제목" style="width: 250px; float: left;"> &nbsp; <button class="btn btn-danger" style="width: 100px" onclick="location.href='./aniSearch'">search</button>
            		</div>
               </div>
            </div>

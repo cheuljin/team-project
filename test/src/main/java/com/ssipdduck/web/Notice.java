@@ -28,8 +28,6 @@ public class Notice extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("./notice.jsp");
 		request.setAttribute("list", NoticeList);
 		rd.forward(request, response);
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

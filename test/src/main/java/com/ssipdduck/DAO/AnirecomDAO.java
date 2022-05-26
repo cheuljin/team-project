@@ -51,7 +51,6 @@ public class AnirecomDAO {
 				dto.setA_type(rs.getString("a_type"));
 				dto.setCommentcount(rs.getInt("commentcount"));
 				dto.setTotalcount(rs.getInt("totalcount"));
-				
 				list.add(dto);
 			}
 			

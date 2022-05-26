@@ -23,11 +23,14 @@ public class Notice extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//list에 DT
+
 		NoticeDAO dao = new NoticeDAO();
 		List<NoticeDTO> NoticeList = dao.noticeList();
 		RequestDispatcher rd = request.getRequestDispatcher("./notice.jsp");
 		request.setAttribute("list", NoticeList);
 		rd.forward(request, response);
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

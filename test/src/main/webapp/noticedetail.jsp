@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,11 +42,15 @@
 	width: 1200px;
 }
 table{
-	width: 100%;
+	margin:0 auto;
+	width: 50%;
 	min-height: 300px;
 	border-collapse: collapse;
+	background-color: white;
+	
 }
 th{
+	border: 3px solid black;
 	width: 100px;
 }
 tr{
@@ -54,7 +58,28 @@ tr{
 	width: 1200px;
 	border-bottom: 1px white solid;
 }
+button{
+	
+}
 </style>
+
+<c:if test="${noticedetail.u_eamil eq sessionScope.u_email}">
+<script type="text/javascript">
+$(document).ready(function(){
+	var an_no = ${noticedetail.an_no};
+	$("#nup").click(function(){
+			location.replace("./nup?an_no="+an_no);
+	});
+	
+	$("#ndel").click(function(){
+		if(confirm("삭제 하시겠습니까?")){
+			var an_no2 = $("#an_no").text();
+			location.replace("./ndel?an_no="+an_no2);
+		}
+	});
+});
+</script>
+</c:if>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -75,7 +100,7 @@ tr{
 	<!-- Breadcrumb End  -->
 
 
-	<!-- 애니 추천 게시판 테이블-->
+	<!-- 공지사항 디테일 -->
 	<div id="anirecom-container">
 		<div id="recom-main">
 			<img alt="" src="./img/recom-main.png">
@@ -102,28 +127,38 @@ tr{
 			</div>
 		</div>
 	</section>
-	<!--  게시글 -->
+	
+	<!--  공지사항 게시글 -->
 
 	<div id="main">
 		<table border="1">
 			<tr>
-				<th colspan="2" style="text-align: center;">글 제목 :	${detail.b_title }</th>
+				<th colspan="2" style="text-align:left; height: 80px;">공지사항 :  ${detail.an_title }</th>
 			</tr>
 			<tr>
-				<th style="text-align: center; height: 20px;">작성자 : ${detail.u_nickname }</th>
-				<th style="text-align: center;">${detail.b_date }</th>
+				<th style="text-align: center; height: 40px;">작성자 : 관리자</th>
+				<th style="text-align: center;"> ${detail.an_date }</th>
 			</tr>
-			
-			<tr>
-				<td colspan="2" style="text-align: left">첨부파일 :</td>
-			</tr>
-
 			<tr style="height: 800px;">
-				<td colspan="3" style="text-align: center">${detail.b_content }<br></td>
+				<td colspan="3" style="text-align: center">${detail.an_content }<br></td>
+			</tr>		
+			<tr>			
+				<td>
+					<div id="u_nickname">${noticedetail.u_nickname }</div>
+						<c:if test="${noticedetail.u_nickname eq sessionScope.u_nickname }">
+							<button id="nup">수정</button>
+							<button id="ndel">삭제</button>		
+						</c:if>
+				</td>			
 			</tr>
 			
 		</table>
 	</div>
+	
+	<button onclick="location.href='./notice'">목록</button>
+	<br>
+	<br>
+	<br>
 
 
 	<jsp:include page="footer.jsp" />

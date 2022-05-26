@@ -19,7 +19,7 @@ public class NoticeDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	String sql = "SELECT * FROM ani_notice";
+	String sql = "SELECT * FROM ani_notice order by an_no desc;";
 	
 		try {
 			con = DBConnection.dbConn();
@@ -66,7 +66,7 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM ani_noticeview WHERE an_no=?";
+		String sql = "SELECT * FROM ani_notice WHERE an_no=?";
 		
 		try {
 			con = DBConnection.dbConn();
@@ -80,8 +80,6 @@ public class NoticeDAO {
 				dto.setAn_content(rs.getString("an_content"));
 				dto.setAn_date(rs.getString("an_date"));
 				dto.setAn_count(rs.getInt("an_count"));
-				dto.setU_no(rs.getInt("u_no"));
-				dto.setU_nickname(rs.getString("u_nickname"));
 			}
 			
 		} catch (Exception e) {
@@ -105,6 +103,21 @@ public class NoticeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+	}
+
+	public void nup(NoticeDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE ani_notice SET an_title=? , an_content=? WHERE an_no=?";
+		
+		try {
+			con = DBConnection.dbConn();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 	}

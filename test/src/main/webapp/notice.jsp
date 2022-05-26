@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
 <style type="text/css">
-#recom-main {
+#acea {
 	margin: 0 auto;
 	height: 450px;
 	width: 1200px;
@@ -74,8 +74,8 @@ img{
 
 	<!-- 애니 추천 게시판 테이블-->
 	<div id="anirecom-container">
-		<div id="recom-main">
-			<img alt="" src="./img/kal.png">
+		<div id="acea">
+			<img alt="" src="./img/acea.png">
 		</div>
 	</div>
           
@@ -114,8 +114,8 @@ img{
 				<c:forEach items="${list }" var="i">
 					<tr>
 						<th id="nt1" style="color:white;">${i.an_no }</th>
-						<th id="nt2" style="color:white;"><a href="./aniDetail?a_no=${i.an_no }">${i.an_no }</a></th>
-						<th id="nt1" style="color:white;">관리</th>
+						<th id="nt2" style="color:white;"><a href="./noticedetail?an_no=${i.an_no }">${i.an_no }</a></th>
+						<th id="nt1" style="color:white;">관리자</th>
 						<th id="nt3" style="color:white;">${i.an_date }</th>
 						<th id="nt3" style="color:white;">${i.an_count }</th>
 					</tr>

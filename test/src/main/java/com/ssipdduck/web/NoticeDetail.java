@@ -13,7 +13,7 @@ import com.ssipdduck.DAO.NoticeDAO;
 import com.ssipdduck.DTO.NoticeDTO;
 import com.ssipdduck.util.Util;
 
-@WebServlet("/noticeDetail")
+@WebServlet("/noticedetail")
 public class NoticeDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -23,7 +23,6 @@ public class NoticeDetail extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		if(request.getParameter("an_no") != null && Util.str2Int(request.getParameter("an_no"))) {
 			int an_no = Integer.parseInt(request.getParameter("an_no"));
 			
@@ -31,9 +30,9 @@ public class NoticeDetail extends HttpServlet {
 			dao.countUp(an_no);
 			
 			NoticeDTO detail = dao.detail(an_no);
-			System.out.println("notice detail on");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/noticedetail.jsp");
+			request.setAttribute("detail", detail);
 			rd.forward(request, response);
 		}
 			

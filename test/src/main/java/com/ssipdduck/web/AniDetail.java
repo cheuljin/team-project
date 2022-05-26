@@ -28,13 +28,15 @@ public class AniDetail extends HttpServlet {
 			int a_no = Integer.parseInt(request.getParameter("a_no"));
 			AnirecomDAO dao = new AnirecomDAO();
 			dao.countUp(a_no);
-			
+
 			AniRecomDTO dto = dao.detail(a_no);
+			
 			
 			if(dto.getCommentcount()>0) {
 				List<AniCommentDTO> list = dao.commentList(a_no);
 				request.setAttribute("list", list);
 			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/ani-detail.jsp");
 			request.setAttribute("dto", dto);
 			rd.forward(request, response);

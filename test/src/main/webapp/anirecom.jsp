@@ -77,7 +77,7 @@
                                         <h4>Review</h4>
                                     </div>
                             <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
-                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 658px;	font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 						  	 </c:if>  
 							 		 <div class="product__page__filter">
 							 			<h4> 글쓰기 </h4>
@@ -106,6 +106,17 @@
                             </c:forEach>
                           </div>
                      </div>
+                     
+                     <!-- 페이징 아이콘 -->
+                    <div class="product__pagination">
+                    	<a href="#"><i class="fa fa-angle-double-left"></i></a>
+                        <a href="#" class="current-page">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                    </div>
                   </div>
                  
                  <!-- 오른쪽 top5 구역 -->
@@ -121,10 +132,12 @@
                             </div>
                             </c:forEach>
                         </div>
-           </div>
+                        <input type="search" name="search" class="form-control" placeholder="만화제목" style="width: 50px; float: left;"> &nbsp; <button class="btn btn-danger" onclick="location.href='./aniSearch'">search</button>
+           		</div>
               </div>
            </div>
         </section>     
+
       
 
 	

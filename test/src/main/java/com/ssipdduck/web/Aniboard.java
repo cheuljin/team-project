@@ -28,7 +28,6 @@ public class Aniboard extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AniboardDAO dao = new AniboardDAO();
 		List<AniboardDTO> list = dao.list();
-		System.out.println("gg");
 		RequestDispatcher rd = request.getRequestDispatcher("./board.jsp");
 		request.setAttribute("list", list);
 		rd.forward(request, response);

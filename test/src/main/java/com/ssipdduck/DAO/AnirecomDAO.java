@@ -29,7 +29,7 @@ public class AnirecomDAO {
 	//게시판불러오기
 	public List<AniRecomDTO> Anilist(int pageNo) {
 		ArrayList<AniRecomDTO> list = new ArrayList<AniRecomDTO>();
-		sql = "select * from ani limit ?,9 ";
+		sql = "select * from ani_view limit ?,9 ";
 		
 		try {
 			conn = DBConnection.dbConn();
@@ -49,6 +49,8 @@ public class AnirecomDAO {
 				dto.setA_category(rs.getString("a_category"));
 				dto.setA_epi(rs.getInt("a_epi"));
 				dto.setA_type(rs.getString("a_type"));
+				dto.setCommentcount(rs.getInt("commentcount"));
+				dto.setTotalcount(rs.getInt("totalcount"));
 				
 				list.add(dto);
 			}
@@ -65,7 +67,7 @@ public class AnirecomDAO {
 	public AniRecomDTO detail(int a_no) {
 		AniRecomDTO dto = new AniRecomDTO();
 		
-		sql="select * from ani where a_no=?";
+		sql="select * from ani_view where a_no=?";
 		
 		try {
 			conn = DBConnection.dbConn();
@@ -120,7 +122,6 @@ public class AnirecomDAO {
 		String sql =  "select * from ani_commentview WHERE a_no=? order by ac_date desc";
 	
 		try {
-			System.out.println(a_no);
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, a_no);
@@ -133,7 +134,6 @@ public class AnirecomDAO {
 				dto.setAc_comment(rs.getString("ac_comment"));
 				dto.setAc_date(rs.getString("ac_date"));
 				dto.setAc_like(rs.getInt("ac_like"));
-				System.out.println(dto.getAc_comment());
 				dto.setAc_no(rs.getInt("ac_no"));
 				dto.setU_nickname(rs.getString("u_nickname"));
 				list.add(dto);

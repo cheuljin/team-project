@@ -24,18 +24,22 @@ public class Anirecom extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AnirecomDAO dao = new AnirecomDAO();
 		List<AniRecomDTO> top = dao.topList();
+		
 		int pageNo = 1;
 		if(request.getParameter("pageNo") != null) { 
 			pageNo = Integer.parseInt(request.getParameter("pageNo"));
 		}
+		
 		List<AniRecomDTO> list = dao.Anilist((pageNo-1)*10);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./anirecom.jsp");
     	request.setAttribute("list", list);
     	request.setAttribute("top", top);
-//		request.setAttribute("pageNo", pageNo);
-    	rd.forward(request, response); //변경시작
-	
+    	
+    	request.setAttribute("totalcount", list.get(1).getTotalcount());
+		request.setAttribute("pageNo", pageNo);
+		System.out.println(pageNo);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

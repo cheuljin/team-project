@@ -117,6 +117,7 @@
                             <div class="section-title">
                             <br>
                             <br>
+
                       		<!-- 댓글 -->
                                 <h5>Reviews</h5>
                             </div>
@@ -124,9 +125,9 @@
                  			<c:forEach items="${list }" var="i">
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-1.jpg" alt="">
-                                </div>
+                                </div>/;./
                                 <div class="anime__review__item__text">
-                                    <h6>${i.u_nickname }</h6><small><span>${i.ac_date }</span></small>
+                                    <h6>${i.u_nickname } <small style="color:white"><span>${i.ac_date }</span></small></h6>
                                     <p>${i.ac_comment }</p>
                                 </div>
                  			</c:forEach>         

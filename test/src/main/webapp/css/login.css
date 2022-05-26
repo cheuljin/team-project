@@ -259,3 +259,14 @@ input[type=text]:placeholder {
 #icon {
   width:60%;
 }
+
+#wrapper{
+  height: auto;
+  min-height: 100%;
+  padding-bottom: (footer높이);
+}
+footer{
+  height: (footer높이);
+  position : relative;
+  transform : translateY(40%);
+}

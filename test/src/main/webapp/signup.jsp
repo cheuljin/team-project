@@ -33,19 +33,20 @@
     </div>
 
 <div class="page-container">
-            
+            <div class="signup_form"> 
             <form action="./signup" method="POST">
          <h1 style="color: white;">Sign Up</h1>
-                <input type="text" name="name" class="Name" placeholder="Name" required="required"style="margin-top: 10px;">
-                <input type="text" name="nickname" class="Nickname" placeholder="Nickname" required="required" style="margin-top: 10px;">
-                <input type="text" name="tele" class="Tele" placeholder="Number Phone" required="required" style="margin-top: 10px;">
-            <input type="text" name="email" class="Email" placeholder="Email" required="required" style="margin-top: 10px;">
-            <input type="password" name="password" class="Address" placeholder="password" required="required" style="margin-top: 10px;">
-            <input type="password" name="password2" class="Address" placeholder="password" required="required" style="margin-top: 10px; margin-bottom: 10px;">            
+                <input type="text" autocomplete="off" name="name" class="Name" placeholder="Name" required="required"style="margin-top: 10px;">
+                <input type="text" autocomplete="off" name="nickname" class="Nickname" placeholder="Nickname" required="required" style="margin-top: 10px;">
+                <input type="text" autocomplete="off" name="tele" class="Tele" placeholder="Number Phone" required="required" style="margin-top: 10px;">
+            <input type="text" autocomplete="off" name="email" class="Email" placeholder="Email" required="required" style="margin-top: 10px;">
+            <input type="password" autocomplete="off" name="password" class="Address" placeholder="password" required="required" style="margin-top: 10px;">
+            <input type="password" autocomplete="off" name="password2" class="Address" placeholder="password" required="required" style="margin-top: 10px; margin-bottom: 10px;">            
                 <button type="submit" value="Add" name="submit" style="margin-bottom: 40px;">Submit </button>
             </form>
+				</div>
+        
         </div>
-         
          
          <jsp:include page="footer.jsp"/>
    

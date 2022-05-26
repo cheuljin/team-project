@@ -65,8 +65,8 @@ if(session.getAttribute("u_email") != null){
 
                <!-- Login Form -->
                <form action="./login" method="POST">
-                  <input type="text" id="login" class="fadeIn second" name="email" placeholder="email"> 
-                  <input type="text" id="password" class="fadeIn third" name="pw" placeholder="password"> 
+                  <input type="text" autocomplete="off" id="login" class="fadeIn second" name="email" placeholder="email"> 
+                  <input type="text" autocomplete="off" id="password" class="fadeIn third" name="pw" placeholder="password"> 
                   <input type="submit" class="fadeIn fourth" value="Login">
                </form>
 

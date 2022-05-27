@@ -78,9 +78,7 @@ $(document).ready(function(){
 	
 	$("#del").click(function(){
 		if(confirm("해당 글을 삭제하시겠습니까?")){
-			var b_no2 = $("#b_no").text();
-			//alert(b_no2 + "번글을 삭제합니다.");
-			location.replace("./delete?b_no="+b_no2);
+			location.replace("./delete?b_no="+b_no);
 		}
 	});
 	
@@ -152,12 +150,10 @@ $(document).ready(function(){
 				<th style="text-align: center; height: 20px;">작성자 : ${detail.u_nickname }</th>
 				<th style="text-align: center;">${detail.b_date }</th>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align: left">첨부파일 : </td>
-			</tr>
 			
 			<tr style="height: 500px;">
-				<td colspan="3" style="text-align: center">${detail.b_content }<br>
+				<td colspan="3" style="text-align: center" >
+				${detail.b_content }<br>
 				</td>
 			</tr>
 			<tr>				

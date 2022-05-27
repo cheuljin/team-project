@@ -26,18 +26,17 @@ public class Delete extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if (request.getParameter("B_no") != null
-				&& session.getAttribute("u_email") != null
-				&& Util.str2Int(request.getParameter("b_no"))){
+		System.out.println(request.getParameter("b_no") + "," + session.getAttribute("u_email"));
+		if (request.getParameter("b_no") != null && session.getAttribute("u_email") != null && Util.str2Int(request.getParameter("b_no"))){
 			AniboardDTO dto = new AniboardDTO();
 			AniboardDAO dao = new AniboardDAO();
 			
 			dto.setB_no(Integer.parseInt(request.getParameter("b_no")));
-			dto.setU_id((String)session.getAttribute("u_id"));
+			dto.setU_id((String)session.getAttribute("u_email"));
 			
 			dao.delete(dto);
 			
-			response.sendRedirect("./board");
+			response.sendRedirect("./aniboard");
 		}else {
 			response.sendRedirect("./index.jsp");
 		}

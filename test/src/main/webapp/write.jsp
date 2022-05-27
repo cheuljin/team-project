@@ -105,7 +105,7 @@
       $('#summernote').summernote(setting);
 	});
 	
-/* function check(){
+	function check(){
 	alert("글을 작성하시겠습니까?")
 	var title = document.getElementById("title");
 	if (title.value.length < 5) {
@@ -114,56 +114,9 @@
 		return false;
 	}
 	
-}	 */
+}
 
 </script>
-
-<!-- <script>
-$(document).ready(function() {
-
-	var toolbar = [
-		    // 글꼴 설정
-		    ['fontname', ['fontname']],
-		    // 글자 크기 설정
-		    ['fontsize', ['fontsize']],
-		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    // 글자색
-		    ['color', ['white','white']],
-		    // 표만들기
-		    ['table', ['table']],
-		    // 글머리 기호, 번호매기기, 문단정렬
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    // 줄간격
-		    ['height', ['height']],
-		    // 그림첨부, 링크만들기, 동영상첨부
-		    ['insert',['picture','link','video']],
-		    // 코드보기, 확대해서보기, 도움말
-		    ['view', ['codeview','fullscreen', 'help']]
-		  ];
-
-	var setting = {
-            height : 300,
-            minHeight : null,
-            maxHeight : null,
-            focus : true,
-            lang : 'ko-KR',
-            toolbar : toolbar,
-            callbacks : { //여기 부분이 이미지를 첨부하는 부분
-            onImageUpload : function(files, editor,
-            welEditable) {
-            for (var i = files.length - 1; i >= 0; i--) {
-            uploadSummernoteImageFile(files[i],
-            this);
-            		}
-            	}
-            }
-         };
-
-        $('#summernote').summernote(setting);
-        });
-</script>> -->
-
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -204,8 +157,7 @@ $(document).ready(function() {
 			style="margin: 0 auto; width: 1000px; height: 50px; margin-top: 20px; font-size: 13px;"
 			required="required">
 
-		<textarea id="summernote" name="content" placeholder="허위사실,비방을 게시하는 경우에는 무통보로 댓글이 삭제될수있습니다"
-			style="margin: 0 auto; width: 1200px; margin-top: 20px;"
+		<textarea id="summernote" name="content" style="margin: 0 auto; width: 1200px; margin-top: 20px;"
 			required="required"></textarea>
 
 		<button type="submit" 

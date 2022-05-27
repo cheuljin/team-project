@@ -73,11 +73,11 @@ public class Update extends HttpServlet {
 					dto.setB_no(b_no);
 					dto.setB_title(title);
 					dto.setB_content(content);
-					dto.setU_id((String)session.getAttribute("u_id"));
+					dto.setU_id((String)session.getAttribute("u_email"));
 					
 					dao.update(dto);
 					
-					response.sendRedirect("./board-detail?b_no="+ b_no);
+					response.sendRedirect("./boardDetail?b_no="+ b_no);
 							
 				}else {
 					response.sendRedirect("./board");

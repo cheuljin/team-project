@@ -49,6 +49,7 @@ public class AnirecomDAO {
 				dto.setA_category(rs.getString("a_category"));
 				dto.setA_epi(rs.getInt("a_epi"));
 				dto.setA_type(rs.getString("a_type"));
+				dto.setU_id(rs.getString("u_email"));;
 				dto.setCommentcount(rs.getInt("commentcount"));
 				dto.setTotalcount(rs.getInt("totalcount"));
 				list.add(dto);
@@ -136,6 +137,7 @@ public class AnirecomDAO {
 				dto.setAc_like(rs.getInt("ac_like"));
 				dto.setAc_no(rs.getInt("ac_no"));
 				dto.setU_nickname(rs.getString("u_nickname"));
+				dto.setU_id(rs.getString("u_email"));
 				list.add(dto);
 			}
 			
@@ -235,5 +237,47 @@ public class AnirecomDAO {
 			close(pstmt, null);
 		}
 		return result;
+	}
+	
+	//댓글 상세보기
+	public AniCommentDTO anicommentDetail(AniCommentDTO dto) {
+		sql="select * from ani_commentview where ac_no=?";
+		
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getAc_no());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dto.setAc_no(rs.getInt("ac_no"));
+				dto.setAc_comment(rs.getString("ac_comment"));
+				dto.setA_no(rs.getInt("a_no"));
+				dto.setU_id(rs.getString("u_email"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt, rs);
+		}
+		return dto;	
+	}
+
+	public void commentUpdate(AniCommentDTO dto) {
+		sql = "update ani_comment set ac_comment = ? where ac_no=?";
+		
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getAc_comment());
+			pstmt.setInt(2, dto.getAc_no());
+			
+			pstmt.execute();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    
    <style type="text/css">
        #main{
@@ -56,7 +57,32 @@
 			}
 		});
 	}
+   
+   function cup(num){
+	   if (confirm("해당 댓글을 수정하시겠습니까?")) {
+	      location.href="./aniupdatecomment?a_no=${dto.a_no }&ac_no=" + num;
+	   }
+	}
    </script>
+   
+   <script type="text/javascript">
+   $(document).ready(function(){ 
+	   $("#up").click(function(){
+	   		if(confirm("해당글 수정?")){
+			var ac_no = $("#ac_no").text();
+			location.replace("./aniupdatecomment?ac_no="+ac_no);
+			}
+		});
+		$("#del").click(function(){
+			if(confirm("해당글 삭제?")){
+				var ac_no2 = $("#ac_no").text();
+				location.replace("./anideletecomment?ac_no="+ac_no2);
+			}	
+		});
+	});
+   
+	</script>
+   
 </head>
 <body>
 	<jsp:include page="./header.jsp"/>
@@ -146,14 +172,22 @@
                             </div>
                             <div class="anime__review__item">
                  			<c:forEach items="${list }" var="i">
+                 			&nbsp; &nbsp; 
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-1.jpg" alt="">
-                                </div>/;./
+                                </div>
                                 <div class="anime__review__item__text">
-                                    <h6>${i.u_nickname } <small style="color:white"><span>${i.ac_date }</span></small></h6>
+                                	<input type="hidden" name="ac_no" value="${i.ac_no }">
+                                    <h6>${i.u_nickname } <small style="color:white"><span>${i.ac_date }</span></small>
+										<img id="recom" src="./img/recom.png" title="대댓글" width="20px" height="20px" align="right">
+                                    <c:if test="${sessionScope.u_email eq i.u_id }">
+										<img id="del" src="./img/delete.png" title="삭제" width="20px" height="20px" align="right">
+										<img id="up" src="./img/fix.png" title="수정" width="20px" height="20px" align="right" onclick="cup(${i.ac_no})" >&nbsp; &nbsp; &nbsp;  &nbsp; 
+									</c:if>
+                                    </h6>
                                     <p>${i.ac_comment }</p>
                                 </div>
-                 			</c:forEach>         
+                 			</c:forEach>     
                             </div>
                          </div>
                       </div>

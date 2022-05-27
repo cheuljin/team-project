@@ -10,7 +10,7 @@
 <meta name="keywords" content="Anime, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>씹덕 | 양산소</title>
+<title>공지사항 보기</title>
 
 <!-- Google Font -->
 <link
@@ -63,13 +63,14 @@ button{
 }
 </style>
 
-<c:if test="${noticedetail.u_eamil eq sessionScope.u_email}">
+<c:if test="${noticedetail.u_eamil eq sessionScope.u_eamil}">
 <script type="text/javascript">
 $(document).ready(function(){
 	var an_no = ${noticedetail.an_no};
 	$("#nup").click(function(){
+		if(conform("수정 하시겠습니까?"))
 			location.replace("./nup?an_no="+an_no);
-	});
+		}
 	
 	$("#ndel").click(function(){
 		if(confirm("삭제 하시겠습니까?")){
@@ -144,10 +145,10 @@ $(document).ready(function(){
 			</tr>		
 			<tr>			
 				<td>
-					<div id="u_nickname">${noticedetail.u_nickname }</div>
-						<c:if test="${noticedetail.u_nickname eq sessionScope.u_nickname }">
-							<button id="nup">수정</button>
-							<button id="ndel">삭제</button>		
+					<div id="an_no">${noticedetail.an_no }</div>
+						<c:if test="${noticedetail.u_email eq sessionScope.u_email }">
+							<img id="nup" alt="" src="img/cristal.png" title="수정">
+							<img id="ndel" alt="" src="img/remove.png" title="삭제">
 						</c:if>
 				</td>			
 			</tr>

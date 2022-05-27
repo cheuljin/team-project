@@ -39,7 +39,7 @@ public class Nup extends HttpServlet {
 					NoticeDAO dao = new NoticeDAO();
 					NoticeDTO dto = dao.detail(an_no);
 					
-					RequestDispatcher rd = request.getRequestDispatcher("./nup.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("./noticewrite.jsp");
 					request.setAttribute("dto", dto);
 					rd.forward(request, response);
 				

@@ -2,8 +2,14 @@ package com.ssipdduck.DTO;
 
 public class NoticeDTO {
 	private int an_no, u_no, an_count;
-	private String an_title, an_content, an_date, u_nickname, u_name;
+	private String an_title, an_content, an_date, u_nickname, u_name, u_email;
 	
+	public String getU_email() {
+		return u_email;
+	}
+	public void setU_email(String u_email) {
+		this.u_email = u_email;
+	}
 	public int getAn_count() {
 		return an_count;
 	}

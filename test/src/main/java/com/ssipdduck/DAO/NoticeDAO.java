@@ -12,22 +12,35 @@ import com.ssipdduck.DTO.NoticeDTO;
 import db.DBConnection;
 
 public class NoticeDAO {
-
-	public List<NoticeDTO> noticeList() {
-		
-	List<NoticeDTO> list = new ArrayList<NoticeDTO>();
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	String sql = "SELECT * FROM ani_notice order by an_no desc;";
-	
+	String sql = "";
+
+	void close(PreparedStatement pstmt, ResultSet rs) {
+		try {
+			if (pstmt != null) {pstmt.close();}
+			if (rs != null) {rs.close();}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<NoticeDTO> noticeList() {
+
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM ani_notice order by an_no desc;";
+
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
+
+			while (rs.next()) {
+
 				NoticeDTO dto = new NoticeDTO();
 				dto.setAn_no(rs.getInt("an_no"));
 				dto.setAn_title(rs.getString("an_title"));
@@ -39,26 +52,26 @@ public class NoticeDAO {
 		} catch (Exception e) {
 
 			e.printStackTrace();
-		}	
+		}
 		return list;
 	}
-	
+
 	public void noticewrite(NoticeDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "";
-		
+		String sql = "INSERT INTO ani_notice (an_title, an_content) VALUES(?,?)";
+
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getAn_title());
 			pstmt.setString(2, dto.getAn_content());
-			pstmt.setString(3, dto.getU_nickname());
 			pstmt.execute();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public NoticeDTO detail(int an_no) {
@@ -67,25 +80,25 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM ani_notice WHERE an_no=?";
-		
+
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, an_no);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				dto.setAn_no(rs.getInt("an_no"));
 				dto.setAn_title(rs.getString("an_title"));
 				dto.setAn_content(rs.getString("an_content"));
 				dto.setAn_date(rs.getString("an_date"));
 				dto.setAn_count(rs.getInt("an_count"));
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return dto;
 	}
 
@@ -93,61 +106,30 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE ani_notice SET an_count=an_count+1 WHERE an_no=?";
-		
+
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, an_no);
 			pstmt.execute();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public void nup(NoticeDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE ani_notice SET an_title=? , an_content=? WHERE an_no=?";
-		
+
 		try {
 			con = DBConnection.dbConn();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
-	
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

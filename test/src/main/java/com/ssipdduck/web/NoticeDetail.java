@@ -34,6 +34,9 @@ public class NoticeDetail extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/noticedetail.jsp");
 			request.setAttribute("detail", detail);
 			rd.forward(request, response);
+			
+		} else {
+			response.sendRedirect("./notice");
 		}
 			
 			

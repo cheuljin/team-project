@@ -9,6 +9,9 @@ import com.ssipdduck.DTO.SignupDTO;
 import db.DBConnection;
 
 public class SignupDAO {
+	
+	
+	
 	public int signup(SignupDTO dto) {
 		int result = 0;
 		Connection con = null;
@@ -30,7 +33,6 @@ public class SignupDAO {
 			e.printStackTrace();
 		}
 			return result;
-		
 	}
 
 	public int emailCheck(String email) {
@@ -96,12 +98,35 @@ public class SignupDAO {
 			
 			if (rs.next()) {
 				result = rs.getInt(1);
-				System.out.println("결과는 :" + result + "개가 나왔습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	//비밀번호찾기sql
+	public SignupDTO findpw(SignupDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT u_pw from user where u_name=? AND u_email=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getEmail());
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setPassword(rs.getString(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 }

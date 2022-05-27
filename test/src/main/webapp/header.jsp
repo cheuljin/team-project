@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+ <style type="text/css">
+ 
+ </style>
 </head>
 <body>
    <!-- Header Section Begin -->
@@ -33,7 +36,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.jsp">
-                            <img src="img/logo.png" alt="" >
+                            <img src="img/logo1.png" alt="" style=" height: 60px;" >
                         </a>
                     </div>
                 </div>
@@ -41,10 +44,10 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li><a href="./notice">공지사항</a></li>
-                                <li><a href="./aniboard">Board</a></li>
-                                <li><a href="./anireview?pageNo=1">review</a></li>
-                                <li><a href="#">샵</a></li>
+                                <li><a href="./notice"><font size="5px;">Notice</font></a></li>
+                                <li><a href="./aniboard"><font size="5px;">Board</font></a></li>
+                                <li><a href="./anireview?pageNo=1"><font size="5px;">review</font></a></li>
+                                <li><a href="#"><font size="5px;">figure shop</font></a></li>
                             </ul>
                         </nav>
                     </div>

@@ -57,7 +57,7 @@
     </div>
 
     <!-- remind password Form -->
-    <form>
+    <form action="./findpassword" method="post">
       <input type="text" autocomplete="off" id="remind password" class="fadeIn second" name="remind password" placeholder="email">
       <input type="submit" class="fadeIn fourth" value="비밀번호 재설정 이메일 전송">
     </form>

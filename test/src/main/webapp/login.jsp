@@ -72,7 +72,7 @@ if(session.getAttribute("u_email") != null){
 
                <!-- Remind Passowrd -->
                <div id="formFooter">
-                  <a class="underlineHover" href="./password.jsp">Forgot
+                  <a class="underlineHover" href="./findpassword.jsp">Forgot
                      Password?</a>
                </div>
 

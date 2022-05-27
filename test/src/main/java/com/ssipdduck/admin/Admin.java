@@ -1,12 +1,17 @@
-package com.admin.web;
+package com.ssipdduck.admin;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.ssipdduck.DTO.AniRecomDTO;
 
 /**
  * Servlet implementation class admin
@@ -31,7 +36,12 @@ public class Admin extends HttpServlet {
 		String u_email = (String)session.getAttribute("u_email");
 		
 		if(u_email != null && u_email.equals("admin@a.com")) {
-			response.sendRedirect("../admin/admin.jsp");
+			AdminReviewDAO dao = new AdminReviewDAO();
+			List<AniRecomDTO> list = dao.adminreviewlist();
+			
+			RequestDispatcher rd = request.getRequestDispatcher("./admin.jsp");
+			request.setAttribute("list", list);
+			rd.forward(request, response);
 		}
 	
 	}

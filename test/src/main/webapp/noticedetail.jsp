@@ -104,7 +104,7 @@ $(document).ready(function(){
 	<!-- 공지사항 디테일 -->
 	<div id="anirecom-container">
 		<div id="recom-main">
-			<img alt="" src="./img/recom-main.png">
+			<img alt="" src="./img/notice-detail.jpg">
 		</div>
 	</div>
 

@@ -137,7 +137,7 @@
 
 	<div id="anirecom-container">
 		<div id="recom-main">
-			<img alt="" src="./img/recom-main.png">
+			<img alt="" src="./img/notice-write.jpg">
 		</div>
 	</div>
 
@@ -146,7 +146,7 @@
 		<div class="row1" style="width: 100%;">
 
 			<div class="section-title">
-				<h4>NOTICEWRITE</h4>
+				<h4>NOTICE WRITE</h4>
 			</div>
 		</div>
 	</div>

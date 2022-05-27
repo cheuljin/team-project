@@ -33,9 +33,8 @@ public class Noticewrite extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("./noticewrite.jsp");
 
 			rd.forward(request, response);
-		} else {
-			System.out.println("???");
-			response.sendRedirect("./index.jsp");
+		} else if(!(session.getAttribute("u_email").equals("admin@a.com"))){ //관리자만
+			response.sendRedirect("./notice.jsp");
 		}
 	}
 	

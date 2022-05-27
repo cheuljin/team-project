@@ -81,7 +81,7 @@ img {
 	<!-- 애니 추천 게시판 테이블-->
 	<div id="anirecom-container">
 		<div id="acea">
-			<img alt="" src="./img/acea.png">
+			<img alt="" src="./img/notice-main.jpg">
 		</div>
 	</div>
 
@@ -129,12 +129,14 @@ img {
 			</c:forEach>
 
 		</table>
+		<c:if test="${sessionScope.u_email eq 'admin@a.com' }">
 		<button type="button" onclick="location.href='./noticewrite'"
 			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; 
 			letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none;
 			 padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">Write</i>
 		</button>
+		</c:if>
 	</div>
 
 	<jsp:include page="footer.jsp" />

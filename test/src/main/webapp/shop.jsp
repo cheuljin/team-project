@@ -31,7 +31,8 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
 
 <style type="text/css">
 #acea {
@@ -40,17 +41,6 @@
 	width: 1200px;
 }
 
-#nt1 {
-	width: 10%;
-}
-
-#nt2 {
-	width: 50%;
-}
-
-#nt3 {
-	width: 20%;
-}
 
 #row {
 	width: 1200px;
@@ -58,6 +48,8 @@
 
 img {
 	max-width: 100%;
+	margin: auto;
+	
 }
 </style>
 </head>
@@ -71,7 +63,7 @@ img {
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
 						<a href="./index.jsp"><i class="fa fa-home"
-							style="align-content:"></i> Home</a> <span>Notice</span>
+							style="align-content:"></i> Home</a> <span>figure shop</span>
 					</div>
 				</div>
 			</div>
@@ -83,7 +75,7 @@ img {
 	<!-- 피규어샵 테이블-->
 	<div id="anirecom-container">
 		<div id="acea">
-			<img alt="" src="./img/notice-main.jpg">
+			<img alt="" src="./img/mas.gif" style="display: block; margin: auto;">
 		</div>
 	</div>
 
@@ -107,41 +99,44 @@ img {
 			</div>
 		</div>
 	</section>
-	
-	<div id="shop">
-		<table class="table table-striped">
-			<tr>
-				<th id="sh1" style="color: white;">사이트명</th>
-				<th id="sh2" style="color: white;">사이트</th>
-				<th id="sh2" style="color: white;">오프라인 샵</th>
-				
-			</tr>
-			<c:forEach items="${list }" var="i">
-				<tr>
-					<th id="nt1" style="color: white;">${i.an_no }</th>
-					<th id="nt2" style="color: white;"><a href="./noticedetail?an_no=${i.an_no }">${i.an_no }</a></th>
 
-				</tr>
-			</c:forEach>
+	<div id="shop_section">
 
-		</table>
-	
+		<div class="shop_name">
+			<a href=""><img src="/img/like.png"></a>
+		</div>
+		<div class="shop_site">
+			<a href="www.naver.com">www.naver.com</a>
+		</div>
+		<div class="shop_map">
+			<div id="map" style="width: 500px; height: 400px;"></div>
+			<script>
+				var container = document.getElementById('map');
+				var options = {
+					center : new kakao.maps.LatLng(33.450701, 126.570667),
+					level : 3
+				};
+
+				var map = new kakao.maps.Map(container, options);
+			</script>
+		</div>
+
 	</div>
-	
-	<div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
+
+	<div id="map" style="width: 500px; height: 400px;"></div>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
 	<script>
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
+			center : new kakao.maps.LatLng(33.450701, 126.570667),
+			level : 3
 		};
 
 		var map = new kakao.maps.Map(container, options);
 	</script>
-	<div id="map" style="width: 400px; height: 400px;"></div>
-	
-		<jsp:include page="footer.jsp" />
+
+	<jsp:include page="footer.jsp" />
 	<!-- Js Plugins -->
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -151,8 +146,8 @@ img {
 	<script src="js/jquery.slicknav.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-	
-<!-- <script type="text/javascript">
+
+	<!-- <script type="text/javascript">
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
 	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -161,6 +156,5 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script> -->
-	</body>
-	</html>
-	
+</body>
+</html>

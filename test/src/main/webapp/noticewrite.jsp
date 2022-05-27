@@ -55,6 +55,7 @@
 #row {
 	width: 1200px;
 }
+
 </style>
 <script type="text/javascript">
 	//$(선택자).명령();
@@ -137,7 +138,7 @@
 
 	<div id="anirecom-container">
 		<div id="recom-main">
-			<img alt="" src="./img/notice-write.jpg">
+			<img alt="" src="./img/notice-write.jpg" style="display: block; margin: auto;">
 		</div>
 	</div>
 

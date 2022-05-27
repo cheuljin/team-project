@@ -180,7 +180,8 @@ a:visited, a:link {
                                 <div class="anime__review__item__text">
                                 	<input type="hidden" name="ac_no" value="${i.ac_no }">
                                     <h6>${i.u_nickname } <small style="color:white"><span>${i.ac_date }</span></small>
-										<img id="recom" src="./img/recom.png" title="대댓글" width="20px" height="20px" align="right">
+										<img id="recom" src="./img/recom.png" title="대댓글" width="20px" height="20px" align="right"> &nbsp; &nbsp; &nbsp; 
+										<img id="commentlike"alt="" src="./img/commentlike.png" width="20px" height="20px" align="right">
                                     <c:if test="${sessionScope.u_email eq i.u_id }">
 										<img id="del" src="./img/delete.png" title="삭제" width="20px" height="20px" align="right" onclick="cdel(${i.ac_no})">
 										<img id="up" src="./img/fix.png" title="수정" width="20px" height="20px" align="right" onclick="cup(${i.ac_no})" >&nbsp; &nbsp; &nbsp;  &nbsp; 

@@ -27,16 +27,20 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   
-   <style type="text/css">
-       #main{
-    	margin: 0 auto;
-    	height: 450px;
-    	width: 1200px;
-   	 }
-   
-   </style>
-   <script type="text/javascript">
+
+<style type="text/css">
+#main {
+	margin: 0 auto;
+	height: 450px;
+	width: 1200px;
+}
+
+a:visited, a:link {
+	color: white;
+	text-decoration: none;
+}
+</style>
+<script type="text/javascript">
    function like(){
 	   let a_no = ${dto.a_no};
 		$.ajax({
@@ -68,6 +72,16 @@
 	      location.href="./anideletecomment?a_no=${dto.a_no }&ac_no=" + num;
 	   }
 	}
+   
+   function commentwrite(u_email){
+	   
+	   if(u_email == null){
+		   alert("로그인한 사용자만 댓글을 달 수 있습니다.");
+	   }else{
+		   location.href="./anicommentwrite";  
+	   }
+   }
+   
    </script>
    
 </head>
@@ -185,7 +199,7 @@
                             </div>
                             <form action="./anicommentwrite">
                             	<input type="hidden" name="a_no" value="${dto.a_no }">
-                                <textarea placeholder="댓글을 작성하려면 로그인을 해주세요." name="comment"></textarea>
+                                <textarea placeholder="댓글을 작성하려면 로그인을 해주세요." name="comment" onclick="commentwrite(${sessionScope.u_email })"></textarea>
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                    </div>

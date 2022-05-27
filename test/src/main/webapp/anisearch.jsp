@@ -123,7 +123,7 @@
                           </div>
                      </div>
                      
-                     <!-- 페이징 아이콘 -->
+<%--                 <!-- 페이징 아이콘 -->
                      <fmt:parseNumber integerOnly="true" var="totalpage" value="${totalcount / 9 }"/>
                      <c:if test="${(totalcount % 9) > 0 }">
          				<c:set var="totalpage" value="${totalpage + 1}"/>
@@ -142,7 +142,7 @@
      				<c:if test="${startpage + 4 gt totalpage }">
       					<c:set var="endpage" value="${totalpage }"/>
      		 		</c:if>
-     		 		
+     		 		 --%>
      		 		
                     <div class="product__pagination">
                     	<a href="#"><i class="fa fa-angle-double-left"></i></a>
@@ -154,7 +154,7 @@
                         <a href="#"><i class="fa fa-angle-double-right"></i></a>
                     </div>
                   </div>
-                 
+                
                  <!-- 오른쪽 top5 구역 -->
                  <div class="col-lg-4 col-md-4">
                         <div class="anime__details__sidebar">

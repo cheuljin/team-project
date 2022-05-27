@@ -295,4 +295,43 @@ public class AnirecomDAO {
 			close(pstmt, null);
 		}
 	}
+	
+	
+	//검색결과불러오기
+	public List<AniRecomDTO> searchlist(String a_title) {
+		ArrayList<AniRecomDTO> list = new ArrayList<AniRecomDTO>();
+		sql = "select * from ani_view where a_title LIKE ? ";
+		
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  "%"+ a_title +"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AniRecomDTO dto = new AniRecomDTO();
+				dto.setA_no(rs.getInt("a_no"));
+				dto.setA_title(rs.getString("a_title"));
+				dto.setA_file(rs.getString("a_file"));
+				dto.setA_orifile(rs.getString("a_orifile"));
+				dto.setA_date(rs.getString("a_date"));
+				dto.setA_rate(rs.getInt("a_rate"));
+				dto.setA_count(rs.getInt("a_count"));
+				dto.setA_category(rs.getString("a_category"));
+				dto.setA_epi(rs.getInt("a_epi"));
+				dto.setA_type(rs.getString("a_type"));
+				dto.setU_id(rs.getString("u_email"));;
+				dto.setCommentcount(rs.getInt("commentcount"));
+				dto.setTotalcount(rs.getInt("totalcount"));
+				list.add(dto);
+			}
+			
+		} catch (Exception e) {	
+			e.printStackTrace();
+			close(pstmt, rs);
+		}
+		
+		
+				
+		return list;
+	}
 }

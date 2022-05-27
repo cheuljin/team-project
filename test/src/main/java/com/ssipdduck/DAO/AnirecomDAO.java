@@ -275,9 +275,24 @@ public class AnirecomDAO {
 			pstmt.execute();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			close(pstmt, null);
 		}
 		
+	}
+
+	public void anicommentdelete(AniCommentDTO dto) {
+		sql="update ani_comment set ac_del=1 where ac_no=?";
+		
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getAc_no());
+			pstmt.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
 	}
 }

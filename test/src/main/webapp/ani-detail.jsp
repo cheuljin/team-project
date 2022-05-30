@@ -39,6 +39,36 @@ a:visited, a:link {
 	color: white;
 	text-decoration: none;
 }
+
+/* component */
+.star-rating {
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  width:5em;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+}
+
 </style>
 <script type="text/javascript">
    function like(){
@@ -73,15 +103,84 @@ a:visited, a:link {
 	   }
 	}
    
+   </script>
+   <script type="text/javascript">
+   
    function commentwrite(u_email){
-	   
 	   if(u_email == null){
 		   alert("로그인한 사용자만 댓글을 달 수 있습니다.");
+		   return false;
 	   }else{
 		   location.href="./anicommentwrite";  
 	   }
    }
    
+   function rating(){
+	   let a_no = ${dto.a_no};
+	   var listVar = $('input[name=rating]:checked').val();
+	    $.ajax({
+			url : "./rating",
+			type : "GET",
+			dataType : "html",
+			data : {"rating" : listVar , "a_no" : a_no}, 
+			success : function(data){
+				if(data == 1){
+					$("#1-star").prop("checked",true);
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+					$('#anime__details__rating').load();
+				}else if(data == 2){
+					$("#2-stars").prop("checked",true);	
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+					$('#anime__details__rating').load();
+				}else if(data == 3){
+					$("#3-stars").prop("checked",true);
+					$('#anime__details__rating').load();
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+				}else if(data == 4){
+					$("#4-stars").prop("checked",true);
+					$('#anime__details__rating').load();
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+				}else if(data == 5){
+					$("#5-stars").prop("checked",true);
+					$('#anime__details__rating').load();
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+				}
+			} ,
+			error : function(data){
+				alert(data);
+			}
+		});
+   }
+   
+   $(document).ready(function(){
+	   let a_no = ${dto.a_no};
+	    $.ajax({
+			url : "./rating",
+			type : "post",
+			dataType : "html",
+			data : {"a_no" : a_no}, 
+			success : function(data){
+				if(data == 1){
+					$("#1-star").prop("checked",true);
+					$('#anime__details__rating').load();
+				}else if(data == 2){
+					$("#2-stars").prop("checked",true);	
+					$('#anime__details__rating').load();
+				}else if(data == 3){
+					$("#3-stars").prop("checked",true);
+					
+				}else if(data == 4){
+					$("#4-stars").prop("checked",true);
+					
+				}else if(data == 5){
+					$("#5-stars").prop("checked",true);
+				}
+			} ,
+			error : function(data){
+				alert(data);
+			}
+	 });
+   });
    </script>
    
 </head>
@@ -117,18 +216,31 @@ a:visited, a:link {
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
-                            <div class="anime__details__title">
-                                <h3>${dto.a_title }</h3>
-                            </div>
-                            <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                </div>
-                            </div>
+							<div class="anime__details__title">
+								<h3>${dto.a_title }</h3>
+							</div>
+							 <div class="anime__details__rating">
+							
+							<div class="star-rating space-x-4 mx-auto" >								
+							
+									<input type="radio" id="5-stars" name="rating" value="5" onclick="rating()"/> 
+									<label for="5-stars" class="star pr-4" >★</label>	
+									
+									<input type="radio" id="4-stars" name="rating" value="4" onclick="rating()"/> 
+									<label for="4-stars" class="star" >★</label>						
+								
+									<input type="radio" id="3-stars" name="rating" value="3" onclick="rating()"/> 
+									<label for="3-stars" class="star" >★</label>					
+								
+									<input type="radio" id="2-stars" name="rating" value="2" onclick="rating()"/> 
+									<label for="2-stars" class="star" >★</label>			
+								
+									<input type="radio" id="1-star" name="rating" value="1" onclick="rating()"/> 
+									<label for="1-star" class="star" >★</label>
+							
+							</div>
+
+							</div>
                             <p>${dto.a_content }</p>
                             <div class="anime__details__widget">
                                 <div class="row">
@@ -200,8 +312,9 @@ a:visited, a:link {
                             </div>
                             <form action="./anicommentwrite">
                             	<input type="hidden" name="a_no" value="${dto.a_no }">
-                                <textarea placeholder="댓글을 작성하려면 로그인을 해주세요." name="comment" onclick="commentwrite(${sessionScope.u_email })"></textarea>
-                                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                <textarea placeholder="댓글을 작성하려면 로그인을 해주세요." id="comment" name="comment" required="required" onclick="commentwrite(${sessionScope.u_email })"></textarea>
+                                <button type="submit">
+                                	<i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                    </div>
             </div>

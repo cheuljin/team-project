@@ -328,10 +328,55 @@ public class AnirecomDAO {
 		} catch (Exception e) {	
 			e.printStackTrace();
 			close(pstmt, rs);
-		}
-		
-		
-				
+		}	
 		return list;
+	}
+
+	//별점평가
+	public AniRecomDTO rate(AniRecomDTO dto) {
+		sql = "update ani set a_rate = a_rate + ? where a_no = ?";
+
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getA_rate());
+			pstmt.setInt(2, dto.getA_no());
+			pstmt.execute();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		return dto;
+	}
+	//별점 가져오기
+	public AniRecomDTO rateview(AniRecomDTO dto) {
+		sql = "select a_rate from ani where a_no = ?";
+		String sql1 = "select count(*) from user";
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getA_no());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setA_rate(rs.getInt(1));
+			
+			}
+			
+			pstmt = conn.prepareStatement(sql1);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setU_temp(rs.getInt(1));
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			close(pstmt, rs);
+		}
+			
+			
+		return dto;
 	}
 }

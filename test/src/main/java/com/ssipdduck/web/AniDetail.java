@@ -31,14 +31,16 @@ public class AniDetail extends HttpServlet {
 
 			AniRecomDTO dto = dao.detail(a_no);
 			
-			
-			if(dto.getCommentcount()>0) {
+			if(dto.getCommentcount() > 0) {
 				List<AniCommentDTO> list = dao.commentList(a_no);
 				request.setAttribute("list", list);
 			}
 			
+
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/ani-detail.jsp");
 			request.setAttribute("dto", dto);
+
 			rd.forward(request, response);
 		}
 	}

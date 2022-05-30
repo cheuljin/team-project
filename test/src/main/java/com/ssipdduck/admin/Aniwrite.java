@@ -1,4 +1,4 @@
-package com.ssipdduck.web;
+package com.ssipdduck.admin;
 
 import java.io.IOException;
 
@@ -60,7 +60,7 @@ public class Aniwrite extends HttpServlet {
 		dto.setA_type(multi.getParameter("a_type"));
 		dao.aniwrite(dto);
 		
-		response.sendRedirect("./anireview");
+		response.sendRedirect("./adminreview");
 		
 		
 	}

@@ -41,7 +41,6 @@
 	width: 1200px;
 }
 
-
 #row {
 	width: 1200px;
 }
@@ -50,11 +49,10 @@ img {
 	max-width: 100%;
 	margin: auto;
 }
-#sh1{
+
+#sh1 {
 	width: 33%;
 }
-
-
 </style>
 </head>
 <body>
@@ -84,7 +82,8 @@ img {
 	</div>
 
 	<!-- Product Section Begin -->
-	<section class="product-page spad" style="padding-top: 0; height: 100px;">
+	<section class="product-page spad"
+		style="padding-top: 0; height: 100px;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-lg-8">
@@ -102,58 +101,67 @@ img {
 			</div>
 		</div>
 	</section>
-	
-	
-	
-	<div id="shop" style="margin: 0 auto; width: 1200px; height: 500px;">
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">
-		<table style="margin: 0 auto;">
-			<tr>
-				<th id="sh1" style="color: white;"><a href=""><img src="/img/like.png"></a></th>
-				<th id="sh1" style="color: white;">www.naver.com</th>
-				<th id="sh1" style="color: white;">
-				<div id="map" style="width: 300px; height: 200px;"></div>
-			<script>
-				var container = document.getElementById('map');
-				var options = {
-					center : new kakao.maps.LatLng(33.450701, 126.570667),
-					level : 3
-				};
-				var map = new kakao.maps.Map(container, options);
-			</script>
-				</th>
-			</tr>
-		</table>	
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">
-		
-	</div>
-	
-
-	
 
 
-	<!-- <div id="map" style="width: 300px; height: 200px;"></div>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
+	<p style="margin-top: -12px">
+		<em class="link"> <a href="javascript:void(0);"
+			onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요. </a>
+		</em>
+	</p>
+	<div id="map" style="width: 100%; height: 350px;"></div>
+
 	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667),
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 			level : 3
+		// 지도의 확대 레벨
 		};
 
-		var map = new kakao.maps.Map(container, options);
-	</script> -->
-	
-	<!-- <script type="text/javascript">
-var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-var options = { //지도를 생성할 때 필요한 기본 옵션
-	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-	level: 3 //지도의 레벨(확대, 축소 정도)
-};
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption);
 
-var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-</script> -->
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+
+							// 정상적으로 검색이 완료됐으면 
+							if (status === kakao.maps.services.Status.OK) {
+
+								var coords = new kakao.maps.LatLng(result[0].y,
+										result[0].x);
+
+								// 결과값으로 받은 위치를 마커로 표시합니다
+								var marker = new kakao.maps.Marker({
+									map : map,
+									position : coords
+								});
+
+								// 인포윈도우로 장소에 대한 설명을 표시합니다
+								var infowindow = new kakao.maps.InfoWindow(
+										{
+											content : '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+										});
+								infowindow.open(map, marker);
+
+								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+								map.setCenter(coords);
+							}
+						});
+	</script>
+
+
+
+
+
+
+
+
+
+
 	<jsp:include page="footer.jsp" />
 	<!-- Js Plugins -->
 	<script src="js/jquery-3.3.1.min.js"></script>

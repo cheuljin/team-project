@@ -1,10 +1,22 @@
 package com.ssipdduck.DTO;
 
 public class AniboardDTO {
-	private int b_no, u_no, b_count, b_like;
+	private int b_no, u_no, b_count, b_like, commentcount, totalcount;
 	private String b_title, b_content, b_orifile, b_file, b_date, u_nickname, u_id;
 	
 	
+	public int getCommentcount() {
+		return commentcount;
+	}
+	public void setCommentcount(int commentcount) {
+		this.commentcount = commentcount;
+	}
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
 	public int getU_no() {
 		return u_no;
 	}

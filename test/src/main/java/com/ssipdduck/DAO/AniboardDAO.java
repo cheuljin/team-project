@@ -9,6 +9,7 @@ import java.util.List;
 
 
 import com.ssipdduck.DTO.AniboardDTO;
+import com.ssipdduck.DTO.BoardcommentDTO;
 
 import db.DBConnection;
 
@@ -80,6 +81,9 @@ public class AniboardDAO {
 				dto.setB_like(rs.getInt(9));
 				dto.setU_nickname(rs.getString(10));
 				dto.setU_id(rs.getString(11));
+				dto.setCommentcount(rs.getInt("commentcount"));
+				dto.setTotalcount(rs.getInt("totalcount"));
+				
 			}
 			
 		} catch (Exception e) {
@@ -141,5 +145,94 @@ public class AniboardDAO {
 		}
 		
 		
+	}
+
+	public List<BoardcommentDTO> boardcomment(int b_no) {
+		sql = "SELECT * FROM board_commentview WHERE b_no=?";
+		List<BoardcommentDTO> list = new ArrayList<BoardcommentDTO>();
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				BoardcommentDTO dto = new BoardcommentDTO();	
+				dto.setBc_no(rs.getInt("bc_no"));
+				dto.setBc_comment(rs.getString("bc_comment"));
+				dto.setBc_like(rs.getInt("bc_like"));
+				dto.setBc_date(rs.getString("bc_date"));
+				dto.setU_id(rs.getString("u_email"));
+				dto.setU_nickname(rs.getString("u_nickname"));
+				dto.setB_no(rs.getInt("b_no"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public void writeComment(BoardcommentDTO dto) {
+		sql = "INSERT INTO board_comment (b_no,bc_comment,u_no)values(?,?,(select u_no from user where u_email=?))";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, dto.getB_no());
+			pstmt.setString(2, dto.getBc_comment());
+			pstmt.setString(3, dto.getU_id());
+			pstmt.execute();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		
+	}
+
+	public void boardcommentdetail(BoardcommentDTO dto) {
+		sql = "SELECT * FROM board_commentview WHERE bc_no=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getBc_no());
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setBc_comment(rs.getString("bc_comment"));
+				dto.setBc_like(rs.getInt("bc_like"));
+				dto.setBc_date(rs.getString("bc_date"));
+				dto.setU_id(rs.getString("u_email"));
+				dto.setU_nickname(rs.getString("u_nickname"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void boardcom_up(BoardcommentDTO dto) {
+		sql = "UPDATE board_comment SET bc_comment=? WHERE bc_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getBc_comment());
+			pstmt.setInt(2, dto.getBc_no());
+			pstmt.setString(3, dto.getU_id());
+			pstmt.execute();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 	}			
 }

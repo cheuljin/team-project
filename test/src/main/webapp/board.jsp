@@ -76,12 +76,12 @@
 	</div>
           
           <!-- Product Section Begin -->
-    <section class="product-page spad" style="padding-top: 0; height:100px;">
+    <section class="product-page spad" style="padding-top: 0; height:100px; margin-bottom: 10px;">
         <div class="container" style="width: 100%;">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="product__page__content">
-                        <div class="product__page__title" style="width: 100%;">
+                        <div class="product__page__title" style="width: 1100px; border-bottom: 2px solid rgba(255, 255, 255, 0.2);">
                             <div class="row">
                                 
                                     <div class="section-title">
@@ -117,7 +117,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; left: 1200px;   font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; right: 350px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
 </body>
 </html>

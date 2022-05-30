@@ -62,7 +62,8 @@
 					<input type="text" autocomplete="off" id="remind password"
 						class="fadeIn second" name="u_email" placeholder="email">
 					<input type="text" autocomplete="off" id="remind password"
-						class="fadeIn second" name="u_name" placeholder="name"> <input
+						class="fadeIn second" name="u_name" placeholder="name"> 	
+						<input
 						type="submit" class="fadeIn fourth" href="./guesspw.jsp" value="비밀번호찾기">
 				</form>
 

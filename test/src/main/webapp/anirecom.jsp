@@ -72,9 +72,6 @@
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
                        	 <span>애니리뷰</span>
-                       	  <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
-                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
-						  	 </c:if>
                     </div>
                 </div>
             </div>

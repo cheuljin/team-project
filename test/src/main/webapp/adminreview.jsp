@@ -50,10 +50,36 @@
     <!-- Hero Section End -->
     <div id="anirecom-container">
 		<div id="recom-main">
-			<h1 style="color: white; text-align: center">관리자</h1>
+			<h1 style="color: white; text-align: center">Review 관리자</h1>
 		</div>
 	</div>
 	
+			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
+			<table class="table table-striped">
+				<tr>
+					<th style="color: white;">번호</th>
+					<th style="color: white;">제목</th>
+					<th style="color: white;">날짜111</th>
+				    
+					<th style="color: white;">날짜</th>
+				     
+				     <th> <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
+                                     <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 550px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+						  	 </c:if></th>
+				</tr>
+				<c:forEach items="${list }" var="i">
+					<tr>
+						<td id="td1" style="color: white;">${i.a_no }</td>
+						<td id="td2" style="color: white;"><a href="./adminboardDetail?a_no=${i.a_no }">${i.a_title }</a></td>
+						<td id="td4" style="color: white;">${i.a_date }</td>
+						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;">
+						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;">
+						</td>				
+					</tr>
+				</c:forEach>
+			</table>
+			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; left: 1200px;   font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+		</div>
 	
 	<jsp:include page="footer.jsp"/>
 	

@@ -368,8 +368,7 @@ public class AnirecomDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setU_temp(rs.getInt(1));
-				
+				dto.setU_temp(rs.getInt(1));	
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

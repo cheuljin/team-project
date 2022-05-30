@@ -44,16 +44,21 @@
                 <div class="col-lg-8">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="./adminnotice"><font size="5px;">Notice</font></a></li>
-                                <li><a href="./adminaniboard"><font size="5px;">Board</font></a></li>
-                                <li><a href="./admin"><font size="5px;">review</font></a></li>                       
+                            <ul>                
+                            	<li><a href="./adminuser"><font size="5px;">게시판관리</font> <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="./adminnotice">Notice</a></li>
+                                        <li><a href="#">Board</a></li>
+                                        <li><a href="./adminreview">Review</a></li>
+                                    </ul>
+                                </li>
                             	<li><a href="./adminuser"><font size="5px;">회원관리</font> <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="#">회원정보보기</a></li>
                                         <li><a href="#">회원추가하기</a></li>
                                         <li><a href="#">회원삭제하기</a></li>
                                     </ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>

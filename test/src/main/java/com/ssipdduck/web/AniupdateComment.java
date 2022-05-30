@@ -25,12 +25,8 @@ public class AniupdateComment extends HttpServlet {
      */
     public AniupdateComment() {
         super();
-        // TODO Auto-generated constructor stub
-    }
+   }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		AniCommentDTO dto = new AniCommentDTO();
@@ -48,7 +44,6 @@ public class AniupdateComment extends HttpServlet {
 		 RequestDispatcher rd = request.getRequestDispatcher("./commentUpdate.jsp");
 		 request.setAttribute("dto", dto);
 		 rd.forward(request, response);
-	
 	}
 
 	/**

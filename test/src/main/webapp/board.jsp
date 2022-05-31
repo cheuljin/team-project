@@ -117,7 +117,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; right: 350px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; right: 300px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
 </body>
 </html>

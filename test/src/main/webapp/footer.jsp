@@ -21,10 +21,10 @@
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li class="active"><a href="#">이희진</a></li>
-                        <li><a href="#">문형석</a></li>
-                        <li><a href="#">황철진</a></li>
-                        <li><a href="#">엄태리</a></li>
+                        <li class="active"><a href="https://github.com/Hijineee">이희진</a></li>
+                        <li><a href="https://github.com/Moonmaji">문형석</a></li>
+                        <li><a href="https://github.com/cheuljin">황철진</a></li>
+                        <li><a href="https://github.com/taerieom">엄태리</a></li>
                     </ul>
                 </div>
             </div>

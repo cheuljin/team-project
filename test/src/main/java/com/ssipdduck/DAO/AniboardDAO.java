@@ -234,5 +234,10 @@ public class AniboardDAO {
 			
 			e.printStackTrace();
 		}
+	}
+
+	public void boardcom_del(BoardcommentDTO dto) {
+		sql = "UPDATE";
+		
 	}			
 }

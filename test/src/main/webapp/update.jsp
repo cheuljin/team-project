@@ -154,7 +154,7 @@
 		<input type="hidden" name="b_no" value="${dto.b_no }">
 		
 		<button type="submit"
-			style="position: absolute; margin-left: 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+			style="position: absolute; right : 150px; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
 			 background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">수정</i>
 			

@@ -10,7 +10,7 @@
 <meta name="keywords" content="Anime, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>씹덕 | 양산소</title>
+<title>시로이네코 - 비밀번호 찾기</title>
 
 <!-- Google Font -->
 <link

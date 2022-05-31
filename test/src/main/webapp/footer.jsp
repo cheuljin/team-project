@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>시로이네코</title>
 </head>
 <body>
 <footer class="footer">

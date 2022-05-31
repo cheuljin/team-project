@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>씹덕 | 양산소</title>
-
+    <link rel="shortcut icon" href="./favicon.ico"/>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -28,20 +27,18 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
     <style type="text/css">
-    #main{
-    	margin: 0 auto;
-    	height: 100%;
-    	width: 900px;
-    }
-    
-    
+    	#main{
+    		margin: 0 auto;
+    		height: 100%;
+    		width: 900px;
+    	}
     </style>
 </head>
 <body>
 	<jsp:include page="./header.jsp"/>
 	    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+        	<div class="loader"></div>
+    	</div>
     
         <!-- Hero Section Begin -->
     <section class="hero">
@@ -141,6 +138,8 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/kDSnpNO5Ke4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

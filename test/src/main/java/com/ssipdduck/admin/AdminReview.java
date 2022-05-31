@@ -43,7 +43,6 @@ public class AdminReview extends HttpServlet {
 			request.setAttribute("list", list);
 			rd.forward(request, response);
 		}
-	
 	}
 
 	/**

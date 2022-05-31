@@ -100,7 +100,6 @@
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
                                     <a href="#" class="primary-btn">▶</a>
-                                    
                                 </div>
                             </div>
                         </div>

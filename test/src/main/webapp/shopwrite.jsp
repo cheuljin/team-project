@@ -34,6 +34,8 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
 
+
+
 <style type="text/css">
 #acea {
 	margin: 0 auto;
@@ -53,9 +55,46 @@ img {
 #sh1 {
 	width: 33%;
 }
+
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #5cb85c;
+	cursor: pointer;
+	border: 1px solid #4cae4c;
+	border-radius: .25em;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+	margin: 0 auto;
+}
+
+.filebox label:hover {
+	background-color: #6ed36e;
+}
+
+.filebox label:active {
+	background-color: #367c36;
+}
+
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
 </style>
+
 </head>
 <body>
+
 	<jsp:include page="./header.jsp" />
 
 	<!-- Breadcrumb Begin -->
@@ -101,59 +140,95 @@ img {
 			</div>
 		</div>
 	</section>
+<div id= "shop_write_section" style="margin: 0 auto;">
 
+	<div class="filebox">
+		<label for="ex_file" >업로드</label>
+		<input type="file" id="ex_file">
+	</div>
 
-	<p style="margin-top: -12px">
-		<em class="link"> <a href="javascript:void(0);"
-			onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-				혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요. </a>
-		</em>
-	</p>
-	<div id="map" style="width: 100%; height: 350px;"></div>
+	<input type="file" id="shoplogo" placeholder="샵로고"><br>
+	<input type="url" id="shopsite" placeholder="샵사이트">
+	<br>
+	<br>
 
+	<input type="text" id="sample4_postcode" placeholder="우편번호">
+	<input type="button" onclick="sample4_execDaumPostcode()"
+		value="우편번호 찾기">
+	<br>
+	<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+	<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+	<span id="guide" style="color: #999; display: none"></span>
+	<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+	<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
+		//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+		function sample4_execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+							// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var roadAddr = data.roadAddress; // 도로명 주소 변수
+							var extraRoadAddr = ''; // 참고 항목 변수
 
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
-
-							// 정상적으로 검색이 완료됐으면 
-							if (status === kakao.maps.services.Status.OK) {
-
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
-
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new kakao.maps.Marker({
-									map : map,
-									position : coords
-								});
-
-								// 인포윈도우로 장소에 대한 설명을 표시합니다
-								var infowindow = new kakao.maps.InfoWindow(
-										{
-											content : '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-										});
-								infowindow.open(map, marker);
-
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
+							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+							if (data.bname !== ''
+									&& /[동|로|가]$/g.test(data.bname)) {
+								extraRoadAddr += data.bname;
 							}
-						});
+							// 건물명이 있고, 공동주택일 경우 추가한다.
+							if (data.buildingName !== ''
+									&& data.apartment === 'Y') {
+								extraRoadAddr += (extraRoadAddr !== '' ? ', '
+										+ data.buildingName : data.buildingName);
+							}
+							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+							if (extraRoadAddr !== '') {
+								extraRoadAddr = ' (' + extraRoadAddr + ')';
+							}
+
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('sample4_postcode').value = data.zonecode;
+							document.getElementById("sample4_roadAddress").value = roadAddr;
+							document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+							// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+							if (roadAddr !== '') {
+								document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+							} else {
+								document.getElementById("sample4_extraAddress").value = '';
+							}
+
+							var guideTextBox = document.getElementById("guide");
+							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+							if (data.autoRoadAddress) {
+								var expRoadAddr = data.autoRoadAddress
+										+ extraRoadAddr;
+								guideTextBox.innerHTML = '(예상 도로명 주소 : '
+										+ expRoadAddr + ')';
+								guideTextBox.style.display = 'block';
+
+							} else if (data.autoJibunAddress) {
+								var expJibunAddr = data.autoJibunAddress;
+								guideTextBox.innerHTML = '(예상 지번 주소 : '
+										+ expJibunAddr + ')';
+								guideTextBox.style.display = 'block';
+							} else {
+								guideTextBox.innerHTML = '';
+								guideTextBox.style.display = 'none';
+							}
+						}
+					}).open();
+		}
 	</script>
-
-
+	</div>
 
 
 
@@ -173,4 +248,5 @@ img {
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>

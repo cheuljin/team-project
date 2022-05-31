@@ -34,7 +34,7 @@
 <style type="text/css">
 #acea {
 	margin: 0 auto;
-	height: 450px;
+	height: 200px;
 	width: 1200px;
 }
 
@@ -81,7 +81,7 @@ img {
 	<!-- 애니 추천 게시판 테이블-->
 	<div id="anirecom-container">
 		<div id="acea">
-			<img alt="" src="./img/notice-main.jpg">
+			<img alt="" src="./img/qqq.gif" style="display: block; margin: auto;">
 		</div>
 	</div>
 

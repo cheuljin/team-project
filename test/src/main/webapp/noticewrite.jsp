@@ -11,7 +11,7 @@
 <meta name="keywords" content="Anime, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>씹덕 | 양산소</title>
+<title>Notice write</title>
 
 <!-- Google Font -->
 <link
@@ -47,7 +47,7 @@
 <style type="text/css">
 #recom-main {
 	margin: 0 auto;
-	height: 450px;
+	height: 300px;
 	width: 1200px;
 	padding-bottom: 0;
 }
@@ -55,67 +55,66 @@
 #row {
 	width: 1200px;
 }
-
 </style>
 <script type="text/javascript">
 	//$(선택자).명령();
-	$(document).ready(function() {
-	  $('#summernote').summernote({
-		  height : 500
-	  });
-	
-	  var toolbar = [
-		    // 글꼴 설정
-		    ['fontname', ['fontname']],
-		    // 글자 크기 설정
-		    ['fontsize', ['fontsize']],
-		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    // 글자색
-		    ['color', ['white','white']],
-		    // 표만들기
-		    ['table', ['table']],
-		    // 글머리 기호, 번호매기기, 문단정렬
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    // 줄간격
-		    ['height', ['height']],
-		    // 그림첨부, 링크만들기, 동영상첨부
-		    ['insert',['picture','link','video']],
-		    // 코드보기, 확대해서보기, 도움말
-		    ['view', ['codeview','fullscreen', 'help']]
-		  ];
+	$(document).ready(
+			function() {
+				$('#summernote').summernote({
+					height : 500
+				});
 
-	var setting = {
-          height : 300,
-          minHeight : null,
-          maxHeight : null,
-          focus : true,
-          lang : 'ko-KR',
-          toolbar : toolbar,
-          callbacks : { //여기 부분이 이미지를 첨부하는 부분
-          onImageUpload : function(files, editor,
-          welEditable) {
-          for (var i = files.length - 1; i >= 0; i--) {
-          uploadSummernoteImageFile(files[i],
-          this);
-          		}
-          	}
-          }
-       };
+				var toolbar = [
+						// 글꼴 설정
+						[ 'fontname', [ 'fontname' ] ],
+						// 글자 크기 설정
+						[ 'fontsize', [ 'fontsize' ] ],
+						// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+						[
+								'style',
+								[ 'bold', 'italic', 'underline',
+										'strikethrough', 'clear' ] ],
+						// 글자색
+						[ 'color', [ 'white', 'white' ] ],
+						// 표만들기
+						[ 'table', [ 'table' ] ],
+						// 글머리 기호, 번호매기기, 문단정렬
+						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+						// 줄간격
+						[ 'height', [ 'height' ] ],
+						// 그림첨부, 링크만들기, 동영상첨부
+						[ 'insert', [ 'picture', 'link', 'video' ] ],
+						// 코드보기, 확대해서보기, 도움말
+						[ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ];
 
-      $('#summernote').summernote(setting);
-	});
-	
-	function check(){
-	alert("글을 작성하시겠습니까?")
-	var title = document.getElementById("title");
-	if (title.value.length < 1) {
-		title.focus();
-		return false;
+				var setting = {
+					height : 300,
+					minHeight : null,
+					maxHeight : null,
+					focus : true,
+					lang : 'ko-KR',
+					toolbar : toolbar,
+					callbacks : { //여기 부분이 이미지를 첨부하는 부분
+						onImageUpload : function(files, editor, welEditable) {
+							for (var i = files.length - 1; i >= 0; i--) {
+								uploadSummernoteImageFile(files[i], this);
+							}
+						}
+					}
+				};
+
+				$('#summernote').summernote(setting);
+			});
+
+	function check() {
+		alert("글을 작성하시겠습니까?")
+		var title = document.getElementById("title");
+		if (title.value.length < 1) {
+			title.focus();
+			return false;
+		}
+
 	}
-	
-}
-
 </script>
 </head>
 <body>
@@ -128,7 +127,7 @@
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
 						<a href="./index.jsp"><i class="fa fa-home"
-							style="align-content:"></i> Home</a> <span>Board</span>
+							style="align-content:"></i> Home</a> <span>Notice</span>
 					</div>
 				</div>
 			</div>
@@ -138,31 +137,45 @@
 
 	<div id="anirecom-container">
 		<div id="recom-main">
-			<img alt="" src="./img/notice-write.jpg" style="display: block; margin: auto;">
+			<img alt="" src="./img/wer.gif"
+				style="display: block; margin: auto;">
 		</div>
 	</div>
 
-	<div class="product__page__title"
-		style="width: 1200px; margin: 0 auto;">
-		<div class="row1" style="width: 100%;">
+		<!-- Product Section Begin -->
+	<section class="product-page spad"
+		style="padding-top: 0; height: 100px;">
+		<div class="container" style="width: 100%;">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="product__page__content">
+						<div class="product__page__title" style="width: 100%;">
+							<div class="row">
 
-			<div class="section-title">
-				<h4>NOTICE WRITE</h4>
+								<div class="section-title">
+									<h4>Notice write</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<form action="./noticewrite" method="post" onsubmit="return check()" style="margin: 0 auto; width: 1000px; height: 150px;">
+	</section>
+	<form action="./noticewrite" method="post" onsubmit="return check()"
+		style="margin: 0 auto; width: 1000px; height: 150px;">
 
 		<input type="text" id="title" name="title" placeholder="제목을 입력하세요"
 			style="margin: 0 auto; width: 1000px; height: 50px; margin-top: 20px; font-size: 13px;"
 			required="required">
 
-		<textarea id="summernote" name="content" style="margin: 0 auto; width: 1200px; margin-top: 20px;"
+		<textarea id="summernote" name="content"
+			style="margin: 0 auto; width: 1200px; margin-top: 20px;"
 			required="required"></textarea>
 
-		<button type="submit" 
-			style="position: absolute; margin-left : 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
-			<i class="fa fa-location-arrow" >작성</i>
+		<button type="submit"
+			style="position: absolute; margin-left: 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">작성</i>
 		</button>
 	</form>
 

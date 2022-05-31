@@ -128,5 +128,46 @@ public class SignupDAO {
 		}
 		return dto;
 	}
+	//mypage 정보 불러올 sql
+	public SignupDTO mypage(SignupDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * from user where u_email= ?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getEmail());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setName(rs.getString("u_name"));
+				dto.setNickname(rs.getString("u_nickname"));
+				dto.setTele(rs.getString("u_tel"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	public void mypagemodify(SignupDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE user set u_nickname=?, u_password=? where u_email=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getNickname());
+			pstmt.setString(2, dto.getPassword());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

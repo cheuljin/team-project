@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico"/>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -47,7 +48,7 @@
                                 <li><a href="./notice"><font size="5px;">Notice</font></a></li>
                                 <li><a href="./aniboard"><font size="5px;">Board</font></a></li>
                                 <li><a href="./anireview?pageNo=1"><font size="5px;">review</font></a></li>
-                                <li><a href="#"><font size="5px;">figure shop</font></a></li>
+                                <li><a href=""><font size="5px;">figure shop</font></a></li>
                                
                                 <c:if test="${sessionScope.u_email eq 'admin@a.com' }">
                                 	<li><a href="./admin"><font size="5px;">관리자페이지</font></a></li>
@@ -60,11 +61,12 @@
                 <div class="col-lg-2">
                 <% if(session.getAttribute("u_email") == null){ %>
                     <div class="header__right">	
-                        <a href="./login.jsp"><img alt="" src="./img/login.png" style="width: 50px;height: 30px;"></a>
+                        <a href="./login.jsp"><img alt="" src="./img/login.png" style="width: 40px;height: 30px;"></a>
                     </div>
                 <% } else { %>
                     <div class="header__right">	
-                        <a href="./logout"><img alt="" src="./img/logout.png" style="width: 50px;height: 30px;"></a>
+	            		<a href="./mypage"><img alt="gg" src="./img/option.png" style="width: 40px;height: 30px;"></a>
+                        <a href="./logout"><img alt="" src="./img/logout.png" style="width: 40px;height: 30px;"></a>
                     </div>
                 <%} %>
                 </div>

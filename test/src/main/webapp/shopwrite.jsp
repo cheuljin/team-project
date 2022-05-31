@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>씹덕 | 양산소</title>
-
+<link rel="shortcut icon" href="./favicon.ico"/>
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
@@ -56,40 +56,7 @@ img {
 	width: 33%;
 }
 
-.filebox label {
-	display: inline-block;
-	padding: .5em .75em;
-	color: #fff;
-	font-size: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	background-color: #5cb85c;
-	cursor: pointer;
-	border: 1px solid #4cae4c;
-	border-radius: .25em;
-	-webkit-transition: background-color 0.2s;
-	transition: background-color 0.2s;
-	margin: 0 auto;
-}
 
-.filebox label:hover {
-	background-color: #6ed36e;
-}
-
-.filebox label:active {
-	background-color: #367c36;
-}
-
-.filebox input[type="file"] {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
 </style>
 
 </head>
@@ -131,7 +98,7 @@ img {
 							<div class="row">
 
 								<div class="section-title">
-									<h4>FIGURE SHOP</h4>
+									<h4>FIGURE SHOP WRITE</h4>
 								</div>
 							</div>
 						</div>
@@ -140,27 +107,24 @@ img {
 			</div>
 		</div>
 	</section>
-<div id= "shop_write_section" style="margin: 0 auto;">
-
-	<div class="filebox">
-		<label for="ex_file" >업로드</label>
-		<input type="file" id="ex_file">
-	</div>
-
-	<input type="file" id="shoplogo" placeholder="샵로고"><br>
-	<input type="url" id="shopsite" placeholder="샵사이트">
-	<br>
-	<br>
-
-	<input type="text" id="sample4_postcode" placeholder="우편번호">
+	
+		<div class= "shop_write_section" style="margin: 0 auto; width: 1200px; height: 500px;">
+		
+		<table style="margin: 0 auto;">
+			<tr>
+				<th id="sh1" style="color: white;"><input type="file" id="file" style="color:white;"></th>
+				<th id="sh1" style="color: white;"><input type="url" id="shopsite" placeholder="샵사이트명"></th>
+				<th id="sh1" style="color: white;">
+				
+				<input type="text" id="sample4_postcode" placeholder="우편번호">
 	<input type="button" onclick="sample4_execDaumPostcode()"
 		value="우편번호 찾기">
 	<br>
-	<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-	<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+	<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 250px">
+	<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  style="width: 250px">
 	<span id="guide" style="color: #999; display: none"></span>
-	<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-	<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+	<input type="text" id="sample4_detailAddress" placeholder="상세주소"  style="width: 250px">
+	<input type="text" id="sample4_extraAddress" placeholder="참고항목"  style="width: 250px">
 
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -228,6 +192,14 @@ img {
 					}).open();
 		}
 	</script>
+				
+				</th>
+			</tr>
+			</table>
+			<button type="submit"
+			style="position: absolute; margin: 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">등록하기</i>
+		</button>
 	</div>
 
 

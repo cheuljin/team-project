@@ -44,6 +44,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	
 <style type="text/css">
 #recom-main {
 	margin: 0 auto;
@@ -56,6 +57,39 @@
 	width: 1200px;
 }
 </style>
+
+<script type="text/javascript">
+	//$(선택자).명령();
+	$(document).ready(function() {
+	  $('#summernote').summernote({
+		  height : 500
+		 
+	  });
+	 
+	
+	  var toolbar = [
+		    // 글꼴 설정
+		    ['fontname', ['fontname']],
+		    // 글자 크기 설정
+		    ['fontsize', ['fontsize']],
+		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    // 글자색
+		    ['color', ['white']],
+		    // 표만들기
+		    ['table', ['table']],
+		    // 글머리 기호, 번호매기기, 문단정렬
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    // 줄간격
+		    ['height', ['height']],
+		    // 그림첨부, 링크만들기, 동영상첨부
+		    ['insert',['picture','link','video']],		    
+		  ];
+      $('#summernote').summernote(setting);
+	});
+</script>
+
+
 <script type="text/javascript">
 	fuction check(){
 		alert('글을 수정했습니다')
@@ -106,7 +140,7 @@
 		</div>
 	</div>
 
-	<form action="./update" method="post" onsubmit="return check()">
+	<form action="./update" method="post" onsubmit="return check()"  style="margin: 0 auto; width: 1000px; height: 150px;">
 	
 		<input type="text" id="title" name="title" value="${dto.b_title }"
 			placeholder="제목을 입력하세요"
@@ -114,7 +148,7 @@
 			required="required">
 			
 		<textarea id="summernote" name="content"
-			style="margin: 0 auto; width: 1200px; margin-top: 20px;"
+			style="margin: 0 auto"
 			required="required">${dto.b_content}</textarea>
 			
 		<input type="hidden" name="b_no" value="${dto.b_no }">
@@ -127,13 +161,5 @@
 		</button>
 	</form>
 
-	<script type="text/javascript">
-		//$(선택자).명령();
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				height : 500
-			});
-		});
-	</script>
 </body>
 </html>

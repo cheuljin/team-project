@@ -1,4 +1,4 @@
-package com.ssipdduck.DTO;
+package com.ssipdduck.admin;
 
 public class AdminuserDTO {
 	private String u_name, u_nickname, u_tel, u_email, u_date;

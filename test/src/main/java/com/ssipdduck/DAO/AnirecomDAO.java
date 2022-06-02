@@ -220,24 +220,63 @@ public class AnirecomDAO {
 		}
 	}
 
-	public int likeUp(int a_no) {
-		sql="update ani set a_like = a_like+1 where a_no=?";
-		
+	//좋아요 체크
+	public int likeCheck(AniRecomDTO dto) {
+		sql="insert into ani_like values (?,(select u_no from user where u_email = ?))";
 		int result = 0;
 		
 		try {
 			conn=DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getA_no());
+			pstmt.setString(2,dto.getU_id());
 			
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			result = 0;
+			sql= "delete from ani_like where a_no=? and u_no=(select u_no from user where u_email=?)";
+			String sql1 = "update ani set a_like = a_like-1 where a_no=?";
+			try {
+				conn=DBConnection.dbConn();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, dto.getA_no());
+				pstmt.setString(2,dto.getU_id());
+				pstmt.execute();
+				
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setInt(1, dto.getA_no());
+				pstmt.execute();
+				
+			}catch(Exception e1) {
+				e1.printStackTrace();
+				close(pstmt,null);
+			}
+			return result;
+		}
+		return result;
+	}
+	
+	//좋아요 +1
+	public int likeUp(int a_no) {
+		sql="update ani set a_like = a_like+1 where a_no=?";
+		int result = 0;
+		
+		try {
+			conn=DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, a_no);
 			result = pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			close(pstmt, null);
 		}
 		return result;
 	}
+	
+	
+	
 	
 	//댓글 상세보기
 	public AniCommentDTO anicommentDetail(AniCommentDTO dto) {

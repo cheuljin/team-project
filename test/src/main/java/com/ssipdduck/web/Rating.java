@@ -21,10 +21,7 @@ public class Rating extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Rating() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

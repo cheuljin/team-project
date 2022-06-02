@@ -2,6 +2,7 @@ package com.ssipdduck.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpCookie;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssipdduck.DAO.AnirecomDAO;
 import com.ssipdduck.DTO.AniRecomDTO;
@@ -31,12 +33,24 @@ public class AniLike extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int result = 0;
-		if(request.getParameter("a_no") != null && Util.str2Int(request.getParameter("a_no"))) {
-			int a_no = Integer.parseInt(request.getParameter("a_no"));
+		HttpSession session = request.getSession();
+		if(request.getParameter("a_no") != null && Util.str2Int(request.getParameter("a_no")) && session.getAttribute("u_email")!=null) {
 			AnirecomDAO dao = new AnirecomDAO();
-			
-			result = dao.likeUp(a_no);
 			AniRecomDTO dto = new AniRecomDTO();
+			
+			dto.setA_no(Integer.parseInt(request.getParameter("a_no")));
+			
+			dto.setU_id((String)session.getAttribute("u_email"));
+
+			result = dao.likeCheck(dto);
+			
+			if(result == 1 ) {
+				result = dao.likeUp(Integer.parseInt(request.getParameter("a_no")));
+				
+			}else {
+				result = 0;
+			}
+			
 			PrintWriter pw = response.getWriter();
 			pw.print(result);
 	       
@@ -48,8 +62,20 @@ public class AniLike extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int result = 0;
+		HttpSession session = request.getSession();
+		if(request.getParameter("a_no") != null && Util.str2Int(request.getParameter("a_no")) && session.getAttribute("u_email")!=null) {
+			AnirecomDAO dao = new AnirecomDAO();
+			AniRecomDTO dto = new AniRecomDTO();
+			
+			dto.setA_no(Integer.parseInt(request.getParameter("a_no")));
+			
+			dto.setU_id((String)session.getAttribute("u_email"));
+
+			result = dao.likeCheck(dto);
+			PrintWriter pw = response.getWriter();
+			pw.print(result);
+		}	
 	}
 
 }

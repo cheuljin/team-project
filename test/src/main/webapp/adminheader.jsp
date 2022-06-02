@@ -46,7 +46,7 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>                
-                            	<li><a href="./adminuser"><font size="5px;">게시판관리</font> <span class="arrow_carrot-down"></span></a>
+                            	<li><a href="#"><font size="5px;">게시판관리</font> <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./adminnotice">Notice</a></li>
                                         <li><a href="#">Board</a></li>
@@ -55,9 +55,7 @@
                                 </li>
                             	<li><a href="./adminuser"><font size="5px;">회원관리</font> <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="#">회원정보보기</a></li>
-                                        <li><a href="#">회원추가하기</a></li>
-                                        <li><a href="#">회원삭제하기</a></li>
+                                        <li><a href="./adminuser">회원정보보기</a></li>
                                     </ul>
                                 </li>
                             </ul>

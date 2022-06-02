@@ -83,8 +83,9 @@ a:visited, a:link {
 				if(data == 1){
 					$("#like").attr('src','./img/like2.png');
 					 $('#likecount').load(location.href+' #likecount');
-				}else{
-					
+				}else if(data == 0){
+					$("#like").attr('src','./img/like.png');
+					 $('#likecount').load(location.href+' #likecount');
 				}
 			} ,
 			error : function(data){
@@ -182,6 +183,28 @@ a:visited, a:link {
 			}
 	 });
    });
+   //좋아요 ajax
+   $(document).ready(function(){
+	   let a_no = ${dto.a_no};
+	    $.ajax({
+			url : "./anilike",
+			type : "post",
+			dataType : "html",
+			data : {"a_no" : a_no}, 
+			success : function(data){
+				if(data == 1){
+					$("#like").attr('src','./img/like2.png');
+				}else {
+					$("#like").attr('src','./img/like.png');
+				}
+			} ,
+			error : function(data){
+				alert(data);
+			}
+	 });
+  });
+  
+   
    </script>
    
 </head>

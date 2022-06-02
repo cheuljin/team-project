@@ -153,20 +153,20 @@ function readURL(input) {
 				<th id="sh1" style="color: white;">
 				
 				<input type="text" id="sample4_postcode" placeholder="우편번호">
-	<input type="button" onclick="execDaumPostcode()"
+	<input type="button" onclick="sample4_execDaumPostcode()"
 		value="우편번호 찾기">
 	<br>
-	<input type="text" id="as_roadAddr" placeholder="도로명주소" style="width: 250px">
-	<input type="text" id="as_jibunAddr" placeholder="지번주소"  style="width: 250px">	
+	<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 250px">
+	<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  style="width: 250px">	
 	<span id="guide" style="color: #999; display: none"></span>
-	<input type="text" id="as_detailAddr" placeholder="상세주소"  style="width: 250px">
-	<input type="text" id="as_extraAddr" placeholder="참고항목"  style="width: 250px">
+	<input type="text" id="sample4_detailAddress" placeholder="상세주소"  style="width: 250px">
+	<input type="text" id="sample4_extraAddress" placeholder="참고항목"  style="width: 250px">
 
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-		function execDaumPostcode() {
+		 function sample4_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -191,15 +191,15 @@ function readURL(input) {
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('as_postcode').value = data.zonecode;
-                document.getElementById("as_roadAddr").value = roadAddr;
-                document.getElementById("as_jibunAddr").value = data.jibunAddress;
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
                 
                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
                 if(roadAddr !== ''){
-                    document.getElementById("as_extraAddr").value = extraRoadAddr;
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
                 } else {
-                    document.getElementById("as_extraAddr").value = '';
+                    document.getElementById("sample4_extraAddress").value = '';
                 }
 
                 var guideTextBox = document.getElementById("guide");
@@ -225,6 +225,10 @@ function readURL(input) {
 				</th>
 			</tr>
 			</table>
+			<br>
+			<br>
+			<br>
+			
 			<button type="submit"
 			style="position: absolute; margin: 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">등록하기</i>

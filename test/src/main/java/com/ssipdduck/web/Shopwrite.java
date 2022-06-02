@@ -51,8 +51,9 @@ request.setCharacterEncoding("UTF-8");
 
 				ShopDAO dao = new ShopDAO();
 				ShopDTO dto = new ShopDTO();
-				dto.setAs_content(request.getParameter("content"));
+				dto.setAs_image(request.getParameter("image"));
 				dto.setAs_name(request.getParameter("name"));
+				dto.setAs_content(request.getParameter("content"));
 				dto.setU_email((String) session.getAttribute("u_email"));
 				dao.shopwrite(dto);
 				

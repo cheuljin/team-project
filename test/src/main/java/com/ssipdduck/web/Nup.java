@@ -33,7 +33,7 @@ public class Nup extends HttpServlet {
 		if(request.getParameter("an_no") != null) {
 			if(Util.str2Int(request.getParameter("an_no"))) {
 				int an_no = Integer.parseInt(request.getParameter("an_no"));
-				//세션
+				
 				HttpSession session = request.getSession();
 				if(session.getAttribute("u_eamil") != null) {
 					NoticeDAO dao = new NoticeDAO();

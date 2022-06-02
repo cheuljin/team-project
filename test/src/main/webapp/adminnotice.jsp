@@ -40,7 +40,7 @@
 <script type="text/javascript">
 function del(num){
 	   if (confirm("해당 댓글을 수정하시겠습니까?")) {
-	      location.href="./adminnoticedel?a_no="+num;
+	      location.href="./adminnoticedel?an_no="+num;
 	   }
 	}
 
@@ -79,7 +79,7 @@ function del(num){
 						<td id="td1" style="color: white;">${i.an_no }</td>
 						<td id="td2" style="color: white;">${i.an_title }</td>
 						<td id="td4" style="color: white;">${i.an_date }</td>
-						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminnoticeup?a_no=${i.an_no }'">
+						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminnoticeup?an_no=${i.an_no }'">
 						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.an_no})">
 						</td>				
 					</tr>

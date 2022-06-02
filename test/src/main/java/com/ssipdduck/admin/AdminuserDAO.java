@@ -36,18 +36,19 @@ public class AdminuserDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				AdminuserDTO dto = new AdminuserDTO();				
+				AdminuserDTO dto = new AdminuserDTO();		
+				dto.setU_no(rs.getInt("u_no"));
 				dto.setU_name(rs.getString("u_name"));
 				dto.setU_nickname(rs.getString("u_nickname"));
 				dto.setU_tel(rs.getString("u_tel"));
 				dto.setU_email(rs.getString("u_email"));
 				dto.setU_date(rs.getString("u_date"));
 				list.add(dto);
-				
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			close(pstmt, rs);
 		}
 		return list;
 	}

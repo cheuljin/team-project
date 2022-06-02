@@ -31,58 +31,58 @@
    
    <style type="text/css">
        #main{
-    	margin: 0 auto;
-    	height: 450px;
-    	width: 1200px;
-   	 }
+       margin: 0 auto;
+       height: 450px;
+       width: 1200px;
+       }
    
    </style>
 
 </head>
 <body>
-	<jsp:include page="./adminheader.jsp"/>
+   <jsp:include page="./adminheader.jsp"/>
      
      <!-- 본문 Section Begin -->
      <div class=container>
      
      <div id="write-board" style="margin: 0 auto; margin-top: 30px; width: 600px; height: 500px;">
-     	<form action="./adminreviewup" method="POST" enctype="multipart/form-data">
-     	<div>
-     		<input type="hidden" name="a_no" value="${dto.a_no }">
-     		<input type="text" name="a_title" placeholder="애니메이션 제목" value="${dto.a_title }" required="required">
-     		<input type="text" name="a_writer" placeholder="작가" value="${dto.a_writer }" required="required">
-     		
-     		<input type="number" name="a_epi" required="required" value="${dto.a_epi }" placeholder="회부 수">
-     		<input type="text" name="a_type" required="required" value="${dto.a_type }" placeholder="TV or Cinema">
-     	</div>
-     	<div>
-     		<label for="start" style="color: white;">출시일: </label>
-			<input type="date" id="a_aired" name="a_aired">
-			<input type="text" name="a_studio" value="${dto.a_studio }" required="required" placeholder="제작사">
-  			<select name="a_category" id="a_category">
-  				<option value="none" selected="selected">===장르===</option>
-  				<option value="소년">소년</option>
-    			<option value="comic">Comic</option>
-    			<option value="Action">Action</option>
-    			<option value="drama">Drama</option>
-    			<option value="fantasy">Fantasy</option>
-  			</select>
-  			<br>
-     	</div>
-     	<br>
-     	<textarea class="form-control" name="a_content" id="textArea_byteLimit"  onkeyup="fn_checkByte(this)" rows="10" required="required" placeholder="줄거리내용입력해주세요.">${dto.a_content }</textarea>
-			<input type="file" name="file" style="color:white;">
-			<br>
-			<button type="submit"  class="btn btn-info">수정</button>
-		</form>
-	 </div>
-	 <!-- Anime Section End -->		 
-			 		  
-  	</div>
-  	
-	<jsp:include page="footer.jsp"/>
-	    <!-- Js Plugins -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <form action="./adminreviewup" method="POST" enctype="multipart/form-data">
+        <div>
+           <input type="hidden" name="a_no" value="${dto.a_no }">
+           <input type="text" name="a_title" placeholder="애니메이션 제목" value="${dto.a_title }" required="required">
+           <input type="text" name="a_writer" placeholder="작가" value="${dto.a_writer }" required="required">
+           
+           <input type="number" name="a_epi" required="required" value="${dto.a_epi }" placeholder="회부 수">
+           <input type="text" name="a_type" required="required" value="${dto.a_type }" placeholder="TV or Cinema">
+        </div>
+        <div>
+           <label for="start" style="color: white;">출시일: </label>
+         <input type="date" id="a_aired" name="a_aired">
+         <input type="text" name="a_studio" value="${dto.a_studio }" required="required" placeholder="제작사">
+           <select name="a_category" id="a_category">
+              <option value="none" selected="selected">===장르===</option>
+              <option value="소년">소년</option>
+             <option value="comic">Comic</option>
+             <option value="Action">Action</option>
+             <option value="drama">Drama</option>
+             <option value="fantasy">Fantasy</option>
+           </select>
+           <br>
+        </div>
+        <br>
+        <textarea class="form-control" name="a_content" id="textArea_byteLimit"  onkeyup="fn_checkByte(this)" rows="10" required="required" placeholder="줄거리내용입력해주세요.">${dto.a_content }</textarea>
+         <input type="file" name="file" style="color:white;">
+         <br>
+         <button type="submit"  class="btn btn-info">수정</button>
+      </form>
+    </div>
+    <!-- Anime Section End -->       
+                  
+     </div>
+     
+   <jsp:include page="footer.jsp"/>
+       <!-- Js Plugins -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/player.js"></script>

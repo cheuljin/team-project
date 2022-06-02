@@ -44,7 +44,6 @@ function del(num){
 	      location.href="./adminreviewdel?a_no="+num;
 	   }
 	}
-
 </script>
 </head>
 <body>

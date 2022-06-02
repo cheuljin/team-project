@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssipdduck.DTO.AniRecomDTO;
+import com.ssipdduck.DTO.AniboardDTO;
 import com.ssipdduck.DTO.NoticeDTO;
 
 import db.DBConnection;
@@ -130,7 +131,7 @@ public class AdminboardDAO {
 			close(pstmt, null);
 		}
 	}
-
+	//Review 삭제
 	public void reviewDel(int a_no) {
 		sql = " delete from ani where a_no=?";
 		
@@ -145,10 +146,10 @@ public class AdminboardDAO {
 			close(pstmt, null);
 		}
 	}
-
+	//공지사항 리스트 
 	public List<NoticeDTO> noticeList() {
 		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
-		String sql = "SELECT * FROM ani_notice order by an_no desc;";
+		String sql = "SELECT * FROM ani_notice order by an_no desc";
 
 		try {
 			conn = DBConnection.dbConn();
@@ -171,4 +172,94 @@ public class AdminboardDAO {
 		}
 		return list;
 	}
+	//공지사항 불러오기
+	public NoticeDTO noticedetail(int an_no) {
+		ResultSet rs = null;
+		String sql = "SELECT * FROM ani_notice WHERE an_no=?";
+		NoticeDTO dto = new NoticeDTO();
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, an_no);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dto.setAn_no(rs.getInt("an_no"));
+				dto.setAn_title(rs.getString("an_title"));
+				dto.setAn_content(rs.getString("an_content"));
+				dto.setAn_date(rs.getString("an_date"));
+				dto.setAn_count(rs.getInt("an_count"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+	//공지사항 수정
+	public void noticeUp(NoticeDTO dto) {
+		sql = "UPDATE ani_notice set an_title = ?, an_content=? where an_no=?";
+		try {
+			conn = DBConnection.dbConn();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getAn_title());
+			pstmt.setString(2, dto.getAn_content());
+			pstmt.setInt(3, dto.getAn_no());
+			pstmt.execute();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		
+	}
+	//공지사항 삭제
+	public void noticeDel(int an_no) {
+		sql = " delete from ani_notice where an_no=?";
+		
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, an_no);
+			
+			rs = pstmt.executeQuery();
+		}catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		
+	}
+
+	public List<AniboardDTO> boardlist() {
+		List<AniboardDTO> list = new ArrayList<AniboardDTO>();
+		sql = "SELECT * FROM boardview";
+			//	select, insert, update
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				AniboardDTO dto = new AniboardDTO();
+				dto.setB_no(rs.getInt("b_no"));
+				dto.setU_no(rs.getInt("u_no"));
+				dto.setB_title(rs.getString("b_title"));
+				dto.setB_content(rs.getString("b_content"));
+				dto.setB_date(rs.getString("b_date"));
+				dto.setB_like(rs.getInt("b_like"));
+				dto.setB_count(rs.getInt("b_count"));
+				dto.setU_nickname(rs.getString("u_nickname"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			close(pstmt, rs);
+		}
+		
+		return list;
+		}
 }

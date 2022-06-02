@@ -49,7 +49,7 @@
                             	<li><a href="#"><font size="5px;">게시판관리</font> <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./adminnotice">Notice</a></li>
-                                        <li><a href="#">Board</a></li>
+                                        <li><a href="./adminboard">Board</a></li>
                                         <li><a href="./adminreview">Review</a></li>
                                     </ul>
                                 </li>

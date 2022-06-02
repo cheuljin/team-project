@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시로이네코</title>
+<title>시로이네코</title> 
    <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
@@ -37,17 +37,14 @@
     
     
     </style>
-    
+
 <script type="text/javascript">
-
-function del1(num){
-	if (confirm("회원 정보를 삭제하시겠습니까?")) {
-		location.href="./adminuser_del?u_no="+ num ;
+function del(num){
+	   if (confirm("해당 댓글을 수정하시겠습니까?")) {
+	      location.href="./adminreviewdel?a_no="+num;
+	   }
 	}
-}
-
-</script>    
-
+</script>
 </head>
 <body>
 	<jsp:include page="./adminheader.jsp"/>
@@ -55,42 +52,45 @@ function del1(num){
     
         <!-- Hero Section Begin -->
     <section class="hero">
-        <div class="container">
          	
-        </div>
+       
     </section>
     <!-- Hero Section End -->
     <div id="anirecom-container">
 		<div id="recom-main">
-			<h1 style="color: white; text-align: center">회원정보 관리페이지</h1>
-			
+			<h1 style="color: white; text-align: center">Review 관리자</h1>
+			<c:if test="${sessionScope.u_email eq 'admin@a.com' }">
+             <button type="button" onclick="location.href='./aniwrite'" style="position: absolute;left: 1000px; width: 150px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			</c:if>
 		</div>
 	</div>
 	
-			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
+    <section class="product-page spad"> 
+        <div class="container">
+  			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 100%;">
 			<table class="table table-striped">
 				<tr>
-					<th style="color: white;">이름</th>
-					<th style="color: white;">닉네임</th>
 					<th style="color: white;">번호</th>
-					<th style="color: white;">이메일</th>
-					<th style="color: white;">가입일자</th>
+					<th style="color: white;">제목</th>
+					<th style="color: white;">날짜</th>
 				</tr>
 				<c:forEach items="${list }" var="i">
-					<input type="hidden" name="u_no" value=${i.u_no }/>
 					<tr>
-						
-						<td id="td1" style="color: white;">${i.u_name }</td>
-						<td id="td2" style="color: white;">${i.u_nickname }</td>
-						<td id="td3" style="color: white;">${i.u_tel }</td>
-						<td id="td4" style="color: white;">${i.u_email }</td>
-						<td id="td5" style="color: white;">${i.u_date }</td>
-						<td> <img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del1(${i.u_no})">
+						<td id="td1" style="color: white;">${i.a_no }</td>
+						<td id="td2" style="color: white;">${i.a_title }</td>
+						<td id="td4" style="color: white;">${i.a_date }</td>
+						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminreviewup?a_no=${i.a_no }'">
+						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.a_no})">
 						</td>				
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
+	
+	</div>
+	</section>
+	
+	
 	
 	<jsp:include page="footer.jsp"/>
 	

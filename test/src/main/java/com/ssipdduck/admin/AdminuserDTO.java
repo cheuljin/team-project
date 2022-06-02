@@ -2,6 +2,15 @@ package com.ssipdduck.admin;
 
 public class AdminuserDTO {
 	private String u_name, u_nickname, u_tel, u_email, u_date;
+	private int u_no;
+
+	public int getU_no() {
+		return u_no;
+	}
+
+	public void setU_no(int u_no) {
+		this.u_no = u_no;
+	}
 
 	public String getU_name() {
 		return u_name;

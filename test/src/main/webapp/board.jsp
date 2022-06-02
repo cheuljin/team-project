@@ -77,7 +77,7 @@
 	</div>
           
           <!-- Product Section Begin -->
-    <section class="product-page spad" style="padding-top: 0; height:100px; margin-bottom: 30px;">
+    <section class="product-page spad" style="padding-top: 0; padding-bottom: 0;">
         <div class="container" style="width: 100%;">
             <div class="row">
                 <div class="col-lg-8">
@@ -95,10 +95,10 @@
             </div>
         </div>
 	</section>
-	
 
-		<div id="recom-board"
-			style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
+<section class="product-page spad">	
+	<div class = container>
+		<div id="recom-board">
 			<table class="table table-striped">
 
 				<tr>
@@ -120,5 +120,19 @@
 			</table>
 			<button type="button" onclick="location.href='./boardwrite'" style="margin-right : 0 auto; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
+	</div>
+</section> 	
+	
+	<jsp:include page="footer.jsp" />
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+		
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시로이네코</title> ㅎㅎ
+<title>시로이네코</title> 
    <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
@@ -37,6 +37,15 @@
     
     
     </style>
+
+<script type="text/javascript">
+function del(num){
+	   if (confirm("해당 댓글을 수정하시겠습니까?")) {
+	      location.href="./adminreviewdel?a_no="+num;
+	   }
+	}
+
+</script>
 </head>
 <body>
 	<jsp:include page="./adminheader.jsp"/>
@@ -44,9 +53,8 @@
     
         <!-- Hero Section Begin -->
     <section class="hero">
-        <div class="container">
          	
-        </div>
+       
     </section>
     <!-- Hero Section End -->
     <div id="anirecom-container">
@@ -58,7 +66,9 @@
 		</div>
 	</div>
 	
-			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
+    <section class="product-page spad"> 
+        <div class="container">
+  			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 100%;">
 			<table class="table table-striped">
 				<tr>
 					<th style="color: white;">번호</th>
@@ -68,16 +78,20 @@
 				<c:forEach items="${list }" var="i">
 					<tr>
 						<td id="td1" style="color: white;">${i.a_no }</td>
-						<td id="td2" style="color: white;"><a href="./adminboardDetail?a_no=${i.a_no }">${i.a_title }</a></td>
+						<td id="td2" style="color: white;">${i.a_title }</td>
 						<td id="td4" style="color: white;">${i.a_date }</td>
-						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="./adminreviewup">
-						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="./adminreviewdel">
+						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminreviewup?a_no=${i.a_no }'">
+						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.a_no})">
 						</td>				
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; left: 1200px;   font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
+	
+	</div>
+	</section>
+	
+	
 	
 	<jsp:include page="footer.jsp"/>
 	

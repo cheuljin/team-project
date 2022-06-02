@@ -1,7 +1,7 @@
 package com.ssipdduck.DTO;
 
 public class LoginDTO {
-	private String u_name, u_nickname, u_email, u_tele, u_password;
+	private String u_name, u_nickname, u_email, u_tel, u_password;
 	private int c;
 	
 	public int getC() {
@@ -36,12 +36,12 @@ public class LoginDTO {
 		this.u_email = u_email;
 	}
 
-	public String getU_tele() {
-		return u_tele;
+	public String getU_tel() {
+		return u_tel;
 	}
 
-	public void setU_tele(String u_tele) {
-		this.u_tele = u_tele;
+	public void setU_tele(String u_tel) {
+		this.u_tel = u_tel;
 	}
 
 	public String getU_password() {

@@ -14,24 +14,14 @@ import com.ssipdduck.DAO.SignupDAO;
 import com.ssipdduck.DTO.LoginDTO;
 import com.ssipdduck.DTO.SignupDTO;
 
-/**
- * Servlet implementation class Mypage
- */
 @WebServlet("/mypage")
 public class Mypage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Mypage() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("u_email")!=null) {
@@ -49,9 +39,6 @@ public class Mypage extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		SignupDAO dao = new SignupDAO();
@@ -60,6 +47,7 @@ public class Mypage extends HttpServlet {
 		dto.setEmail((String)session.getAttribute("u_email"));
 		dto.setNickname((String)request.getParameter("nickname"));
 		dto.setPassword((String)request.getParameter("password"));
+		dto.setTele((String)request.getParameter("u_tel"));
 		
 		dao.mypagemodify(dto);
 		

@@ -155,14 +155,15 @@ public class SignupDAO {
 	public void mypagemodify(SignupDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE user set u_nickname=?, u_password=? where u_email=?";
+		String sql = "UPDATE user set u_nickname=?, u_password=?, u_tel=?, where u_email=?";
 		
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getNickname());
 			pstmt.setString(2, dto.getPassword());
-			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(3, dto.getTele());
+			pstmt.setString(4, dto.getEmail());
 			pstmt.executeQuery();
 			
 		} catch (Exception e) {
@@ -170,4 +171,5 @@ public class SignupDAO {
 		}
 	}
 
-}
+	}
+

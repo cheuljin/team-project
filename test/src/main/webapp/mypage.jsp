@@ -30,6 +30,56 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"> -->
 	<link rel="stylesheet" type="text/css" href="css/mypage.css">
 
+
+
+<script type="text/javascript">
+function nicknameCheck1(){
+	var nickname = $("#nickname").val();
+	if(nickname == "" || nickname.length == 1){
+		$("#checkResult").css("color","red");
+		$("#checkResult").text("2자이상 입력해주세요.");
+		$("#nickname").focus();
+	}else{
+		$.ajax({
+			url : "./nicknamecheck",
+			type : "POST",
+			dataType : "html",
+			data : {"nickname" : nickname},
+			success : function(data){
+				if (data == 0) {
+					$("#checkResult").css("color", "green");
+					$("#checkResult").text(nickname + "은(는) 수정할 수 있습니다.");
+					$("#checkResult").attr("disabled", false);
+				} else {
+					$("#checkResult").css("color", "red");
+					$("#checkResult").text(nickname + "중복된 nickname입니다.");
+					$("#checkResult").attr("disabled", true);
+					$("#nickname").focus();
+				}
+			}
+		});
+	}
+}
+
+function passwordCheck1() {
+	var password1 = $("#password1").val();
+	var password2 = $("#password2").val();
+	
+	if(password1 != "" && password2 != "" ){
+		if (password1 == password2) {
+			$("#checkResult").html("일치");
+			$("#checkResult").attr("color", "green");
+		}else{
+			$("#checkResult").html("불일치");
+			$("#checkResult").attr("color", "red");
+			$("#password").focus();
+		}
+	}
+	
+}
+
+</script>
+
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -69,9 +119,11 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-users fa"
-									aria-hidden="true"></i></span> <input type="text" class="form-control" style="margin-left: 10px;"
-									name="username" id="nickname" required="required"
+									aria-hidden="true"></i></span> 
+									<input type="text" class="form-control" style="margin-left: 10px;"
+									name="username" id="nickname" required="required" onchange="nicknameCheck1()" autocomplete="off"
 									placeholder="${dto.nickname }" />
+									
 								 <a href="javascript:;" class="btn_model"><b id="right_item" class="btn8" onclick="clickcr(this,'prf.apply','','',event);" style="margin-left: 10px; ">적용</b></a>
 							</div>
 						</div>
@@ -82,11 +134,11 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-users fa"
-									aria-hidden="true"></i></span> <input type="text" class="form-control" style="margin-left: 10px;"
-									name="username" id="nickname" required="required"
-									placeholder="${dto.nickname }" />
-								<a href="javascript:;" class="btn_model"><b id="right_item" class="btn8" onclick="clickcr(this,'prf.apply','','',event);" style="margin-left: 10px; ">적용</b></a>
-							
+									aria-hidden="true"></i></span> 
+									<input type="text" class="form-control" style="margin-left: 10px;"
+									name="tele" id="tel" required="required" autocomplete="off"
+									placeholder="${dto.tele }" />
+								 <a href="javascript:;" class="btn_model"><b id="right_item" class="btn8" onclick="clickcr(this,'prf.apply','','',event);" style="margin-left: 10px; ">적용</b></a>
 							</div>
 						</div>
 					</div>
@@ -97,8 +149,8 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-									type="password" class="form-control" style="margin-left: 10px;" name="password"
-									id="password" placeholder="Enter your Password" />
+									type="password" class="form-control" style="margin-left: 10px;" name="password" onchange="passwordCheck1()" autocomplete="off"
+									id="password1" placeholder="Password" />
 							</div>
 						</div>
 					</div>
@@ -111,12 +163,12 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-									type="password" class="form-control" style="margin-left: 10px;" name="confirm"
-									id="confirm" placeholder="Confirm your Password" />
+									type="password" class="form-control" style="margin-left: 10px;" name="password2" onchange="passwordCheck1()"
+									id="password2" placeholder="Password" autocomplete="off" />
 							</div>
 						</div>
 					</div>
-					<div id="resultCheck">중복체크</div>
+					<div id="checkResult">중복체크</div>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">modify</button>
 						</div>
@@ -125,49 +177,6 @@
 			</div>
 		</div>
 	
-
-
-	<script type="text/javascript">
-function nicknameCheck() {
-	var email = $("#nickname").val();
-	if(email == "" || nickname.length < 1){
-		$("#checkResult").css("color","red");
-	}else{
-		$.ajax({
-			url : "./nicknamecheck",
-			type : "POST",
-			dataType : "html",
-			data : {"nickname" : nickname},
-			success : function(data){
-				if (data == 0) {
-					$("#checkResult").css("color", "green");
-					$("#checkResult").text(nickname + "은(는) 수정할 수 있습니다.");
-					$("#checkResult").attr("disabled", false);
-				} else {
-					$("#checkResult").css("color", "red");
-					$("#checkResult").text(nickname + "중복된 nickname입니다.");
-					$("#checkResult").attr("disabled", true);
-					$("#nickname").focus();
-				}
-			}
-		});
-	}
-}
-
-function passwordCheck() {
-	var password1 = $("#password1").val();
-	var password2 = $("#password2").val();
-	
-	if(password1 != "" && password2 != "" ){
-		if (password1 == password2) {
-			$("#checkResult").html("일치");
-			$("#checkResult").attr("color", "green");
-		}else{
-			$("#checkResult").html("불일치");
-			$("#checkResult").attr("color", "red");
-		}
-	}
-
 
 	</script>
 	<jsp:include page="footer.jsp" />

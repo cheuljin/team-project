@@ -249,5 +249,25 @@ public class AniboardDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public int boardlike(int b_no) {
+		sql = "UPDATE board SET b_like = b_like + 1 WHERE b_no=?";
+		
+		int result = 0;
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt, null);
+		}
+		return result;
+		
 	}			
 }

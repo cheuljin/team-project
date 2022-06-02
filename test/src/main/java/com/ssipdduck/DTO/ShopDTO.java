@@ -2,8 +2,52 @@ package com.ssipdduck.DTO;
 
 public class ShopDTO {
 	private int as_no;
-	private String as_name, as_site, as_map, as_content;
+	private String as_name, as_site, as_map, as_content,
+					as_description, as_postcode, as_roadAddr, 
+					as_detailAddr, as_extraAddr, as_image, u_email;
 	
+	public String getAs_description() {
+		return as_description;
+	}
+	public void setAs_description(String as_description) {
+		this.as_description = as_description;
+	}
+	public String getAs_postcode() {
+		return as_postcode;
+	}
+	public String getU_email() {
+		return u_email;
+	}
+	public void setU_email(String u_email) {
+		this.u_email = u_email;
+	}
+	public void setAs_postcode(String as_postcode) {
+		this.as_postcode = as_postcode;
+	}
+	public String getAs_image() {
+		return as_image;
+	}
+	public void setAs_image(String as_image) {
+		this.as_image = as_image;
+	}
+	public String getAs_roadAddr() {
+		return as_roadAddr;
+	}
+	public void setAs_roadAddr(String as_roadAddr) {
+		this.as_roadAddr = as_roadAddr;
+	}
+	public String getAs_detailAddr() {
+		return as_detailAddr;
+	}
+	public void setAs_detailAddr(String as_detailAddr) {
+		this.as_detailAddr = as_detailAddr;
+	}
+	public String getAs_extraAddr() {
+		return as_extraAddr;
+	}
+	public void setAs_extraAddr(String as_extraAddr) {
+		this.as_extraAddr = as_extraAddr;
+	}
 	public int getAs_no() {
 		return as_no;
 	}

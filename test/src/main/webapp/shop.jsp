@@ -109,9 +109,10 @@ img {
 	<div id="shop" style="margin: 0 auto; width: 1200px; height: 500px;">
 		<hr align="center" style="border: solid 1px yellow; width: 50%;">
 		<table style="margin: 0 auto;">
+			<c:forEach items="${list }" var="i">
 			<tr>
-				<th id="sh1" style="color: white;"><a href=""><img src="/img/like.png"></a></th>
-				<th id="sh1" style="color: white;">www.naver.com</th>
+				<th id="sh1" style="color: white;"><a href="${i.as_name }">>${i.as_image }</a></th>
+				<th id="sh1" style="color: white;">${i.as_name }</th>
 				<th id="sh1" style="color: white;">
 				<div id="map" style="width: 300px; height: 200px;"></div>
 			<script>
@@ -124,9 +125,15 @@ img {
 			</script>
 				</th>
 			</tr>
+			</c:forEach>
 		</table>	
 		<hr align="center" style="border: solid 1px yellow; width: 50%;">
-		
+		<button type="button" onclick="location.href='./shopwrite'"
+			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; 
+			letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none;
+			 padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">Write</i>
+		</button>
 	</div>
 	
 

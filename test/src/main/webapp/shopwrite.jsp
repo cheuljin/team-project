@@ -56,8 +56,37 @@ img {
 	width: 33%;
 }
 
-
 </style>
+<script type="text/javascript">
+
+$(function() {
+
+    $("image_file").on('change', function(){
+
+    readURL(this);
+
+    });
+
+});
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+
+        $('#View').attr('src', e.target.result);
+
+        }
+
+        reader.readAsDataURL(input.files[0]);
+
+    }
+
+}
+</script>
 
 </head>
 <body>
@@ -112,7 +141,10 @@ img {
 		
 		<table style="margin: 0 auto;">
 			<tr>
-				<th id="sh1" style="color: white;"><input type="file" id="file" style="color:white;"></th>
+				<th id="sh1" style="color: white;">
+				<input type="file" id="image_file" style="color: white;" onchange="readURL(this);">
+				<img id="View" src="#" alt="이미지 미리보기" />
+				</th>
 				<th id="sh1" style="color: white;"><input type="url" id="shopsite" placeholder="샵사이트명"></th>
 				<th id="sh1" style="color: white;">
 				

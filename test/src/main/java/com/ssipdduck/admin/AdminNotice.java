@@ -1,15 +1,18 @@
 package com.ssipdduck.admin;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AdminNotice
- */
+import com.ssipdduck.DAO.NoticeDAO;
+import com.ssipdduck.DTO.NoticeDTO;
+
 @WebServlet("/adminnotice")
 public class AdminNotice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +29,11 @@ public class AdminNotice extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
+		AdminboardDAO dao = new AdminboardDAO();
+		List<NoticeDTO> list = dao.noticeList();
+		RequestDispatcher rd = request.getRequestDispatcher("./adminnotice.jsp");
+		request.setAttribute("list", list);
+		rd.forward(request, response);	
 	}
 
 	/**

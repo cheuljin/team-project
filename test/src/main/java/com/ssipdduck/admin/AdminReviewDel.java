@@ -34,7 +34,7 @@ public class AdminReviewDel extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(request.getParameter("a_no") !=null && Util.str2Int(request.getParameter("a_no"))) {
 			AniRecomDTO dto = new AniRecomDTO();
-			AdminReviewDAO dao = new AdminReviewDAO();
+			AdminboardDAO dao = new AdminboardDAO();
 			dto.setA_no(Integer.parseInt(request.getParameter("a_no")));
 			
 			dao.reviewDel(Integer.parseInt(request.getParameter("a_no")));

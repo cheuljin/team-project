@@ -71,8 +71,10 @@ public class AniLike extends HttpServlet {
 			dto.setA_no(Integer.parseInt(request.getParameter("a_no")));
 			
 			dto.setU_id((String)session.getAttribute("u_email"));
+			
+			result = dao.likeCheck1(dto);
 
-			result = dao.likeCheck(dto);
+			
 			PrintWriter pw = response.getWriter();
 			pw.print(result);
 		}	

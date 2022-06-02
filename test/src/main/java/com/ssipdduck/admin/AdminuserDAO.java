@@ -54,13 +54,13 @@ public class AdminuserDAO {
 	}
 
 	public void admin_del(AdminuserDTO dto) {
-		sql = "UPDATE user SET u_del=1 WHERE u_name=? AND u_name(SELECT u_name FROM user WHERE u_name=?)";
+		sql = "delete from user where u_no = ?";
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getU_name());
+			pstmt.setInt(1, dto.getU_no());
+			pstmt.execute();
 		} catch (Exception e) {
-		
 			e.printStackTrace();
 		}
 		

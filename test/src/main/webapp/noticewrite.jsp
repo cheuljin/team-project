@@ -154,7 +154,7 @@
 							<div class="row">
 
 								<div class="section-title">
-									<h4>Notice write</h4>
+									<h4>Notice Write</h4>
 								</div>
 							</div>
 						</div>

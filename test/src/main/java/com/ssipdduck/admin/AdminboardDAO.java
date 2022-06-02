@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssipdduck.DTO.AniRecomDTO;
+import com.ssipdduck.DTO.NoticeDTO;
 
 import db.DBConnection;
 
-public class AdminReviewDAO {
+public class AdminboardDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -143,5 +144,31 @@ public class AdminReviewDAO {
 			e.printStackTrace();
 			close(pstmt, null);
 		}
+	}
+
+	public List<NoticeDTO> noticeList() {
+		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		String sql = "SELECT * FROM ani_notice order by an_no desc;";
+
+		try {
+			conn = DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				NoticeDTO dto = new NoticeDTO();
+				dto.setAn_no(rs.getInt("an_no"));
+				dto.setAn_title(rs.getString("an_title"));
+				dto.setAn_content(rs.getString("an_content"));
+				dto.setAn_count(rs.getInt("an_count"));
+				dto.setAn_date(rs.getString("an_date"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

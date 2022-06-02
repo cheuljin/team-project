@@ -33,7 +33,7 @@ public class AdminReviewUp extends HttpServlet {
     	if(Util.str2Int(request.getParameter("a_no"))){
 			int a_no = Integer.parseInt(request.getParameter("a_no"));
 			if(request.getParameter("a_no") !=null) {
-				AdminReviewDAO dao = new AdminReviewDAO();
+				AdminboardDAO dao = new AdminboardDAO();
 				AniRecomDTO dto = dao.detail(a_no);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/adminreviewupdate.jsp");
@@ -55,7 +55,7 @@ public class AdminReviewUp extends HttpServlet {
 		if(Util.str2Int(multi.getParameter("a_no"))){
 			int a_no = Integer.parseInt(multi.getParameter("a_no"));
 			if(multi.getParameter("a_no") !=null) {
-				AdminReviewDAO dao = new AdminReviewDAO();
+				AdminboardDAO dao = new AdminboardDAO();
 				AniRecomDTO dto = new AniRecomDTO();
 				dto.setA_no(a_no);
 				dto.setA_aired(multi.getParameter("a_aired"));

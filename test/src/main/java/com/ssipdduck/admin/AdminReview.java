@@ -36,7 +36,7 @@ public class AdminReview extends HttpServlet {
 		String u_email = (String)session.getAttribute("u_email");
 		
 		if(u_email != null && u_email.equals("admin@a.com")) {
-			AdminReviewDAO dao = new AdminReviewDAO();
+			AdminboardDAO dao = new AdminboardDAO();
 			List<AniRecomDTO> list = dao.adminreviewlist();
 			
 			RequestDispatcher rd = request.getRequestDispatcher("./adminreview.jsp");

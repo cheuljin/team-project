@@ -36,7 +36,7 @@ public class AdminuserDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				AdminuserDTO dto = new AdminuserDTO();
+				AdminuserDTO dto = new AdminuserDTO();				
 				dto.setU_name(rs.getString("u_name"));
 				dto.setU_nickname(rs.getString("u_nickname"));
 				dto.setU_tel(rs.getString("u_tel"));
@@ -50,6 +50,19 @@ public class AdminuserDAO {
 			// TODO: handle exception
 		}
 		return list;
+	}
+
+	public void admin_del(AdminuserDTO dto) {
+		sql = "UPDATE user SET u_del=1 WHERE u_name=? AND u_name(SELECT u_name FROM user WHERE u_name=?)";
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getU_name());
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

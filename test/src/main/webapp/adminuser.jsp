@@ -37,6 +37,18 @@
     
     
     </style>
+    
+<script type="text/javascript">
+
+function del(u_email) {
+	alert("gg");
+	if (confirm("회원 정보를 삭제하시겠습니까?")) {
+		location.href="./adminuser_del?u_email=" +  u_email;
+	}
+}
+
+</script>    
+
 </head>
 <body>
 	<jsp:include page="./adminheader.jsp"/>
@@ -73,7 +85,7 @@
 						<td id="td4" style="color: white;">${i.u_email }</td>
 						<td id="td5" style="color: white;">${i.u_date }</td>
 						<td>
-						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="./adminreviewdel">
+						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.u_email })">
 						</td>				
 					</tr>
 				</c:forEach>

@@ -65,7 +65,7 @@
                     </div>
                 <% } else { %>
                     <div class="header__right">	
-	            		<a href="./mypage"><img alt="gg" src="./img/option.jpg" style="width: 40px;height: 30px;"></a>
+	            		<a href="./mypage"><img alt="gg" src="./img/info3.png" style="width: 40px;height: 30px;"></a>
                         <a href="./logout"><img alt="" src="./img/logout.png" style="width: 40px;height: 30px;"></a>
                     </div>
                 <%} %>

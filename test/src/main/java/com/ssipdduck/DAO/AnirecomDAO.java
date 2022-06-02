@@ -224,7 +224,7 @@ public class AnirecomDAO {
 	public int likeCheck(AniRecomDTO dto) {
 		sql="insert into ani_like values (?,(select u_no from user where u_email = ?))";
 		int result = 0;
-		
+	
 		try {
 			conn=DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
@@ -247,7 +247,7 @@ public class AnirecomDAO {
 				pstmt = conn.prepareStatement(sql1);
 				pstmt.setInt(1, dto.getA_no());
 				pstmt.execute();
-				
+
 			}catch(Exception e1) {
 				e1.printStackTrace();
 				close(pstmt,null);
@@ -275,8 +275,28 @@ public class AnirecomDAO {
 		return result;
 	}
 	
+	//좋아요 ajax 불러오기
+	public int likeCheck1(AniRecomDTO dto) {
+		sql="select count(*)as c from ani_like where a_no=? and u_no=(select u_no from user where u_email = ?)";
+		int result = 0;
 	
-	
+		try {
+			conn=DBConnection.dbConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getA_no());
+			pstmt.setString(2,dto.getU_id());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			close(pstmt,null);
+		}
+		return result;
+	}
 	
 	//댓글 상세보기
 	public AniCommentDTO anicommentDetail(AniCommentDTO dto) {
@@ -417,4 +437,5 @@ public class AnirecomDAO {
 			
 		return dto;
 	}
+
 }

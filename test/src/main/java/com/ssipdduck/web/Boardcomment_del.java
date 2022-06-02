@@ -25,7 +25,9 @@ public class Boardcomment_del extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		if (request.getParameter("b_no") != null && request.getParameter("bc_no") != null && session.getAttribute("u_email") != null) {
+		if (request.getParameter("b_no") != null 
+				&& request.getParameter("bc_no") != null 
+				&& session.getAttribute("u_email") != null) {
 			BoardcommentDTO dto = new BoardcommentDTO();
 			AniboardDAO dao = new AniboardDAO();
 			
@@ -34,7 +36,10 @@ public class Boardcomment_del extends HttpServlet {
 			dto.setU_id((String)session.getAttribute("u_email"));
 			dao.boardcom_del(dto);
 			
+		}else {
+			
 		}
+		response.sendRedirect("./boardDetail?b_no=" + Integer.parseInt(request.getParameter("b_no")));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

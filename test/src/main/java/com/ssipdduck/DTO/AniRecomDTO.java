@@ -2,10 +2,16 @@ package com.ssipdduck.DTO;
 
 public class AniRecomDTO {
 	private int a_no, u_no, a_rate, a_count, a_epi,a_like,commentcount, totalcount, u_temp;
-	private String a_title, a_content, a_file, a_orifile, a_date, a_category,a_type,a_studio,a_aired, u_nickname, u_id;
+	private String a_title, a_content, a_file, a_orifile, a_date, a_category,a_type,a_studio,a_aired, u_nickname, u_id, a_writer;
 
 	
 	
+	public String getA_writer() {
+		return a_writer;
+	}
+	public void setA_writer(String a_writer) {
+		this.a_writer = a_writer;
+	}
 	public int getU_temp() {
 		return u_temp;
 	}
@@ -13,8 +19,6 @@ public class AniRecomDTO {
 		this.u_temp = u_temp;
 	}
 
-	
-	
 	public int getA_like() {
 		return a_like;
 	}

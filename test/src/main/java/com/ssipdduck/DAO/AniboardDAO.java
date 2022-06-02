@@ -237,7 +237,17 @@ public class AniboardDAO {
 	}
 
 	public void boardcom_del(BoardcommentDTO dto) {
-		sql = "UPDATE";
+		sql = "UPDATE board_comment SET bc_del=1 WHERE bc_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getBc_no());
+			pstmt.setString(2, dto.getU_id());
+			pstmt.execute();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 		
 	}			
 }

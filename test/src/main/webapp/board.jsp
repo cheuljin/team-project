@@ -77,7 +77,7 @@
 	</div>
           
           <!-- Product Section Begin -->
-    <section class="product-page spad" style="padding-top: 0; height:100px; margin-bottom: 10px;">
+    <section class="product-page spad" style="padding-top: 0; height:100px; margin-bottom: 30px;">
         <div class="container" style="width: 100%;">
             <div class="row">
                 <div class="col-lg-8">
@@ -118,7 +118,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="location.href='./boardwrite'" style="position: absolute; right: 300px; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			<button type="button" onclick="location.href='./boardwrite'" style="margin-right : 0 auto; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
 </body>
 </html>

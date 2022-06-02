@@ -68,21 +68,49 @@ public class ShopDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "INSERT INTO ani_shop (as_image, as_name, as_site, as_map, as_content) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO ani_shop (as_no, as_image, as_site, as_name, as_content, as_roadAddr) VALUES(?,?,?,?,?,?)";
 				
 			try {
 				con = DBConnection.dbConn();
-				pstmt.setString(1, dto.getAs_image());
-				pstmt.setString(2, dto.getAs_name());
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, dto.getAs_no());
+				pstmt.setString(2, dto.getAs_image());
 				pstmt.setString(3, dto.getAs_site());
-				pstmt.setString(4, dto.getAs_map());
+				pstmt.setString(4, dto.getAs_name());
 				pstmt.setString(5, dto.getAs_content());
-
+				pstmt.setString(6, dto.getAs_roadAddr());
+				
+				
+				
+				pstmt.execute();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		
+	}
+
+	public ShopDTO detail(String as_roadAddr) {
+		ShopDTO dto = new ShopDTO();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM ani_shop WHERE as_no=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, as_roadAddr);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setAs_no(rs.getInt("as_no"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 }
 

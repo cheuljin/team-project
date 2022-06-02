@@ -20,7 +20,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet">
-	<link rel="shortcut icon" href="./favicon.ico"/>
+<link rel="shortcut icon" href="./favicon.ico" />
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -42,7 +42,6 @@
 	width: 1200px;
 }
 
-
 #row {
 	width: 1200px;
 }
@@ -51,11 +50,10 @@ img {
 	max-width: 100%;
 	margin: auto;
 }
-#sh1{
+
+#sh1 {
 	width: 33%;
 }
-
-
 </style>
 </head>
 <body>
@@ -85,7 +83,8 @@ img {
 	</div>
 
 	<!-- Product Section Begin -->
-	<section class="product-page spad" style="padding-top: 0; height: 100px;">
+	<section class="product-page spad"
+		style="padding-top: 0; height: 100px;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-lg-8">
@@ -104,40 +103,31 @@ img {
 		</div>
 	</section>
 	
-	
-	
+	<section class="product-page spad"> 
+	<div class="container">	
+
+		<hr align="center" style="border: solid 1px yellow; width: 50%;">		
 	<div id="shop" style="margin: 0 auto; width: 1200px; height: 500px;">
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">
 		<table style="margin: 0 auto;">
-			<c:forEach items="${list }" var="i">
-			<tr>
-				<th id="sh1" style="color: white;"><a href="${i.as_name }">>${i.as_image }</a></th>
-				<th id="sh1" style="color: white;">${i.as_name }</th>
-				<th id="sh1" style="color: white;">
-				<div id="map" style="width: 300px; height: 200px;"></div>
-			<script>
-				var container = document.getElementById('map');
-				var options = {
-					center : new kakao.maps.LatLng(37.485623, 126.812174),
-					level : 3
-				};
-				var map = new kakao.maps.Map(container, options);
-			</script>
-				</th>
-			</tr>
-			</c:forEach>
-		</table>	
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">
+			<c:forEach items="${list }" var="i" varStatus = "num">
+				<tr>
+					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_image }</a></td>
+					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
+														<a href="${i.as_site }" target='_blank'>${i.as_site }</a></td>
+					<td id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}" target='_blank'>${i.as_roadAddr}</a></td>				
+					</c:forEach>
+					</table>	
+					
 		<button type="button" onclick="location.href='./shopwrite'"
-			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; 
-			letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none;
-			 padding: 10px 15px; border-radius: 2px;">
+			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">Write</i>
 		</button>
 	</div>
-	
+		<hr align="center" style="border: solid 1px yellow; width: 50%;">
+	</div>
 
-	
+	</section>
+
 
 
 	<!-- <div id="map" style="width: 300px; height: 200px;"></div>
@@ -152,7 +142,7 @@ img {
 
 		var map = new kakao.maps.Map(container, options);
 	</script> -->
-	
+
 	<!-- <script type="text/javascript">
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -161,16 +151,71 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 };
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	<jsp:include page="footer.jsp"/>
 </script> -->
-	<jsp:include page="footer.jsp" />
-	<!-- Js Plugins -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/player.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/mixitup.min.js"></script>
-	<script src="js/jquery.slicknav.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/main.js"></script>
+
+	
+	    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+						<%-- <div id="${i.as_no }" style="width: 300px; height: 200px;">
+						</div>
+						${i.as_roadAddr }
+						
+						<script>
+							var mapContainer = document.getElementById('${i.as_no }'), // 지도를 표시할 div 
+							mapOption = {center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+							level : 3
+							// 지도의 확대 레벨
+							};
+
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer, mapOption);
+
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							
+							var addr = '${i.as_roadAddr}';
+							
+							// 주소로 좌표를 검색합니다
+							geocoder.addressSearch(addr, function(result,
+									status) {
+
+								// 정상적으로 검색이 완료됐으면 
+								if (status === kakao.maps.services.Status.OK) {
+
+								console.log(addr);
+									var coords = new kakao.maps.LatLng(
+											result[0].y, result[0].x);
+									
+									/* var message = 'latlng: new kakao.maps.LatLng(' + result[0].y + ', ';
+									message += result[0].x + ')';
+									
+									var resultDiv = document.getElementById('clickLatlng'); 
+									resultDiv.innerHTML = message; */
+									
+									console.log(result[0].y, result[0].x);
+									// 결과값으로 받은 위치를 마커로 표시합니다
+									var marker = new kakao.maps.Marker({
+										map : map,
+										position : coords
+									});
+									console.log(coords);
+									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+									map.setCenter(coords);
+								}
+							});
+						</script> --%>

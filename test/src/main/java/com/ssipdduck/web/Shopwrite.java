@@ -47,14 +47,17 @@ request.setCharacterEncoding("UTF-8");
 		String re = null;
 		if (session.getAttribute("u_email").equals("admin@a.com")) {
 
-			if (request.getParameter("name") != null && request.getParameter("content") != null) {
+			if (request.getParameter("image") != null && request.getParameter("site") != null) {
 
 				ShopDAO dao = new ShopDAO();
 				ShopDTO dto = new ShopDTO();
 				dto.setAs_image(request.getParameter("image"));
+				dto.setAs_site(request.getParameter("site"));
 				dto.setAs_name(request.getParameter("name"));
+				dto.setAs_roadAddr(request.getParameter("roadAddr"));
 				dto.setAs_content(request.getParameter("content"));
 				dto.setU_email((String) session.getAttribute("u_email"));
+				
 				dao.shopwrite(dto);
 				
 				re = "./shop";

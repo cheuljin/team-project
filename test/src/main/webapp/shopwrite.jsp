@@ -12,6 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <link rel="shortcut icon" href="./favicon.ico"/>
 <!-- Google Font -->
 <link
@@ -32,7 +34,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=913fc15a7c45f3c536f4330bfbbafbaf&libraries=services"></script>
 
 
 
@@ -55,9 +57,23 @@ img {
 #sh1 {
 	width: 33%;
 }
+#sh5{
+
+	
+}
 
 </style>
 <script type="text/javascript">
+
+function check() {
+	alert("사이트를 업로드 하시겠습니까?")
+	var name = document.getElementById("name");
+	if (name.value.length < 1) {
+		name.focus();
+		return false;
+	}
+
+}
 
 $(function() {
 
@@ -143,24 +159,24 @@ function readURL(input) {
 		<table style="margin: 0 auto;">
 			<tr>
 				<th id="sh1" style="color: white;">
-				<input type="file" id="image_file" style="color: white;" onchange="readURL(this);">
+				<input type="file" id="image" name="image" style="color: white;" onchange="readURL(this);">
 				<img id="View" src="#" alt="이미지 미리보기" />			
 				</th>
 				
-				<th id="sh1" style="color: white;">
-				<input type="url" id="shopsite" placeholder="샵사이트명">
+				<th id="sh2" style="color: white;">
+				<input type="text" id="name" name="name" placeholder="사이트 명"><br>
+				<input type="text" id="site" name="site" placeholder="사이트 주소">
 				</th>
 				<th id="sh1" style="color: white;">
 				
 				<input type="text" id="sample4_postcode" placeholder="우편번호">
-	<input type="button" onclick="sample4_execDaumPostcode()"
-		value="우편번호 찾기">
+				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 	<br>
-	<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 250px">
-	<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  style="width: 250px">	
+	<input type="text" id="sample4_roadAddress" name="roadAddr" placeholder="도로명주소" style="width: 250px;">
+	<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  style="width: 250px;">	
 	<span id="guide" style="color: #999; display: none"></span>
-	<input type="text" id="sample4_detailAddress" placeholder="상세주소"  style="width: 250px">
-	<input type="text" id="sample4_extraAddress" placeholder="참고항목"  style="width: 250px">
+	<input type="text" id="sample4_detailAddress" placeholder="상세주소"  style="width: 250px;">
+	<input type="text" id="sample4_extraAddress" placeholder="참고항목"  style="width: 250px;">
 
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -223,8 +239,81 @@ function readURL(input) {
 </script>
 				
 				</th>
+				
 			</tr>
 			</table>
+			<br>
+			<table style="float: right; width: 33%;">
+				<tr>
+				<td style="color: white;">
+				<input type="text" name="roadAddr" id="roadAddr" placeholder="도로명주소" style="width: 250px;">
+				<button type="button" id="searchBtn">지도</button></td>
+				<tr>
+			</table>
+			<br>
+			<br>
+				<div id="map" style="width:300px;height:300px; float: right; width: 33%;" ></div>
+				
+				<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+	
+	
+	$('#searchBtn').click(function(){
+		// 버튼을 click했을때
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch($('#address').val(), function(result, status) {
+	
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        
+		        // 추출한 좌표를 통해 도로명 주소 추출
+		        let lat = result[0].y;
+		        let lng = result[0].x;
+		        getAddr(lat,lng);
+		        function getAddr(lat,lng){
+		            let geocoder = new kakao.maps.services.Geocoder();
+	
+		            let coord = new kakao.maps.LatLng(lat, lng);
+		            let callback = function(result, status) {
+		                if (status === kakao.maps.services.Status.OK) {
+		                	// 추출한 도로명 주소를 해당 input의 value값으로 적용
+		                    $('#address').val(result[0].road_address.address_name);
+		                }
+		            }
+		            geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+		        }
+		        
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+	
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
+		        });
+		        infowindow.open(map, marker);
+	
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});  
+	});
+	  
+	</script>
 			<br>
 			<br>
 			<br>

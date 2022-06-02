@@ -251,6 +251,8 @@ public class AniboardDAO {
 		
 	}
 
+	
+	//게시글 좋아요
 	public int boardlike(int b_no) {
 		sql = "UPDATE board SET b_like = b_like + 1 WHERE b_no=?";
 		
@@ -269,5 +271,65 @@ public class AniboardDAO {
 		}
 		return result;
 		
+	}
+	
+	//게시글 좋아요 확인
+	public int boardlikecheck(AniboardDTO dto) {
+		sql = "INSERT INTO board_like values (?,(SELECT u_no from user WHERE u_email =?))";
+		int result = 0;
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getB_no());
+			pstmt.setString(2, dto.getU_id());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			result = 0;
+			sql = "DELETE FROM board_like WHERE b_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+			String sql_1 = "UPDATE board SET b_Like = b_like - 1 WHERE b_no=?";
+			
+			try {
+				con = DBConnection.dbConn();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, dto.getB_no());
+				pstmt.setString(2, dto.getU_id());
+				pstmt.execute();
+				
+				pstmt = con.prepareStatement(sql_1);
+				pstmt.setInt(1, dto.getB_no());
+				pstmt.execute();
+				
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				close(pstmt,null);
+			}
+			return result;
+		}
+		return result;
+	}
+
+	public int boardlikeajax(AniboardDTO dto) {
+		sql = "SELECT COUNT(*) AS c FROM board_like WHERE b_no=? AND u_no=(SELECT u_no FROM user WHERE u_email=?)";
+		int result = 0;
+		
+		try {
+			con=DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getB_no());
+			pstmt.setString(2, dto.getU_id());
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			close(pstmt, null);
+			e.printStackTrace();
+		}
+		return result;
 	}			
 }

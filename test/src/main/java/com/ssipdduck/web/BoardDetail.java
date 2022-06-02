@@ -33,7 +33,6 @@ public class BoardDetail extends HttpServlet {
 			AniboardDAO dao = new AniboardDAO();
 			AniboardDTO detail = dao.detail(b_no);
 			
-			System.out.println(detail.getCommentcount());
 			
 			if (detail.getCommentcount() != 0) {
 				List<BoardcommentDTO> list = dao.boardcomment(b_no);

@@ -111,6 +111,50 @@ function cdel(bc_no){
 		location.href="./boardcomment_del?b_no=${detail.b_no }&bc_no=" + bc_no;
 	}
 }
+
+function like(){
+	let b_no = ${detail.b_no};
+	$.ajax({
+		url : "./boardlike",
+		type : "GET",
+		dataType : "html",
+		data : {"b_no" : b_no}, 
+		success : function(data){
+			if(data == 1){
+				$("#like").attr('src','./img/like2.png');
+				 $('#board_like').load(location.href+' #board_like');
+			}else if(data == 0){
+				$("#like").attr('src','./img/like.png');
+				 $('#board_like').load(location.href+' #board_like');
+			}
+		} ,
+		error : function(data){
+			alert(data);
+		}
+	});
+}
+
+
+$(document).ready(function(){
+	   let b_no = ${detail.b_no};
+	    $.ajax({
+			url : "./boardlike",
+			type : "post",
+			dataType : "html",
+			data : {"b_no" : b_no}, 
+			success : function(data){
+				if(data == 1){
+					$("#like").attr('src','./img/like2.png');
+				}else {
+					$("#like").attr('src','./img/like.png');
+				}
+			} ,
+			error : function(data){
+				alert(data);
+			}
+	 });
+});
+
 </script>
 
 </head>
@@ -184,7 +228,7 @@ function cdel(bc_no){
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: right">
-				<small>좋아요 ${detail.b_like }</small>
+				<small id="board_like">좋아요 ${detail.b_like }</small>
 				</td>
 			</tr>
 		</table>
@@ -195,6 +239,11 @@ function cdel(bc_no){
                             <div class="section-title">
                             <br>
                             <br>
+                            <div class="anime__details__btn">
+                                <img alt="" src="./img/like.png" id="like" onclick="like()">
+                            </div>
+							<br>
+                            
 		<!-- 댓글 -->
 
 		<h5>Reviews</h5>

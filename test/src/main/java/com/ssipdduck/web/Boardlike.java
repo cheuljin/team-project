@@ -58,7 +58,7 @@ public class Boardlike extends HttpServlet {
 			
 			AniboardDAO dao = new AniboardDAO();
 			AniboardDTO dto = new AniboardDTO();
-			
+
 			dto.setB_no(Integer.parseInt(request.getParameter("b_no")));
 			dto.setU_id((String)session.getAttribute("u_email"));
 			

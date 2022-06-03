@@ -101,20 +101,22 @@
 		<div id="recom-board">
 			<table class="table table-striped">
 
-				<tr>
+				<tr style="text-align: center;">
 					<th id="th1" style="color: white;">번호</th>
 					<th id="th2" style="color: white;">제목</th>
 					<th id="th3" style="color: white;">글쓴이</th>
 					<th id="th4" style="color: white;">날짜</th>
 					<th id="th5" style="color: white;">조회수</th>
+					<th id="th5" style="color: white;">좋아요</th>
 				</tr>
 				<c:forEach items="${list }" var="i">
-					<tr>
+					<tr style="text-align: center;">
 						<td id="td1" style="color: white;">${i.b_no }</td>
 						<td id="td2" style="color: white;"><a href="./boardDetail?b_no=${i.b_no }">${i.b_title }</a></td>
 						<td id="td3" style="color: white;">${i.u_nickname }</td>
 						<td id="td4" style="color: white;">${i.b_date }</td>
 						<td id="td5" style="color: white;">${i.b_count }</td>
+						<td id="td5" style="color: white;">${i.b_like }</td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -228,8 +228,18 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: right">
+				&nbsp;
+				<small id = "board_count">조회수 ${detail.b_count }</small>
+				&nbsp;
+				&nbsp;
+				&nbsp;
 				<small id="board_like">좋아요 ${detail.b_like }</small>
+				&nbsp;
 				</td>
+				<%-- <td colspan="3" style="text-align: left;">
+				<small id = "board_count">조회수 ${detail.b_count }</small>
+				</td> --%>
+				
 			</tr>
 		</table>
 		

@@ -331,5 +331,27 @@ public class AniboardDAO {
 			e.printStackTrace();
 		}
 		return result;
-	}			
+	}
+
+//조회수
+	public void boardcount(int b_no) {
+		sql = "UPDATE board SET b_count = b_count+1 WHERE b_no=?";
+		
+		try {
+			con= DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, b_no);
+			
+			pstmt.execute();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
 }

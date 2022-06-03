@@ -74,7 +74,6 @@ public class SignupDAO {
 			
 			if (rs.next()) {
 				result = rs.getInt(1);
-				System.out.println("결과는 :" + result + "개가 나왔습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,6 +144,7 @@ public class SignupDAO {
 				dto.setName(rs.getString("u_name"));
 				dto.setNickname(rs.getString("u_nickname"));
 				dto.setTele(rs.getString("u_tel"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,7 +155,7 @@ public class SignupDAO {
 	public void mypagemodify(SignupDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE user set u_nickname=?, u_password=?, u_tel=?, where u_email=?";
+		String sql = "UPDATE user set u_nickname=?, u_pw=?, u_tel=? where u_email=?";
 		
 		try {
 			con = DBConnection.dbConn();
@@ -169,6 +169,27 @@ public class SignupDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int telcheck(SignupDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT count(*) from user where u_tel=?";
+		int result = 1;
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getTele());
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	}

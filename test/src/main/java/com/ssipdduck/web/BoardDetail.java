@@ -31,8 +31,10 @@ public class BoardDetail extends HttpServlet {
 		if (request.getParameter("b_no") != null && Util.str2Int(request.getParameter("b_no"))) {
 			int b_no = Integer.parseInt(request.getParameter("b_no"));
 			AniboardDAO dao = new AniboardDAO();
+			
 			AniboardDTO detail = dao.detail(b_no);
 			
+			dao.boardcount(b_no);
 			
 			if (detail.getCommentcount() != 0) {
 				List<BoardcommentDTO> list = dao.boardcomment(b_no);

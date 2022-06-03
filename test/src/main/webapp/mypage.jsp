@@ -61,6 +61,7 @@ function nicknameCheck1(){
 	}
 }
 
+
 function passwordCheck1() {
 	var password1 = $("#password1").val();
 	var password2 = $("#password2").val();
@@ -121,10 +122,9 @@ function passwordCheck1() {
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span> 
 									<input type="text" class="form-control" style="margin-left: 10px;"
-									name="username" id="nickname" required="required" onchange="nicknameCheck1()" autocomplete="off"
+									name="nickname" id="nickname" onchange="nicknameCheck1()" value="${dto.nickname }"autocomplete="off"
 									placeholder="${dto.nickname }" />
 									
-								 <a href="javascript:;" class="btn_model"><b id="right_item" class="btn8" onclick="clickcr(this,'prf.apply','','',event);" style="margin-left: 10px; ">적용</b></a>
 							</div>
 						</div>
 					</div>
@@ -136,9 +136,8 @@ function passwordCheck1() {
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span> 
 									<input type="text" class="form-control" style="margin-left: 10px;"
-									name="tele" id="tel" required="required" autocomplete="off"
+									name="tele" value="${dto.tele }" id="tel" autocomplete="off" onchange="telCheck()"
 									placeholder="${dto.tele }" />
-								 <a href="javascript:;" class="btn_model"><b id="right_item" class="btn8" onclick="clickcr(this,'prf.apply','','',event);" style="margin-left: 10px; ">적용</b></a>
 							</div>
 						</div>
 					</div>
@@ -150,7 +149,7 @@ function passwordCheck1() {
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 									type="password" class="form-control" style="margin-left: 10px;" name="password" onchange="passwordCheck1()" autocomplete="off"
-									id="password1" placeholder="Password" />
+									id="password1" required="required" placeholder="Password" />
 							</div>
 						</div>
 					</div>
@@ -163,7 +162,7 @@ function passwordCheck1() {
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-									type="password" class="form-control" style="margin-left: 10px;" name="password2" onchange="passwordCheck1()"
+									type="password" class="form-control" style="margin-left: 10px;" name="password2" onchange="passwordCheck1()" required="required"
 									id="password2" placeholder="Password" autocomplete="off" />
 							</div>
 						</div>
@@ -171,6 +170,7 @@ function passwordCheck1() {
 					<div id="checkResult">중복체크</div>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">modify</button>
+							 <a href="mypage.jsp" style="color: red;">sign out</a>
 						</div>
 					
 				</form>

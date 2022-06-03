@@ -52,9 +52,37 @@ img {
 }
 
 #sh1 {
+	padding:30px;
 	width: 33%;
 }
 </style>
+<script type="text/javascript">
+$(function() {
+
+    $("image_file").on('change', function(){
+
+    readURL(this);
+
+    });
+
+});
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+
+        $('#View').attr('src', e.target.result);
+
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -106,24 +134,27 @@ img {
 	<section class="product-page spad"> 
 	<div class="container">	
 
+	<div id="shop" style=" width: 1200px; height: 500px;">
 		<hr align="center" style="border: solid 1px yellow; width: 50%;">		
-	<div id="shop" style="margin: 0 auto; width: 1200px; height: 500px;">
 		<table style="margin: 0 auto;">
 			<c:forEach items="${list }" var="i" varStatus = "num">
 				<tr>
-					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_image }</a></td>
-					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
-														<a href="${i.as_site }" target='_blank'>${i.as_site }</a></td>
-					<td id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></td>				
+					<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>					
+					<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
+														<a href="${i.as_site }" target='_blank'>${i.as_site }</a></th>
+					<th id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></th>				
 					</c:forEach>
+		
 					</table>	
+		<hr align="center" style="border: solid 1px yellow; width: 50%;">		
 					
+		<c:if test="${sessionScope.u_email eq 'admin@a.com' }">			
 		<button type="button" onclick="location.href='./shopwrite'"
 			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">Write</i>
 		</button>
+		</c:if>
 	</div>
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">
 	</div>
 
 	</section>
@@ -151,9 +182,9 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 };
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-	<jsp:include page="footer.jsp"/>
 </script> -->
 
+	<jsp:include page="footer.jsp"/>
 	
 	    <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

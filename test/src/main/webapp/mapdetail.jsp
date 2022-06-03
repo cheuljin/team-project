@@ -106,12 +106,12 @@ img {
 	</section>
 
 
-	<div id="main" style="padding: ">
-		<table border="1">
+	<div id="main" style="margin: 0 auto;">
+		<table border="1" style="margin: 0 auto;">
 			<tr>
 				<td id="sh1" style="color: white; font-size: 30px;" >
-					${as_name },${as_roadAddr }
-					<div id="map" style=" width: 600px; height: 600px; "></div>
+					${as_roadAddr }
+					<div id="map" style=" width: 700px; height: 700px; "></div>
 					
 					 <script>
 						var mapContainer = document
@@ -119,7 +119,7 @@ img {
 						mapOption = {
 							center : new kakao.maps.LatLng(33.450701,
 									126.570667), // 지도의 중심좌표
-							level : 3
+							level : 4
 						// 지도의 확대 레벨
 						};
 

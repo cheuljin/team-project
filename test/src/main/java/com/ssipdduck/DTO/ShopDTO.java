@@ -4,8 +4,20 @@ public class ShopDTO {
 	private int as_no;
 	private String as_name, as_site, as_map, as_content,
 					as_description, as_postcode, as_roadAddr, 
-					as_detailAddr, as_extraAddr, as_image, u_email;
+					as_detailAddr, as_extraAddr, as_file, as_orifile, u_email;
 	
+	public String getAs_file() {
+		return as_file;
+	}
+	public void setAs_file(String as_file) {
+		this.as_file = as_file;
+	}
+	public String getAs_orifile() {
+		return as_orifile;
+	}
+	public void setAs_orifile(String as_orifile) {
+		this.as_orifile = as_orifile;
+	}
 	public String getAs_description() {
 		return as_description;
 	}
@@ -23,12 +35,6 @@ public class ShopDTO {
 	}
 	public void setAs_postcode(String as_postcode) {
 		this.as_postcode = as_postcode;
-	}
-	public String getAs_image() {
-		return as_image;
-	}
-	public void setAs_image(String as_image) {
-		this.as_image = as_image;
 	}
 	public String getAs_roadAddr() {
 		return as_roadAddr;

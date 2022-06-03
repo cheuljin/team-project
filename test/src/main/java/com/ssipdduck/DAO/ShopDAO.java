@@ -48,7 +48,8 @@ public class ShopDAO {
 				dto.setAs_site(rs.getString("as_site"));
 				dto.setAs_map(rs.getString("as_map"));
 				dto.setAs_content(rs.getString("as_content"));
-				dto.setAs_image(rs.getString("as_image"));
+				dto.setAs_file(rs.getString("as_file"));
+				dto.setAs_orifile(rs.getString("as_orifile"));
 				dto.setAs_description(rs.getString("as_description"));
 				dto.setAs_postcode(rs.getString("as_postcode"));
 				dto.setAs_roadAddr(rs.getString("as_roadAddr"));
@@ -68,19 +69,18 @@ public class ShopDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO ani_shop (as_no, as_image, as_site, as_name, as_content, as_roadAddr) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO ani_shop (as_no, as_file, as_orifile, as_site, as_name, as_content, as_roadAddr) VALUES(?,?,?,?,?,?,?)";
 				
 			try {
 				con = DBConnection.dbConn();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, dto.getAs_no());
-				pstmt.setString(2, dto.getAs_image());
-				pstmt.setString(3, dto.getAs_site());
-				pstmt.setString(4, dto.getAs_name());
-				pstmt.setString(5, dto.getAs_content());
-				pstmt.setString(6, dto.getAs_roadAddr());
-				
-				
+				pstmt.setString(2, dto.getAs_file());
+				pstmt.setString(3, dto.getAs_orifile());
+				pstmt.setString(4, dto.getAs_site());
+				pstmt.setString(5, dto.getAs_name());
+				pstmt.setString(6, dto.getAs_content());
+				pstmt.setString(7, dto.getAs_roadAddr());
 				
 				pstmt.execute();
 			} catch (Exception e) {

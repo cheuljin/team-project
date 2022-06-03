@@ -125,9 +125,10 @@
                      <c:if test="${(totalcount % 9) > 0 }">
          				<c:set var="totalpage" value="${totalpage + 1}"/>
       				</c:if>
+      				
       				<c:if test="${pageNo % 9 ne 0 }">
             			<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 9 }"/>
-            			<c:set var="startpage" value="${startpage * 9+ 1 }"/>         
+            			<c:set var="startpage" value="${startpage * 9 + 1 }"/>         
       				</c:if> 
       				
       				
@@ -142,13 +143,13 @@
      		 		
      		 		
                     <div class="product__pagination">
-                    	<a href="#"><i class="fa fa-angle-double-left"></i></a>
+                    	<a href="./anireview?pageNo=1"><i class="fa fa-angle-double-left"></i></a>
+                    	
                      <c:forEach begin="${startpage }" end="${endpage }" var="n">
-                     
-                       	<a href="./anireview?pageNo=${n }" class="current-page">${n }</a>
-                     
+                       	<a href="./anireview?pageNo=${n }" class="current-page">${n }</a>               
                      </c:forEach>   
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                     
+                        <a href="./anireview?pageNo=${totalpage }"><i class="fa fa-angle-double-right"></i></a>
                     </div>
                   </div>
                  

@@ -127,25 +127,25 @@ a:visited, a:link {
 			data : {"rating" : listVar , "a_no" : a_no}, 
 			success : function(data){
 				if(data == 1){
-					$("#1-star").prop("checked",true);
 					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+					$("#1-star").prop("checked",true);
 					$('#anime__details__rating').load();
 				}else if(data == 2){
-					$("#2-stars").prop("checked",true);	
 					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
+					$("#2-stars").prop("checked",true);	
 					$('#anime__details__rating').load();
 				}else if(data == 3){
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 					$("#3-stars").prop("checked",true);
 					$('#anime__details__rating').load();
-					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 				}else if(data == 4){
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 					$("#4-stars").prop("checked",true);
 					$('#anime__details__rating').load();
-					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 				}else if(data == 5){
+					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 					$("#5-stars").prop("checked",true);
 					$('#anime__details__rating').load();
-					alert("평점입력이 되었습니다. 총 평점" + data +"점입니다.");
 				}
 			} ,
 			error : function(data){
@@ -296,7 +296,7 @@ a:visited, a:link {
                         </div>
                     </div>
                 </div> 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Z3QlWFKfRhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    ${dto.a_utube }
              <div class="row">
                     <div class="col-lg-8 col-md-8">
                         <div class="anime__details__review">

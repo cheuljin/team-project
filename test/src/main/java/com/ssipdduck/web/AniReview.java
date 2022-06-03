@@ -25,11 +25,13 @@ public class AniReview extends HttpServlet {
 		List<AniRecomDTO> top = dao.topList();
 		
 		int pageNo = 1;
+		
 		if(request.getParameter("pageNo") != null) { 
 			pageNo = Integer.parseInt(request.getParameter("pageNo"));
 		}
 		
-		List<AniRecomDTO> list = dao.Anilist((pageNo-1)*10);
+		List<AniRecomDTO> list = dao.Anilist((pageNo - 1) * 9);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("./anirecom.jsp");
 		
 		request.setAttribute("list", list);

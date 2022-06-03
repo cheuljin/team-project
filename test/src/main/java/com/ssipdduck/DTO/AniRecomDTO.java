@@ -2,10 +2,16 @@ package com.ssipdduck.DTO;
 
 public class AniRecomDTO {
 	private int a_no, u_no, a_rate, a_count, a_epi,a_like,commentcount, totalcount, u_temp;
-	private String a_title, a_content, a_file, a_orifile, a_date, a_category,a_type,a_studio,a_aired, u_nickname, u_id, a_writer;
+	private String a_title, a_content, a_file, a_orifile, a_date, a_category,a_type,a_studio,a_aired, u_nickname, u_id, a_writer, a_utube;
 
 	
 	
+	public String getA_utube() {
+		return a_utube;
+	}
+	public void setA_utube(String a_utube) {
+		this.a_utube = a_utube;
+	}
 	public String getA_writer() {
 		return a_writer;
 	}

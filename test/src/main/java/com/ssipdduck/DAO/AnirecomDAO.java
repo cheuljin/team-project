@@ -77,6 +77,7 @@ public class AnirecomDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				dto.setA_utube(rs.getString("a_utube"));
 				dto.setA_no(rs.getInt(1));
 				dto.setA_title(rs.getString("a_title"));
 				dto.setA_content(rs.getString("a_content"));

@@ -66,8 +66,9 @@ function del1(num){
 			
 		</div>
 	</div>
-	
-			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 500px;">
+	<section class="product-page spad">
+	 <div class="container">
+			<div id="recom-board" style="margin: 0 auto; margin-top: 30px; width: 1200px; height: 100%;">
 			<table class="table table-striped">
 				<tr>
 					<th style="color: white;">이름</th>
@@ -91,6 +92,9 @@ function del1(num){
 				</c:forEach>
 			</table>
 		</div>
+		</div>
+	</section>
+	
 	
 	<jsp:include page="footer.jsp"/>
 	

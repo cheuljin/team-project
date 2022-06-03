@@ -56,7 +56,12 @@
 
 img {
 	max-width: 100%;
-}
+	}
+a:visited, a:link {
+   color: white;
+   text-decoration: none;
+}	
+
 </style>
 </head>
 <body>

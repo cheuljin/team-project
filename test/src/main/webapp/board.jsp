@@ -45,7 +45,15 @@
 #row {
 	width: 1200px;
 }
+small{
+	color : white;
+	font-weight: bold;
+}
 
+a:visited, a:link {
+   color: white;
+   text-decoration: none;
+}
 
 
 </style>
@@ -114,7 +122,7 @@
 				<c:forEach items="${list }" var="i">
 					<tr style="text-align: center;">
 						<td id="td1" style="color: white;">${i.b_no }</td>
-						<td id="td2" style="color: white;"><a href="./boardDetail?b_no=${i.b_no }">${i.b_title }</a></td>
+						<td id="td2" style="color: white;"><a href="./boardDetail?b_no=${i.b_no }">${i.b_title } <c:if test="${i.commentcount gt 0 }"><small>[${i.commentcount }]</small></c:if> </a></td>
 						<td id="td3" style="color: white;">${i.u_nickname }</td>
 						<td id="td4" style="color: white;">${i.b_date }</td>
 						<td id="td5" style="color: white;">${i.b_count }</td>

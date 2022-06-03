@@ -50,6 +50,7 @@ public class AniboardDAO {
 				dto.setB_count(rs.getInt("b_count"));
 				dto.setU_nickname(rs.getString("u_nickname"));
 				dto.setTotalcount(rs.getInt("totalcount"));
+				dto.setCommentcount(rs.getInt("commentcount"));
 				list.add(dto);
 			}
 		} catch (Exception e) {

@@ -53,7 +53,12 @@ img {
 
 #sh1 {
 	padding: 30px;
-	width: 33%;
+	width: 33%;	
+}
+#sh2{
+	padding:30px;
+	padding-bottom:0;
+	width: 33%
 	
 }
 tr{
@@ -110,13 +115,18 @@ a:visited, a:link {
 	</div>
 	<!-- Breadcrumb End  -->
 
-
 	<!-- 피규어샵 테이블-->
 	<div id="anirecom-container">
 		<div id="acea">
 			<img alt="" src="./img/mas.gif" style="display: block; margin: auto;">
 		</div>
 	</div>
+				<c:if test="${sessionScope.u_email eq 'admin@a.com' }">
+					<button type="button" onclick="location.href='./shopwrite'"
+						style="position: absolute; left: 1800px; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+						<i class="fa fa-location-arrow">Write</i>
+					</button>
+				</c:if>
 
 	<!-- Product Section Begin -->
 	<section class="product-page spad"
@@ -139,14 +149,13 @@ a:visited, a:link {
 		</div>
 	</section>
 	
-	<div id="shoptop" style="margin-left: 15px;">	
+	<div id="shoptop" style="text-align: center;">
 		<img alt="" src="./img/bandai.jpg" style="width: 50px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/banpresto.png" style="width: 100px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/flare.jpg" style="width: 100px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/hottoys.png" style="width: 100px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/union.png" style="width: 300px; height: 50px;" >&nbsp;
-		<img alt="" src="./img/sega.png" style="width: 100px; height: 50px;" >&nbsp;
-		
+		<img alt="" src="./img/sega.png" style="width: 100px; height: 50px;" >&nbsp;	
 		<img alt="" src="./img/kaiyodo.jpg" style="width: 150px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/kotobukiya.png" style="width: 150px; height: 50px;" >&nbsp;
 		<img alt="" src="./img/alter2.png" style="width: 130px; height: 50px;" >&nbsp;
@@ -162,12 +171,17 @@ a:visited, a:link {
 			<div id="shop" style="width: 1000px; height:100%;">
 
 				<table style="margin: 0 auto;">
+						<tr style="border: none; padding-bottom: 0;" >
+							<th id="sh2" style="color:white;"></th>
+							<th id="sh2" style="color:white;"></th>
+							<th id="sh2" style="color:yellow; font-size: 30px;">↓오프라인 매장↓ <br> <a style="font-size: 15px; padding-top: 0; text-align: center;">&nbsp;주소를 클릭하면 지도가 보여집니다.</a></th>						
+						</tr>
 					<c:forEach items="${list }" var="i" varStatus="num">
 						<tr>
 							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'><img src="./img/upload/${i.as_orifile }" style="width:300px; height: 100px"></a></th>
 							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
 															   <a href="http://${i.as_site }" target='_blank'>${i.as_site }</a></th>
-							<th id="sh1" style="color: white;"><a href="./mapdetail?as_no=${i.as_no }">${i.as_roadAddr }${i.as_detailAddr }</a></th>
+							<th id="sh1" style="color: white;"><a href="./mapdetail?as_no=${i.as_no }">${i.as_roadAddr }<br>${i.as_detailAddr }</a></th>
 						</tr>
 						
 					</c:forEach>

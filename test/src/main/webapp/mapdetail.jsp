@@ -147,18 +147,17 @@ a:visited, a:link {
 								var coords = new kakao.maps.LatLng(result[0].y,
 										result[0].x);
 
-								/* var message = 'latlng: new kakao.maps.LatLng(' + result[0].y + ', ';
-								message += result[0].x + ')';
-								
-								var resultDiv = document.getElementById('clickLatlng'); 
-								resultDiv.innerHTML = message; */
-
 								console.log(result[0].y, result[0].x);
 								// 결과값으로 받은 위치를 마커로 표시합니다
+								
 								var marker = new kakao.maps.Marker({
 									map : map,
 									position : coords
 								});
+								var infowindow = new kakao.maps.InfoWindow({
+						            content: '<div style="width:150px;text-align:center;padding:6px 0;color:black;">${detail.as_name }</div>'
+						        });
+						        infowindow.open(map, marker);
 								console.log(coords);
 								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 								map.setCenter(coords);

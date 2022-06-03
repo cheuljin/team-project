@@ -66,16 +66,6 @@ img {
 </style>
 <script type="text/javascript">
 
-function check() {
-	alert("사이트를 업로드 하시겠습니까?")
-	var name = document.getElementById("name");
-	if (name.value.length < 1) {
-		name.focus();
-		return false;
-	}
-
-}
-
 $(function() {
 
     $("image_file").on('change', function(){
@@ -85,7 +75,6 @@ $(function() {
     });
 
 });
-
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -105,9 +94,20 @@ function readURL(input) {
 }
 </script>
 
+
+<script>
+function check() {
+	alert("사이트를 업로드 하시겠습니까?")
+	var name = document.getElementById("name");
+	if (name.value.length < 1) {
+		name.focus();
+		return false;
+	}
+
+}
+</script>
 </head>
 <body>
-
 	<jsp:include page="./header.jsp" />
 
 	<!-- Breadcrumb Begin -->
@@ -154,7 +154,7 @@ function readURL(input) {
 		</div>
 	</section>
 	
-	<form action="./shopwrite" method="post" enctype="multipart/form-data" >
+	<form action="./shopwrite" method="post" enctype="multipart/form-data" onsubmit="return check()">
 		<div class= "shop_write_section" style="margin: 0 auto; width: 1200px; height: 500px;">
 		
 		<table style="margin: 0 auto;">

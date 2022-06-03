@@ -19,7 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
 	rel="stylesheet">
-
+	<link rel="shortcut icon" href="./favicon.ico"/>
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -50,10 +50,11 @@ table{
 	
 }
 th{
-	border: 3px solid black;
+	border: 4px green solid;
 	width: 100px;
 }
 tr{
+	border: 4px green solid;
 	min-height: 50px;
 	width: 1200px;
 	border-bottom: 1px white solid;
@@ -134,14 +135,14 @@ $(document).ready(function(){
 	<div id="main">
 		<table border="1">
 			<tr>
-				<th colspan="2" style="text-align:left; height: 80px;">공지사항 :  ${detail.an_title }</th>
+				<th colspan="2" style="text-align:center; font-size:40px; height: 100px;">${detail.an_title }</th>
 			</tr>
 			<tr>
-				<th style="text-align: center; height: 40px;">작성자 : 관리자</th>
+				<th style="text-align: center; height: 40px;">관리자</th>
 				<th style="text-align: center;"> ${detail.an_date }</th>
 			</tr>
-			<tr style="height: 800px;">
-				<td colspan="3" style="text-align: center">${detail.an_content }<br></td>
+			<tr style="height: 700px; ">
+				<td colspan="3" style="text-align:center; font-size: large;"><span>${detail.an_content }</span><br></td>
 			</tr>		
 			<tr>			
 				<td>
@@ -150,13 +151,16 @@ $(document).ready(function(){
 							<img id="nup" alt="" src="img/cristal.png" title="수정">
 							<img id="ndel" alt="" src="img/remove.png" title="삭제">
 						</c:if>
-				</td>			
+				</td>						
 			</tr>
-			
-		</table>
+		</table>	
 	</div>
-	
-	<button onclick="location.href='./notice'">목록</button>
+	<button type="button" onclick="location.href='./notice'"
+			style="position: absolute; left: 25%; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">목록</i>
+		</button>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>

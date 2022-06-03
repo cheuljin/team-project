@@ -171,7 +171,7 @@ function nicknameCheck() {
 		<div class="signup_form">
 			<form action="./signup" method="POST">
 				<h1 style="color: white;">Sign Up</h1>
-				<input type="text" autocomplete="off" id="email" name="email" class="Email" placeholder="Email" required="required" style="margin-top: 10px;" onchange="idCheck()"> 
+				<input type="email" autocomplete="off" id="email" name="email" class="Email" placeholder="Email" required="required" style="margin-top: 10px;" onchange="idCheck()"> 
 					<input type="text" autocomplete="off" name="name" class="Name" placeholder="Name" required="required" style="margin-top: 10px;">
 				<input type="text" autocomplete="off" id="nickname" name="nickname"
 					class="Nickname" placeholder="Nickname" required="required"

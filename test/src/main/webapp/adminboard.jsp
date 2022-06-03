@@ -76,11 +76,11 @@ function del(num){
 				</tr>
 				<c:forEach items="${list }" var="i">
 					<tr>
-						<td id="td1" style="color: white;">${i.a_no }</td>
-						<td id="td2" style="color: white;">${i.a_title }</td>
-						<td id="td4" style="color: white;">${i.a_date }</td>
-						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminreviewup?a_no=${i.a_no }'">
-						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.a_no})">
+						<td id="td1" style="color: white;">${i.b_no }</td>
+						<td id="td2" style="color: white;">${i.b_title }</td>
+						<td id="td4" style="color: white;">${i.b_date }</td>
+						<td><img alt="" src="./img/fix.png" style="width: 20px; height: 20px;" onclick="location.href='./adminreviewup?a_no=${i.b_no }'">
+						<img alt="" src="./img/delete.png" style="width: 20px; height: 20px;" onclick="del(${i.b_no})">
 						</td>				
 					</tr>
 				</c:forEach>

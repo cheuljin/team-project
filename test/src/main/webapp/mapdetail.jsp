@@ -56,6 +56,10 @@ img {
 	align:center;
 	width: 300px;
 }
+a:visited, a:link {
+   color: yellow;
+   text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -106,13 +110,14 @@ img {
 	</section>
 
 
-	<div id="main" style="margin: 0 auto;">
+	<div id="main" style="margin: 0 auto; padding-bottom: 100px;">
 		<table border="1" style="margin: 0 auto;">
 			<tr>
-				<td id="sh1" style="color: white; font-size: 30px;" >
-					${detail.as_name }<br><small>${detail.as_site }</small> <br>
+				<td id="sh1" style="color: white; font-size: 20px;" >
+					${detail.as_name }<br>
+					<small><a href="http://${detail.as_site }" target='_blank'>${detail.as_site }</a></small><br>
 					${detail.as_roadAddr }&nbsp;&nbsp; ${detail.as_detailAddr }
-					<div id="map" style=" width: 700px; height: 700px; "></div>
+					<div id="map" style=" width: 1000px; height: 500px; "></div>
 					
 					 <script>
 						var mapContainer = document
@@ -170,6 +175,20 @@ img {
 			<i class="fa fa-location-arrow">목록</i>
 		</button>
 		
+		
+			<jsp:include page="footer.jsp" />
+
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+	
+
 	</body>
 </html>	
 		

@@ -87,7 +87,6 @@ a:visited, a:link {
 				$('#View').attr('src', e.target.result);
 
 			}
-
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
@@ -143,12 +142,12 @@ a:visited, a:link {
 	<section class="product-page spad" style="padding-top: 0;">
 		<div class="container">
 
-			<div id="shop" style="width: 1200px; height:100%;">
+			<div id="shop" style="width: 1000px; height:100%;">
 
 				<table style="margin: 0 auto;">
 					<c:forEach items="${list }" var="i" varStatus="num">
 						<tr>
-							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>
+							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'><img src="./img/upload/${i.as_orifile }" style="width:300px; height: 100px"></a></th>
 							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
 															   <a href="http://${i.as_site }" target='_blank'>${i.as_site }</a></th>
 							<th id="sh1" style="color: white;"><a href="./mapdetail?as_no=${i.as_no }">${i.as_roadAddr }${i.as_detailAddr }</a></th>
@@ -206,6 +205,7 @@ var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 	
+
 </body>
 </html>
 

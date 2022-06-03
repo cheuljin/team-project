@@ -46,7 +46,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li><a href="./notice"><font size="5px;">Notice</font></a></li>
-                                <li><a href="./aniboard"><font size="5px;">Board</font></a></li>
+                                <li><a href="./aniboard?pageNo=1"><font size="5px;">Board</font></a></li>
                                 <li><a href="./anireview?pageNo=1"><font size="5px;">review</font></a></li>
                                 <li><a href="./shop"><font size="5px;">figure shop</font></a></li>
                                

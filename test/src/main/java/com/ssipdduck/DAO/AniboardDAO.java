@@ -29,13 +29,14 @@ public class AniboardDAO {
 		}
 	}
 
-	public List<AniboardDTO> list(){	
+	public List<AniboardDTO> list(int pageNo){	
 		List<AniboardDTO> list = new ArrayList<AniboardDTO>();
-		sql = "SELECT * FROM boardview";
+		sql = "SELECT * FROM boardview LIMIT ?, 10";
 			//	select, insert, update
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pageNo);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -48,6 +49,7 @@ public class AniboardDAO {
 				dto.setB_like(rs.getInt("b_like"));
 				dto.setB_count(rs.getInt("b_count"));
 				dto.setU_nickname(rs.getString("u_nickname"));
+				dto.setTotalcount(rs.getInt("totalcount"));
 				list.add(dto);
 			}
 		} catch (Exception e) {

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +125,37 @@
 			<button type="button" onclick="location.href='./boardwrite'" style="margin-right : 0 auto; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
 		</div>
 	</div>
-</section> 	
+</section>
+
+	<!-- 페이징 -->
+	<fmt:parseNumber integerOnly="true" var="totalpage" value="${totalcount / 10 }"/>
+	<c:if test="${(totalcount % 10) > 0}">
+		<c:set var="totalpage" value="${totalpage + 1}"/>
+	</c:if>
+	
+	<c:if test="${pageNo % 10 ne 0}">
+		<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 10}"/>
+		<c:set var="startpage" value="${startpage * 10 + 1}"/>
+	</c:if>
+	
+	<c:if test="${pageNo % 10 eq 0}">
+		<c:set var="startpage" value="${pageNo - 9}"/>
+	</c:if>
+ 	
+ 	<c:set var="endpage" value="${startpage + 4}"/>
+ 	<c:if test="${stratpage + 4 gt totalpage}">
+ 		<c:set var="endpage" value="${totalpage }"/>
+ 	</c:if>
+ 	
+ 	<div class="product__pagination">
+                    	<a href="./aniboard?pageNo=1"><i class="fa fa-angle-double-left"></i></a>
+                    	
+                     <c:forEach begin="${startpage }" end="${endpage }" var="n">
+                       	<a href="./aniboard?pageNo=${n }" class="current-page">${n }</a>             
+                     </c:forEach>
+                     
+                     <a href="./aniboard?pageNo=${totalpage }"><i class="fa fa-angle-double-right"></i></a>   
+	</div>
 	
 	<jsp:include page="footer.jsp" />
 	<!-- Js Plugins -->

@@ -116,8 +116,17 @@ a:visited, a:link {
 		   location.href="./anicommentwrite";  
 	   }
    }
+	
+   function rating1(){
+	   if(confirm("로그인한 사용자만 사용할 수 있습니다.")){
+		   location.href="./login.jsp"; 
+	   }
+	   
+   }
+   
    
    function rating(){
+	   var u_email = "${sessionScope.u_email}";
 	   let a_no = ${dto.a_no};
 	   var listVar = $('input[name=rating]:checked').val();
 	    $.ajax({
@@ -203,6 +212,8 @@ a:visited, a:link {
 			}
 	 });
   });
+   
+   
   
    
    </script>
@@ -246,7 +257,7 @@ a:visited, a:link {
 							 <div class="anime__details__rating">
 							
 							<div class="star-rating space-x-4 mx-auto" >								
-							
+								<c:if test="${sessionScope.u_email ne null }">
 									<input type="radio" id="5-stars" name="rating" value="5" onclick="rating()"/> 
 									<label for="5-stars" class="star pr-4" >★</label>	
 									
@@ -261,7 +272,24 @@ a:visited, a:link {
 								
 									<input type="radio" id="1-star" name="rating" value="1" onclick="rating()"/> 
 									<label for="1-star" class="star" >★</label>
-							
+								</c:if>
+								<c:if test="${sessionScope.u_email eq null }">
+									<input type="radio" id="5-stars" name="rating" value="5" onclick="rating1()"/> 
+									<label for="5-stars" class="star pr-4" >★</label>	
+									
+									<input type="radio" id="4-stars" name="rating" value="4" onclick="rating1()"/> 
+									<label for="4-stars" class="star" >★</label>						
+								
+									<input type="radio" id="3-stars" name="rating" value="3" onclick="rating1()"/> 
+									<label for="3-stars" class="star" >★</label>					
+								
+									<input type="radio" id="2-stars" name="rating" value="2" onclick="rating1()"/> 
+									<label for="2-stars" class="star" >★</label>			
+								
+									<input type="radio" id="1-star" name="rating" value="1" onclick="rating1()"/> 
+									<label for="1-star" class="star" >★</label>
+								</c:if>
+								
 							</div>
 
 							</div>
@@ -316,9 +344,7 @@ a:visited, a:link {
                                 <div class="anime__review__item__text">
                                 	<input type="hidden" name="ac_no" value="${i.ac_no }">
                                     <h6>${i.u_nickname } <small style="color:white"><span>${i.ac_date }</span></small>
-										<img id="recom" src="./img/recom.png" title="대댓글" width="20px" height="20px" align="right"> &nbsp; &nbsp; &nbsp; 
-										<img id="commentlike"alt="" src="./img/commentlike.png" width="20px" height="20px" align="right">
-                                    <c:if test="${sessionScope.u_email eq i.u_id }">
+						            <c:if test="${sessionScope.u_email eq i.u_id }">
 										<img id="del" src="./img/delete.png" title="삭제" width="20px" height="20px" align="right" onclick="cdel(${i.ac_no})">
 										<img id="up" src="./img/fix.png" title="수정" width="20px" height="20px" align="right" onclick="cup(${i.ac_no})" >&nbsp; &nbsp; &nbsp;  &nbsp; 
 									</c:if>

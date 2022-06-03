@@ -114,7 +114,7 @@ img {
 					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_image }</a></td>
 					<td id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
 														<a href="${i.as_site }" target='_blank'>${i.as_site }</a></td>
-					<td id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}" target='_blank'>${i.as_roadAddr}</a></td>				
+					<td id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></td>				
 					</c:forEach>
 					</table>	
 					

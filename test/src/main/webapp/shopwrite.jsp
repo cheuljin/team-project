@@ -321,7 +321,7 @@ function readURL(input) {
 			<button type="submit"
 			style="position: absolute; margin: 0 auto; font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
 			<i class="fa fa-location-arrow">등록하기</i>
-		</button>
+			</button>
 	</div>
 	</form>
 

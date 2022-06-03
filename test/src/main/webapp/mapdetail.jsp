@@ -52,7 +52,9 @@ img {
 }
 
 #sh1 {
-	width: 33%;
+	padding: 30px 30px;
+	align:center;
+	width: 300px;
 }
 </style>
 </head>
@@ -104,12 +106,12 @@ img {
 	</section>
 
 
-	<div id="main">
+	<div id="main" style="padding: ">
 		<table border="1">
 			<tr>
-				<td id="sh1" style="color: white;">
-					<div id="map" style="width: 600px; height: 600px;"></div>
-					${i.as_roadAddr }
+				<td id="sh1" style="color: white; font-size: 30px;" >
+					${as_name },${as_roadAddr }
+					<div id="map" style=" width: 600px; height: 600px; "></div>
 					
 					 <script>
 						var mapContainer = document
@@ -162,4 +164,12 @@ img {
 		</table>
 	</div>
 
-	<button onclick="location.href='./shop'">목록</button>
+	<button type="button" onclick="location.href='./shop'"
+			style="position: absolute; left: 50%; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+			<i class="fa fa-location-arrow">목록</i>
+		</button>
+		
+	</body>
+</html>	
+		
+		

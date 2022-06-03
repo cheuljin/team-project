@@ -84,13 +84,13 @@ a:visited, a:link {
 	<!-- 피규어샵 테이블-->
 	<div id="anirecom-container">
 		<div id="acea">
-			<img alt="" src="./img/mas.gif" style="display: block; margin: auto;">
+			<img alt="" src="./img/joros.gif" style="display: block; margin: auto;">
 		</div>
 	</div>
 
 	<!-- Product Section Begin -->
 	<section class="product-page spad"
-		style="padding-top: 0; height: 100px;">
+		style="padding-top: 10px; height: 100px;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-lg-8">

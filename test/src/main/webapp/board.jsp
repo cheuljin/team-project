@@ -129,8 +129,12 @@ a:visited, a:link {
 						<td id="td5" style="color: white;">${i.b_like }</td>
 					</tr>
 				</c:forEach>
-			</table>
-			<button type="button" onclick="location.href='./boardwrite'" style="margin-right : 0 auto; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+			</table>	
+			<c:if test="${sessionScope.u_email ne null }">
+					<button type="button" onclick="location.href='./boardwrite'" 
+					style="margin-right : 0 auto; font-size: 11px; color: #ffffff;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;"><i class="fa fa-location-arrow">Write</i></button>
+				</c:if>
+				  
 		</div>
 	</div>
 </section>

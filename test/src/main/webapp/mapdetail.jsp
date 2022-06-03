@@ -110,7 +110,8 @@ img {
 		<table border="1" style="margin: 0 auto;">
 			<tr>
 				<td id="sh1" style="color: white; font-size: 30px;" >
-					${as_roadAddr }
+					${detail.as_name }<br><small>${detail.as_site }</small> <br>
+					${detail.as_roadAddr }&nbsp;&nbsp; ${detail.as_detailAddr }
 					<div id="map" style=" width: 700px; height: 700px; "></div>
 					
 					 <script>
@@ -129,7 +130,7 @@ img {
 						// 주소-좌표 변환 객체를 생성합니다
 						var geocoder = new kakao.maps.services.Geocoder();
 
-						var addr = '${as_roadAddr}';
+						var addr = '${detail.as_roadAddr}';
 
 						// 주소로 좌표를 검색합니다
 						geocoder.addressSearch(addr, function(result, status) {

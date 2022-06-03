@@ -54,11 +54,16 @@ img {
 #sh1 {
 	padding: 30px;
 	width: 33%;
+	
 }
 tr{
-	
-	border-bottom: 1px solid yellow;
+	border-bottom: 1px solid white;
 }
+a:visited, a:link {
+   color: white;
+   text-decoration: none;
+}
+
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -135,19 +140,18 @@ tr{
 		</div>
 	</section>
 
-	<section class="product-page spad">
+	<section class="product-page spad" style="padding-top: 0;">
 		<div class="container">
 
-			<div id="shop" style="width: 1200px; height: 500px;">
+			<div id="shop" style="width: 1200px; height:100%;">
 
 				<table style="margin: 0 auto;">
 					<c:forEach items="${list }" var="i" varStatus="num">
-					
 						<tr>
-							<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>
-							<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> <a
-																  href="${i.as_site }" target='_blank'>${i.as_site }</a></th>
-							<th id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></th>
+							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>
+							<th id="sh1" style="color: white;"><a href="http://${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
+															   <a href="http://${i.as_site }" target='_blank'>${i.as_site }</a></th>
+							<th id="sh1" style="color: white;"><a href="./mapdetail?as_no=${i.as_no }">${i.as_roadAddr }${i.as_detailAddr }</a></th>
 						</tr>
 						
 					</c:forEach>
@@ -201,6 +205,7 @@ var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리
 	<script src="js/jquery.slicknav.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	
 </body>
 </html>
 

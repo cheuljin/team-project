@@ -58,6 +58,7 @@ public class Shopwrite extends HttpServlet {
 				dto.setAs_site(multi.getParameter("site"));
 				dto.setAs_name(multi.getParameter("name"));
 				dto.setAs_roadAddr(multi.getParameter("roadAddr"));
+				dto.setAs_detailAddr(multi.getParameter("detailAddr"));
 				dto.setAs_content(multi.getParameter("content"));
 
 				dao.shopwrite(dto);

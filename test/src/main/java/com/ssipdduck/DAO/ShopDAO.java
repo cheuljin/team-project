@@ -69,7 +69,7 @@ public class ShopDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO ani_shop (as_no, as_file, as_orifile, as_site, as_name, as_content, as_roadAddr) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO ani_shop (as_no, as_file, as_orifile, as_site, as_name, as_content, as_roadAddr, as_detailAddr) VALUES(?,?,?,?,?,?,?,?)";
 				
 			try {
 				con = DBConnection.dbConn();
@@ -81,6 +81,7 @@ public class ShopDAO {
 				pstmt.setString(5, dto.getAs_name());
 				pstmt.setString(6, dto.getAs_content());
 				pstmt.setString(7, dto.getAs_roadAddr());
+				pstmt.setString(8, dto.getAs_detailAddr());
 				
 				pstmt.execute();
 			} catch (Exception e) {
@@ -89,7 +90,7 @@ public class ShopDAO {
 		
 	}
 
-	public ShopDTO detail(String as_roadAddr) {
+	public ShopDTO detail(int as_no) {
 		ShopDTO dto = new ShopDTO();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -99,12 +100,16 @@ public class ShopDAO {
 		try {
 			con = DBConnection.dbConn();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, as_roadAddr);
+			pstmt.setInt(1, as_no);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
 				dto.setAs_no(rs.getInt("as_no"));
-				
+				dto.setAs_roadAddr(rs.getString("as_roadAddr"));
+				dto.setAs_detailAddr(rs.getString("as_detailAddr"));
+				dto.setAs_name(rs.getString("as_name"));
+				dto.setAs_content(rs.getString("as_content"));	
+				dto.setAs_site(rs.getString("as_site"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

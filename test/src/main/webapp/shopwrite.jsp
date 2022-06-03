@@ -177,7 +177,7 @@ function readURL(input) {
 	<input type="text" id="sample4_roadAddress" name="roadAddr" placeholder="도로명주소" style="width: 250px;">
 	<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  style="width: 250px;">	
 	<span id="guide" style="color: #999; display: none"></span>
-	<input type="text" id="sample4_detailAddress" placeholder="상세주소"  style="width: 250px;">
+	<input type="text" id="sample4_detailAddress" name="detailAddr" placeholder="상세주소"  style="width: 250px;">
 	<input type="text" id="sample4_extraAddress" placeholder="참고항목"  style="width: 250px;">
 
 	<script

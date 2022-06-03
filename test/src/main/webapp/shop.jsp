@@ -52,36 +52,40 @@ img {
 }
 
 #sh1 {
-	padding:30px;
+	padding: 30px;
 	width: 33%;
+}
+tr{
+	
+	border-bottom: 1px solid yellow;
 }
 </style>
 <script type="text/javascript">
-$(function() {
+	$(function() {
 
-    $("image_file").on('change', function(){
+		$("image_file").on('change', function() {
 
-    readURL(this);
+			readURL(this);
 
-    });
+		});
 
-});
+	});
 
-function readURL(input) {
+	function readURL(input) {
 
-    if (input.files && input.files[0]) {
+		if (input.files && input.files[0]) {
 
-        var reader = new FileReader();
+			var reader = new FileReader();
 
-        reader.onload = function (e) {
+			reader.onload = function(e) {
 
-        $('#View').attr('src', e.target.result);
+				$('#View').attr('src', e.target.result);
 
-        }
+			}
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 </head>
 <body>
@@ -130,32 +134,34 @@ function readURL(input) {
 			</div>
 		</div>
 	</section>
-	
-	<section class="product-page spad"> 
-	<div class="container">	
 
-	<div id="shop" style=" width: 1200px; height: 500px;">
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">		
-		<table style="margin: 0 auto;">
-			<c:forEach items="${list }" var="i" varStatus = "num">
-				<tr>
-					<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>					
-					<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> 
-														<a href="${i.as_site }" target='_blank'>${i.as_site }</a></th>
-					<th id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></th>				
-					</c:forEach>
-		
-					</table>	
-		<hr align="center" style="border: solid 1px yellow; width: 50%;">		
+	<section class="product-page spad">
+		<div class="container">
+
+			<div id="shop" style="width: 1200px; height: 500px;">
+
+				<table style="margin: 0 auto;">
+					<c:forEach items="${list }" var="i" varStatus="num">
 					
-		<c:if test="${sessionScope.u_email eq 'admin@a.com' }">			
-		<button type="button" onclick="location.href='./shopwrite'"
-			style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
-			<i class="fa fa-location-arrow">Write</i>
-		</button>
-		</c:if>
-	</div>
-	</div>
+						<tr>
+							<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'><img src="./img/upload/${i.as_file }"></a></th>
+							<th id="sh1" style="color: white;"><a href="${i.as_site }" target='_blank'>${i.as_name }</a> <br> <a
+																  href="${i.as_site }" target='_blank'>${i.as_site }</a></th>
+							<th id="sh1" style="color: white;"><a href="./mapdetail?as_roadAddr=${i.as_roadAddr}">${i.as_roadAddr}</a></th>
+						</tr>
+						
+					</c:forEach>
+				</table>
+
+
+				<c:if test="${sessionScope.u_email eq 'admin@a.com' }">
+					<button type="button" onclick="location.href='./shopwrite'"
+						style="position: absolute; left: 1200px; font-size: 11px; color: #ffffff; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: #e53637; border: none; padding: 10px 15px; border-radius: 2px;">
+						<i class="fa fa-location-arrow">Write</i>
+					</button>
+				</c:if>
+			</div>
+		</div>
 
 	</section>
 
@@ -184,17 +190,17 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script> -->
 
-	<jsp:include page="footer.jsp"/>
-	
-	    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+	<jsp:include page="footer.jsp" />
+
+	<!-- Js Plugins -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
 
@@ -202,7 +208,7 @@ var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리
 
 
 
-						<%-- <div id="${i.as_no }" style="width: 300px; height: 200px;">
+<%-- <div id="${i.as_no }" style="width: 300px; height: 200px;">
 						</div>
 						${i.as_roadAddr }
 						

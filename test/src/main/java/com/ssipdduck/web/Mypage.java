@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.ssipdduck.DAO.SignupDAO;
 import com.ssipdduck.DTO.LoginDTO;
 import com.ssipdduck.DTO.SignupDTO;
+import com.ssipdduck.util.Util;
 
 @WebServlet("/mypage")
 public class Mypage extends HttpServlet {
@@ -47,13 +48,10 @@ public class Mypage extends HttpServlet {
 		dto.setEmail((String)session.getAttribute("u_email"));
 		dto.setNickname((String)request.getParameter("nickname"));
 		dto.setPassword((String)request.getParameter("password"));
-		dto.setTele((String)request.getParameter("u_tel"));
+		dto.setTele((String)request.getParameter("tele"));
 		
-		dao.mypagemodify(dto);
-		
-		
-		
-		response.sendRedirect("./index.jsp");
+		dao.mypagemodify(dto);	
+		response.sendRedirect("./mypage");
 	}
 
 }

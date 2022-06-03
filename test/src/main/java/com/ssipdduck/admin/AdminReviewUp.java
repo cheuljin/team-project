@@ -58,6 +58,7 @@ public class AdminReviewUp extends HttpServlet {
 				AdminboardDAO dao = new AdminboardDAO();
 				AniRecomDTO dto = new AniRecomDTO();
 				dto.setA_no(a_no);
+				dto.setA_writer(multi.getParameter("a_writer"));
 				dto.setA_aired(multi.getParameter("a_aired"));
 				dto.setA_category(multi.getParameter("a_category"));
 				dto.setA_content(multi.getParameter("a_content"));

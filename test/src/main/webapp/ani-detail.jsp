@@ -279,7 +279,7 @@ a:visited, a:link {
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                             				<li><span>Writer:</span> 작가이름.</li>
+                             				<li><span>Writer:</span> ${dto.a_writer }</li>
                         					<li><span>Like:</span><a href="#" id="likecount" style="text-decoration: none;">${dto.a_like }</a></li>
                                           	<li><span>Duration:</span> ${dto.a_epi }&nbsp;부작</li>
                                             <li><span>Genre:</span> ${dto.a_category }</li>

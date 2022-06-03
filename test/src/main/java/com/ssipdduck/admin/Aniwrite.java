@@ -59,6 +59,7 @@ public class Aniwrite extends HttpServlet {
 		dto.setA_studio(multi.getParameter("a_studio"));
 		dto.setA_title(multi.getParameter("a_title"));
 		dto.setA_type(multi.getParameter("a_type"));
+		dto.setA_writer(multi.getParameter("a_writer"));
 		dao.aniwrite(dto);
 		
 		response.sendRedirect("./adminreview");

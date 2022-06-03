@@ -198,7 +198,7 @@ function passwordCheck1() {
 					<div id="checkResult">중복체크</div>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">modify</button>
-							 <a href="index.jsp" style="color: red;">sign out</a>
+							 <a href="./signout" style="color: red;">sign out</a>
 						</div>
 					
 				</form>
@@ -206,7 +206,6 @@ function passwordCheck1() {
 		</div>
 	
 
-	</script>
 	<jsp:include page="footer.jsp" />
 
 	<!-- Js Plugins -->

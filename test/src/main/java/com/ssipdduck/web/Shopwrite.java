@@ -54,9 +54,7 @@ public class Shopwrite extends HttpServlet {
 				ShopDTO dto = new ShopDTO();
 
 				dto.setAs_file(multi.getFilesystemName("file"));
-				System.out.println(dto.getAs_file());
 				dto.setAs_orifile(multi.getOriginalFileName("file"));
-				System.out.println(dto.getAs_orifile());
 				dto.setAs_site(multi.getParameter("site"));
 				dto.setAs_name(multi.getParameter("name"));
 				dto.setAs_roadAddr(multi.getParameter("roadAddr"));

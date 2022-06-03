@@ -121,7 +121,7 @@ img {
 			<c:forEach items="${list }" var="i">
 				<tr>
 					<th id="nt1" style="color: white;">${i.an_no }</th>
-					<th id="nt2" style="color: white;"><a href="./noticedetail?an_no=${i.an_no }">${i.an_no }</a></th>
+					<th id="nt2" style="color: white;"><a href="./noticedetail?an_no=${i.an_no }">${i.an_title }</a></th>
 					<th id="nt1" style="color: white;">관리자</th>
 					<th id="nt3" style="color: white;">${i.an_date }</th>
 					<th id="nt3" style="color: white;">${i.an_count }</th>

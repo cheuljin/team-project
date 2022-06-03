@@ -49,8 +49,7 @@
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <div class="label">Adventure</div>
-                                <h2 style="color: #9986EE;">도로헤도로</h2>
-                                <p style="color: #9986EE;">Netflex에서 보기가넝</p>
+                                <h2>도로헤도로</h2>
                                 <a href="https://youtu.be/lkj9fZktT2U"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
@@ -62,7 +61,6 @@
                             <div class="hero__text">
                                 <div class="label">Action</div>
                                 <h2>Spy Family</h2>
-                                <p>얘도 넷플쨩... ...</p>
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
@@ -74,7 +72,6 @@
                             <div class="hero__text">
                                 <div class="label">Robot</div>
                                 <h2>에반게리온</h2>
-                                <p>얘도 넷플..ㅎ.</p>
                                 <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
@@ -94,12 +91,13 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">
                                 <div class="section-title">
-                                    <h4>Trending Now</h4>
+                                    <h4>Comming soon</h4>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="btn__all">
-                                    <a href="#" class="primary-btn">▶</a>
+                                    <a href="#" class="primary-btn"></a>
+ 
                                 </div>
                             </div>
                         </div>
@@ -108,37 +106,48 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">
-                                        <div class="ep"></div>
-                                        <div class="comment"><i class="fa fa-comments"></i> <!-- 댓글수 --></div>
-                                        <div class="view"><i class="fa fa-eye"></i> <!-- 뷰카운트 --></div>
+                                        <div class="ep">17</div>
+
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
                                             <li>Active</li>
                                             <li>Movie</li>
                                         </ul>
-                                        <h5><a href="#">나루토</a></h5>
+                                        <h5><a href="#">보루토</a></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/trending/trend-2.jpg">
-                                        <div class="ep"></div>
-                                        <div class="comment"><i class="fa fa-comments"></i>  <!-- 댓글수 --></div>
-                                        <div class="view"><i class="fa fa-eye"></i> <!-- 뷰카운트 --></div>
+                                        <div class="ep">9</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li>Active</li>
+                                            <li>Sports</li>
                                             <li>Movie</li>
                                         </ul>
-                                        <h5><a href="#">애니애니애니짱</a></h5>
+                                        <h5><a href="#">러브 올 플레이</a></h5>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/kDSnpNO5Ke4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                             <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-3.jpg">
+                                        <div class="ep">1</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Action</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">마기아-레코드-마법소녀-마도카☆마기카-외전</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                           <iframe width="560" height="315" src="https://www.youtube.com/embed/kDSnpNO5Ke4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

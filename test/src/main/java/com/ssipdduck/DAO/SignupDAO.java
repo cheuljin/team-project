@@ -191,5 +191,22 @@ public class SignupDAO {
 		return result;
 	}
 
+	//로그아웃
+	public void signout(SignupDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "delete from user where u_email=?";
+		
+		try {
+			con = DBConnection.dbConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getEmail());
+			pstmt.execute();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
+}
 

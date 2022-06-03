@@ -107,6 +107,13 @@ function passwordCheck1() {
 	
 }
 
+function signout(){
+	if(confirm("정말로 탈퇴하시겠습니까?")){
+		location.href="./signout";
+	}
+	
+}
+
 </script>
 
 </head>
@@ -198,7 +205,7 @@ function passwordCheck1() {
 					<div id="checkResult">중복체크</div>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">modify</button>
-							 <a href="./signout" style="color: red;">sign out</a>
+							<button type="submit" class="btn btn-danger btn-lg btn-block login-button" onclick="signout()">회원탈퇴</button>
 						</div>
 					
 				</form>

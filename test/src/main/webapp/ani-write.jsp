@@ -115,6 +115,7 @@
     			<option value="fantasy">Fantasy</option>
   			</select>
   			<br>
+  			<input type="text" name="a_utube" required="required" placeholder="유투브주소">
      	</div>
      	<br>
      	<textarea class="form-control" name="a_content" id="textArea_byteLimit"  onkeyup="fn_checkByte(this)" rows="10" required="required" placeholder="줄거리내용입력해주세요."></textarea>

@@ -49,6 +49,7 @@ public class Aniwrite extends HttpServlet {
 		AniRecomDTO dto = new AniRecomDTO();
 		AnirecomDAO dao = new AnirecomDAO();
 		
+		dto.setA_utube(multi.getParameter("a_utube"));
 		dto.setA_aired(multi.getParameter("a_aired"));
 		dto.setA_category(multi.getParameter("a_category"));
 		dto.setA_content(multi.getParameter("a_content"));

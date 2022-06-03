@@ -150,8 +150,8 @@ public class AnirecomDAO {
 
 	//글쓰기.
 	public void aniwrite(AniRecomDTO dto) {
-		String sql = "INSERT INTO ani (a_title, a_content, a_file, a_orifile, a_category, a_epi, a_type, a_studio, a_aired,u_no) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?,? ,?,(select u_no from user where u_email=?))";
+		String sql = "INSERT INTO ani (a_title, a_content, a_file, a_orifile, a_category, a_epi, a_type, a_studio, a_aired,a_utube,u_no) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?,? ,?,?,(select u_no from user where u_email=?))";
 		try {
 			conn = DBConnection.dbConn();
 			pstmt = conn.prepareStatement(sql);
@@ -164,7 +164,8 @@ public class AnirecomDAO {
 			pstmt.setString(7, dto.getA_type());
 			pstmt.setString(8, dto.getA_studio());
 			pstmt.setString(9, dto.getA_aired());
-			pstmt.setString(10, dto.getU_id());
+			pstmt.setString(10, dto.getA_utube());
+			pstmt.setString(11, dto.getU_id());
 			
 			pstmt.execute();
 			

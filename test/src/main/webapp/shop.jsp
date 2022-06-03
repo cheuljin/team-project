@@ -120,7 +120,7 @@ a:visited, a:link {
 
 	<!-- Product Section Begin -->
 	<section class="product-page spad"
-		style="padding-top: 0; height: 100px;">
+		style="padding-top: 0; padding-bottom:0; height: 50px;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-lg-8">
@@ -138,8 +138,25 @@ a:visited, a:link {
 			</div>
 		</div>
 	</section>
-
-	<section class="product-page spad" style="padding-top: 0;">
+	
+	<div id="shoptop" style="margin-left: 15px;">	
+		<img alt="" src="./img/bandai.jpg" style="width: 50px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/banpresto.png" style="width: 100px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/flare.jpg" style="width: 100px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/hottoys.png" style="width: 100px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/union.png" style="width: 300px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/sega.png" style="width: 100px; height: 50px;" >&nbsp;
+		
+		<img alt="" src="./img/kaiyodo.jpg" style="width: 150px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/kotobukiya.png" style="width: 150px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/alter2.png" style="width: 130px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/maxfac.jpg" style="width: 130px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/emontoys.png" style="width: 150px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/amiami.png" style="width: 180px; height: 50px;" >&nbsp;
+		<img alt="" src="./img/hobbyjapan.jpg" style="width: 130px; height: 50px;" >&nbsp;
+	</div>
+	
+	<section class="product-page spad" style="padding-top: 3;">
 		<div class="container">
 
 			<div id="shop" style="width: 1000px; height:100%;">

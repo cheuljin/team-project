@@ -50,7 +50,6 @@ public class SignupDAO {
 			
 			if (rs.next()) {
 				result = rs.getInt(1);
-				System.out.println("결과는 :" + result + "개가 나왔습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

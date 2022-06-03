@@ -61,6 +61,34 @@ function nicknameCheck1(){
 	}
 }
 
+function telCheck(){
+	var tel = $("#tel").val();
+	if(tel == "" || tel.length == 12){
+		$("#checkResult").css("color","red");
+		$("#checkResult").text("12자이어야 합니다."); 
+		$("#tel").focus();
+	}else{
+		alert(tel);
+		$.ajax({
+			url : "./telcheck",
+			type : "POST",
+			dataType : "html",
+			data : {"tel" : tel},
+			success : function(data){
+				if (data == 0) {
+					$("#checkResult").css("color", "green");
+					$("#checkResult").text(tel + "는 가입할 수 있습니다.");
+					$("#checkResult").attr("disabled", false);
+				} else {
+					$("#checkResult").css("color", "red");
+					$("#checkResult").attr("disabled", true);
+					$("#checkResult").text(tel + "가입할 수 없는 tel입니다.");
+					$("#tel").focus();
+				}
+			}
+		});
+	}
+}
 
 function passwordCheck1() {
 	var password1 = $("#password1").val();
@@ -122,7 +150,7 @@ function passwordCheck1() {
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span> 
 									<input type="text" class="form-control" style="margin-left: 10px;"
-									name="nickname" id="nickname" onchange="nicknameCheck1()" value="${dto.nickname }"autocomplete="off"
+									name="nickname" id="nickname" onchange="nicknameCheck1()" value="${dto.nickname }"autocomplete="off" required="required"
 									placeholder="${dto.nickname }" />
 									
 							</div>
@@ -136,7 +164,7 @@ function passwordCheck1() {
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span> 
 									<input type="text" class="form-control" style="margin-left: 10px;"
-									name="tele" value="${dto.tele }" id="tel" autocomplete="off" onchange="telCheck()"
+									name="tele" value="${dto.tele }" id="tel" autocomplete="off" onchange="telCheck()" required="required"
 									placeholder="${dto.tele }" />
 							</div>
 						</div>
@@ -170,7 +198,7 @@ function passwordCheck1() {
 					<div id="checkResult">중복체크</div>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">modify</button>
-							 <a href="mypage.jsp" style="color: red;">sign out</a>
+							 <a href="./signout" style="color: red;">sign out</a>
 						</div>
 					
 				</form>
@@ -178,7 +206,6 @@ function passwordCheck1() {
 		</div>
 	
 
-	</script>
 	<jsp:include page="footer.jsp" />
 
 	<!-- Js Plugins -->

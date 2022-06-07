@@ -209,7 +209,7 @@ $(document).ready(function(){
 	<div id="main">
 		<table border="1">
 			<tr>
-				<th colspan="2" style="text-align: center;">글 제목 : ${detail.b_title } 
+				<th colspan="2" style="text-align: center;">${detail.b_title } 
 				<c:if test="${detail.u_id eq sessionScope.u_email }">
 						<img id="up" src="./img/fix.png" title="수정" style="width: 15px; height: 15;">
 						<img id="del" src="./img/delete.png" title="삭제" style="width: 15px; height: 15;">
@@ -217,7 +217,7 @@ $(document).ready(function(){
 				</th>
 			</tr>
 			<tr>
-				<th style="text-align: center; height: 20px;">작성자 : ${detail.u_nickname }</th>
+				<th style="text-align: center; height: 20px;">${detail.u_nickname }</th>
 				<th style="text-align: center;">${detail.b_date }</th>
 			</tr>
 
@@ -268,8 +268,7 @@ $(document).ready(function(){
 				<input type="hidden" name="bc_no" value="${i.bc_no }">
 				<h6>${i.u_nickname }
 					<small style="color: white"><span>${i.bc_date }</span></small>
-					<img id="recom" src="./img/recom.png" title="대댓글" width="20px" height="20px" align="right"> &nbsp; &nbsp; &nbsp;
-					<img id="commentlike" alt="" src="./img/commentlike.png" width="20px" height="20px" align="right">
+					
 					
 					<c:if test="${sessionScope.u_email eq i.u_id }">
 						<img id="cdel" src="./img/delete.png" title="삭제" width="20px" height="20px" align="right" onclick="cdel(${i.bc_no })">
